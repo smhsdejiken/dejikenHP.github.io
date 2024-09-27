@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>デジタル研究部ブログ（仮）</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/blog-home.css" type="text/css">
+    </head>
+    <body>
+        <header>
+            <p1><span onclick="greet('こんにちは')">デジタル研究部</span></p1>
+            <!--所謂パンくずリスト-->
+            <ol class="breadlist">
+                <li><a href="ホーム">ホーム</a></li>
+                <li><a href="blog-home.html">ブログ</a></li>
+                </ol>
+            <!--メニュー-->
+                <nav>
+                    <ul>
+                        <li><a class="current" href="ホーム">ホーム</a></li>
+                        <li><a href="blog-home.html">ブログ</a></li>
+                        <li><a href="部員紹介">部員紹介</a></li>
+                        <li><a href="ゲーム">ゲーム</a></li>
+                        <li><a href="unity">unity紹介</a></li>
+                        </ul>
+                </nav>
+        </header>
+        <p3>
+        <br><div>
+        </p3>
+    </div>
+
+<a href="blog-search.html">検索ページへ</a>
+    <!--ここに最新の記事を追加する-->
+    <!--表示1-->
+    <div id="page1" class="blog-tytle show">
+        <ul class="blog-tytle-list">
+            <li><a href="blog1.html">#1便利なWebアプリをChatGPTとGoogleサイトで作ろう!!</a></li>
+            <li><a href="blog2.html">#2</a></li>
+        </ul>
+        </div>
+    <!--表示2-->
+    <div id="page2" class="blog-tytle">
+        <ul class="blog-tytle-list">
+            <li><a href="">ページ2</a></li>
+        </ul>
+    </div>
+    <!--表示切り替え-->
+    <span id="link1">1</span>
+    <span id="link2">2</span>
+    </body>
+    <footer id="footer"><small>
+        <span onclick="gate();">デジタル研究部 2024</span>
+        <div id="d2">&nbsp;</div></small>
+    </footer>
+    <script src="js/blog-home.js" defer></script>
+    </html>
