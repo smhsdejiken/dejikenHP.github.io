@@ -1,0 +1,175 @@
+/* マウスカーセル */
+.top {
+    font-size: 30px;
+    cursor: pointer;
+    width: 64vw;
+    height: 36px;
+    background-color: white;
+    color: rgba(0, 0, 0, 1);
+    border: 2px solid #000000;
+    padding: 0px; /* まわりに余白を作る。marginと違い、背景色が付く */
+    margin: 20px 0px 0px 5vw;
+    z-index: 0;
+}
+.carousel {
+    position: relative; /* 絶対位置に変更 */
+    top: 0px; /* 下端に配置 */
+    left: 5vw; /* 左端に配置(不画面の幅は100vw、contanaA,B,Cは90vwより) */
+    overflow: hidden;
+    width: 65%; /* 幅を100%に設定 */
+    height: 50vh; /* 高さをビュー高さの50%に設定 */
+    margin: 2px 0px 2px 0px;
+    border: 2px solid #000000;
+}
+  
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+  
+.container {
+    display: grid;
+    grid-template-columns: 1.68fr 1fr; /* 画像とテキストを1:1の比率で分割 */
+    width: 100%; /* コンテナの幅を100%に設定 */
+    flex: 0 0 100%; /* 追加: コンテナの幅をカルーセルの幅に合わせる */
+}
+  
+.container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 追加: 画像をコンテナに合わせてカバー */
+}
+  
+.text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.rabell {
+    font-size: 25px;
+    cursor: pointer;
+    width: 50vw;
+    background-color: white;
+    color: rgba(0, 0, 0, 1);
+    border: 2px solid #000000;
+    padding: 0px; /* まわりに余白を作る。marginと違い、背景色が付く */
+    margin-bottom: 10px;
+    z-index: 0;
+}
+  
+.prev, .next {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 1);
+    color: white;
+    border: none;
+    padding: 10px; /* まわりに余白を作る。marginと違い、背景色が付く */
+}
+  
+.prev {
+    margin-left: 5%;
+    margin-bottom: 10px;
+    z-index: 0;
+}
+  
+.next {
+    margin-left: 0%; /* カーセルは65%だが、ボタンの大きさを差し引いたスケールにする */
+    margin-bottom: 10px;
+    z-index: 0;
+}
+
+
+/* ここから表 */
+.contenaA {
+    width: 90vw;
+    height: 100%;
+    margin: auto;
+    text-align:center;
+    display: flex;
+    background-color: #ffffff;
+    z-index:0;
+}
+
+.contenaB {
+    width: 90vw;
+    height: 100%;
+    margin: auto;
+    text-align:center;
+    display: flex;
+    background-color: #ffffff;
+    z-index:1;
+}
+
+.contenaC {
+    width: 90vw;
+    height: 100%;
+    margin: auto;
+    text-align:center;
+    display: flex;
+    background-color: #ffffff;
+    z-index:2;   /* 重なりを制御し、線が太くなるのを防ぐ*/
+}
+
+.subA img, .subB img, .subC img {
+    width: 80%;
+    height: 50%;
+    object-fit: cover;
+    margin-top:30px;
+}
+
+.subA {
+    width: 33%;
+    
+    border: 2px solid #000000;
+    justify-content: center;
+}
+  
+.subB {
+    width: 33%;
+    
+    border-top: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+    
+}
+  
+.subC {
+    width: 33%;
+    
+    border: 2px solid #000000;
+    justify-content: center;
+    
+}
+
+
+.subA h3, .subB h3, .subC h3 {
+    font-family: "游ゴシック", "游ゴシック体", serif;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 20px;
+    pointer-events: none;
+    text-align: left;
+    vertical-align: top;
+    margin: 20px 0px 0px 40px;
+}
+
+.subA p, .subB p, .subC p {
+    font-family: "游ゴシック", "游ゴシック体", serif;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 12px;
+    pointer-events: none;
+    text-align: left;
+    vertical-align: top;
+    margin: 10px 0px 0px 70px;
+}
+
+.subA img, .subB img, .subC img {
+    pointer-events: none;
+}
+
+.contenaA, .contenaB, .contenaC {
+    position: relative; /* 上下の線が重なるのを防いでくれる */
+  }
+  
