@@ -120,8 +120,12 @@
 
 .absolute{
 background: white;
+ display: inline-block;
+ padding: 10px;
 }
 
 .small{
  background: white;
+ display: inline-block;
+ padding: 10px;
 }
