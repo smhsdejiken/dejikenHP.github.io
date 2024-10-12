@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex">
+<title>デジタル研究部ブログ（仮）</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/blog-cleate.css" type="text/css">
+</head>
+<body>
+    a;タイトル<br>
+    b;サブタイトル<br>
+    c;それ以外<br>
+    ※改行時の文字の置きなおしは不要<br>
+    <a href="blog-update.html">ブログ更新方法</a>
+    <label for="FlexTextarea"></label>
+    <div class="FlexTextarea">
+      <div class="FlexTextarea__dummy" aria-hidden="true"></div>
+      <textarea id="FlexTextarea" class="FlexTextarea__textarea" placeholder="ここに入力"></textarea>
+    </div>
+    <button onclick="replaceText()">作成</button>
+    <button onclick="copyToClipboard()">コピー</button>
+    <button onclick="downloadText()">ダウンロード</button>
+    <textarea id="result" rows="10" cols="180"placeholder="結果"></textarea>
+  
+
+</body>
+<footer id="footer"><small>
+  <span>デジタル研究部 2024</span>
+  <div id="d2">&nbsp;</div></small>
+</footer>
+<script src="js/blog-cleate.js" defer></script>
+</html>

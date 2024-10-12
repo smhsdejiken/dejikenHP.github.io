@@ -1,1 +1,127 @@
 
+ .h1{
+    font-size: 25px;
+    }    
+    .relative {
+      position: relative;
+      width: 1183px;
+      }
+      .absolute {
+        position: absolute;
+        top:65px;
+        left: 0;
+        bottom: 80px;
+        color: #000000;
+        width: 600px;
+        padding: 10px 0;
+        font-size:50px;
+        font-weight:bold;
+        margin-left: 75px;
+      }
+      .small {
+        position: absolute;
+        top:40px;
+        left: 0;
+        bottom: 80px;
+        color: #000000;
+        width: 600px;
+        padding: 10px 0;
+        font-size:30px;
+        font-weight:bold;
+        margin-left: 50px;
+      }
+
+      .news {
+        border: double 4px black;
+        text-align: center;
+        }
+
+.h2{
+  text-align: center;
+}
+
+.h3{
+  text-align: center;
+}
+.box{
+  border: solid 2px black;
+  height: 100px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.menu {
+  background: #01558d;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  }
+  .accordion ul {
+  margin: 0;
+  background: #e7e7e7;
+  max-height: 0;
+  overflow: hidden;
+  transition: all .5s;
+  }
+  .accordion.open ul {
+  max-height: 300px;
+  }
+  .accordion li {
+  padding: 5px 10px;
+  }
+  
+
+.marquee title {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+ .text{
+  text-align: center;
+}
+
+.bbs{
+  align-items: center;
+  background: #0e546b;
+  color: #fff;
+  display: flex;
+  height: 40px;
+  line-height: 40px;
+  overflow:hidden;
+  width: 100%;
+  white-space:nowrap;
+  z-index: 1;
+  @keyframes flowing {
+    0% { transform:translateX(0); }
+    }
+}
+.bbs ul {
+  animation: flowing 20s linear infinite;
+  font-size: 20px;
+  transform:translateX(100%);
+  margin: 0;
+  padding: 0;
+}
+.bbs ul li{
+  display: inline-block;
+  padding-right: 10px;
+}
+@keyframes flowing {
+  0% { transform:translateX(0); }
+  100% { transform:translateX(-100%); }
+}
+
+.absolute{
+background: white;
+}
+
+.small{
+ background: white;
+}
