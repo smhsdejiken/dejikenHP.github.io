@@ -118,3 +118,10 @@
   100% { transform:translateX(-100%); }
 }
 
+.absolute{
+background: white;
+}
+
+.small{
+ background: white;
+}
