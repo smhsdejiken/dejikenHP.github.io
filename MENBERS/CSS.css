@@ -1,39 +1,24 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>部員紹介</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="member">
-        <h2>1年生の部員　山田 太郎さん　投稿日：2024◯月◯日</h2>
-      プロフィール： 
-    <br>検定を持っています。 
-      <br>次のような活動をしました： <br>https://game.io/ をつくりました。 
-<br>本人のコメント： 
-<br>この部活で誠心誠意頑張って行きたいです。
-<p>デジタル研究部 部長</p>
-</div>
-    <div class="member">
-        <h2>佐藤 花子さん　投稿日：2024◯月◯日</h2>
-<br>プロフィール： 
-<br>特になし。
-<br>次のような活動をしました。
-<br>このwebsiteを作りました。他にはhttps://ichiko-unity.comを作りました。 
-<br>本人のコメント： 
-<br>websiteを作ることは、とても自分にとって興味深い作業なので、これからも続けていきたいです。 
-<p>デジタル研究部 副部長</p>
-</div>
-    <div class="member">
-        <h2>田中 一郎　投稿日：2024◯月◯日</h2>
-<br>プロフィール： 
-      <br>特にないです。 
-      <br>次のような活動をしました： <br>ゲーム作り監督、Bさんと共同でhttps://history.of.capitalism.comを作りました。 
-      <br>本人のコメント： 
-      <br>今後とも歴史を研究していきたいです。 
-<p>部員</p>
-    </div>
-</body>
-</html>
+body {
+    font-family: Arial, sans-serif;
+}
+
+.member {
+    padding: 20px;
+    border-bottom: 1px solid #ccc; /* 各部員を区切る線 */
+    margin-bottom: 10px;
+}
+
+.member:last-child {
+    border-bottom: none; /* 最後の部員の下には線を表示しない */
+}
+
+h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+p {
+    margin: 5px 0 0;
+    font-size: 1em;
+    color: #666;
+}
