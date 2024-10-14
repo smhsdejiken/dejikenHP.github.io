@@ -1,1 +1,24 @@
+body {
+    font-family: Arial, sans-serif;
+}
 
+.member {
+    padding: 20px;
+    border-bottom: 1px solid #ccc; /* 各部員を区切る線 */
+    margin-bottom: 10px;
+}
+
+.member:last-child {
+    border-bottom: none; /* 最後の部員の下には線を表示しない */
+}
+
+h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+p {
+    margin: 5px 0 0;
+    font-size: 1em;
+    color: #666;
+}
