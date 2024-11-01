@@ -117,15 +117,3 @@
   0% { transform:translateX(0); }
   100% { transform:translateX(-100%); }
 }
-
-.absolute{
-background: white;
- display: inline-block;
- padding: 10px;
-}
-
-.small{
- background: white;
- display: inline-block;
- padding: 10px;
-}
