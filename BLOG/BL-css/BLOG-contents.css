@@ -56,14 +56,14 @@ h1{
     text-align: center;
 }
 
-.tytle{
+.title{
     margin-left:auto;
     margin-right:auto;
     font-size: clamp(24px,2.08vw,30px);
     word-break: break-word;
 }
 
-.subtytle{
+.subtitle{
     margin-left:auto;
     margin-right:auto;
     font-size: clamp(16px,1.39vw,20px);
@@ -83,7 +83,7 @@ footer{
     bottom: 0;
 }
 
-img{
+.B-img{
     width: clamp(16px, 80vw, 700px);
 }
 
@@ -95,6 +95,16 @@ img{
 }
 
 #searchInput{
+    margin-left:auto;
+    margin-right:auto;
+}
+
+iframe{
+    width: clamp(16px, 80vw, 700px);
+}
+
+.header-img{
+    margin-top: clamp(12px,1.042vw,15px);
     margin-left:auto;
     margin-right:auto;
 }
