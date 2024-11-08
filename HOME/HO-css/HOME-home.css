@@ -107,3 +107,9 @@
   100% { transform:translateX(-100%); }
 }
 
+.p {
+  background: #01558d;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  }
