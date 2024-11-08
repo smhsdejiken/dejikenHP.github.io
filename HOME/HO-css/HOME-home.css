@@ -57,19 +57,7 @@
   cursor: pointer;
   text-align: center;
   }
-  .accordion ul {
-  margin: 0;
-  background: #e7e7e7;
-  max-height: 0;
-  overflow: hidden;
-  transition: all .5s;
-  }
-  .accordion.open ul {
-  max-height: 300px;
-  }
-  .accordion li {
-  padding: 5px 10px;
-  }
+ 
   
 
 .marquee title {
