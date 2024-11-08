@@ -55,6 +55,7 @@
   color: white;
   padding: 5px 10px;
   cursor: pointer;
+  text-align: center;
   }
   .accordion ul {
   margin: 0;
