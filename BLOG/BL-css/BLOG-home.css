@@ -9,7 +9,7 @@ p1{
     list-style: none;
     margin: 0;
     padding: 0;
-    font-size: clamp(10px,0.97vw,14px);
+    font-size: clamp(14px,0.97vw,16px);
     }
     .breadlist li {
     padding: 0;
@@ -55,7 +55,7 @@ p3{
     text-align: center;
 }
 .blog-tytle{
-    padding: clamp(12px,1.042vw,15px);
+    padding: clamp(16px,1.042vw,20px);
     font-size: clamp(16px,1.39vw,20px);
     display: none;
 }
@@ -70,6 +70,6 @@ footer{
     bottom: 0;
 }
 .blog-tytle-list{
-    padding-top: clamp(12px,1.042vw,15px) ;
+    padding-top: clamp(16px,1.042vw,20px) ;
     list-style:none;
 }
