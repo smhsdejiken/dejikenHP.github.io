@@ -9,7 +9,7 @@ p1{
     list-style: none;
     margin: 0;
     padding: 0;
-    font-size: clamp(10px,0.97vw,14px);
+    font-size: clamp(14px,0.97vw,16px);
     }
     .breadlist li {
     padding: 0;
@@ -24,7 +24,7 @@ p1{
     nav{
         margin-left:auto;
         margin-right:auto;
-        font-size: clamp(16px,1.39vw,20px);
+        font-size: clamp(20px);
         }
         nav ul{
         margin: 0 ;
@@ -56,6 +56,10 @@ h1{
     text-align: center;
 }
 
+span{
+    margin-left:auto;
+    margin-right:auto;
+}
 .title{
     margin-left:auto;
     margin-right:auto;
@@ -73,7 +77,7 @@ h1{
 .text{
     margin-left:auto;
     margin-right:auto;
-    font-size: clamp(12px,1.042vw,15px);
+    font-size: clamp(16px,1.042vw,20px);
     word-break: break-word;
 }
 
@@ -90,7 +94,7 @@ footer{
 #searchResults{
     margin-left:auto;
     margin-right:auto;
-    padding-top: clamp(12px,1.042vw,15px) ;
+    padding-top: clamp(16px,1.042vw,20px) ;
     list-style:none;
 }
 
@@ -104,7 +108,8 @@ iframe{
 }
 
 .header-img{
-    margin-top: clamp(12px,1.042vw,15px);
+    padding-top: clamp(16px,1.042vw,20px) ;
+    width: clamp(16px, 80vw, 300px);
     margin-left:auto;
     margin-right:auto;
 }
