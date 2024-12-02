@@ -1,177 +1,114 @@
-
-/* マウスカーセル */
-.top {
-    font-size: 30px;
-    cursor: pointer;
-    width: 64vw;
-    height: 36px;
-    background-color: white;
-    color: rgba(0, 0, 0, 1);
-    border: 2px solid #000000;
-    padding: 0px; /* まわりに余白を作る。marginと違い、背景色が付く */
-    margin: 20px 0px 0px 5vw;
-    z-index: 0;
-}
-.carousel {
-    position: relative; /* 絶対位置に変更 */
-    top: 0px; /* 下端に配置 */
-    left: 5vw; /* 左端に配置(不画面の幅は100vw、contanaA,B,Cは90vwより) */
-    overflow: hidden;
-    width: 65%; /* 幅を100%に設定 */
-    height: 50vh; /* 高さをビュー高さの50%に設定 */
-    margin: 2px 0px 2px 0px;
-    border: 2px solid #000000;
-}
-  
-.carousel-inner {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-  
-.container {
+/* テーブル全体をグリッドレイアウトに変更 */
+#dataTable {
     display: grid;
-    grid-template-columns: 1.68fr 1fr; /* 画像とテキストを1:1の比率で分割 */
-    width: 100%; /* コンテナの幅を100%に設定 */
-    flex: 0 0 100%; /* 追加: コンテナの幅をカルーセルの幅に合わせる */
+    grid-template-columns: repeat(3, 1fr); /* PC画面では横3列 */
+    width: 84vw; /* テーブル全体の幅 */
+    border-collapse: collapse; /* セル同士をくっつける */
+    margin: 8vw; /* 両側に空白を設定 */
+    border: 2px solid #000000;
 }
-  
-.container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* 追加: 画像をコンテナに合わせてカバー */
-}
-  
-.text {
+
+#dataTable td {
+    color:white;
+    border: 2px solid black;
+    padding: 5%; /* 隙間なしでレイアウトを整える */
+    text-align: center;
+    cursor: pointer; /* カーソルが指マークになる */
     display: flex;
+    flex-direction: column; /* 上下に分けるための設定 */
+    height: 18vw; /* 白銀比 */
+    overflow: hidden;
+
+}
+
+/* セル内のリンクがセル全体を覆う＊＊＊ */
+#dataTable td a {
+    display: block; /* ブロック要素にしてセル全体を覆う */
+    width: 100%; /* セルの幅に合わせる */
+    height: 100%; /* セルの高さに合わせる */
+    text-decoration: none; /* 下線を削除 */
+    color: inherit; /* テキスト色を親要素に継承 */
+    position: relative; /* <h3> を相対的に配置するための基準 */
+}
+
+/* 上部のDiv（画像用） */
+.upper-div {
+    flex: 1; /* 上半分を占める */
+    display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: center;
-    padding: 20px;
+    overflow: hidden; /* 画像が枠をはみ出さないように */
 }
 
-.rabell {
-    font-size: 25px;
-    cursor: pointer;
-    width: 50vw;
-    background-color: white;
-    color: rgba(0, 0, 0, 1);
-    border: 2px solid #000000;
-    padding: 0px; /* まわりに余白を作る。marginと違い、背景色が付く */
-    margin-bottom: 10px;
-    z-index: 0;
+/* 下部のDiv（文字用） */
+.lower-div {
+    flex: 1; /* 下半分を占める */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    position: relative; /* <h3> を相対的に配置するための基準 */
+    font-size: 1.1vw; /* 画面の横幅から文字の大きさを変化。これがないとaboutの文章が多すぎて縦に幅を取り、写真の幅が狭くなってしまう。*/
 }
-  
-.prev, .next {
-    font-size: 20px;
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 1);
+
+#dataTable td h3 {
+    color:black;
+    position: absolute; /* 親要素から完全に独立して配置できる。重なりも指定可能に。 */
+    top: 0;
+    left: 0;
+    z-index: 10;
+    font-size: 2vw; /* 画面の横幅より大きさを設定。vhは高さから */
+}
+
+/* 画像のスタイル */
+.cell-image {
+    width: 100%; /* 画像の幅をセル内で調整 */
+    height: 100%;
+    object-fit: cover; /* 歪みを防止し、枠内に収める */
+    display: block;
+}
+
+/* 文字のスタイル */
+.text-with-background {
+    background-color: black;
     color: white;
-    border: none;
-    padding: 10px; /* まわりに余白を作る。marginと違い、背景色が付く */
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 1rem;
+    display: inline-block;
 }
-  
-.prev {
-    margin-left: 5%;
-    margin-bottom: 10px;
-    z-index: 0;
+
+/* マウスホバー時の背景色を黒に変更 */
+#dataTable td:hover {
+    background-color: black;
+    transition: opacity 0.3s ease-in-out; /* 透明度が変わる際のアニメーション */
 }
-  
-.next {
-    margin-left: 0%; /* カーセルは65%だが、ボタンの大きさを差し引いたスケールにする */
-    margin-bottom: 10px;
-    z-index: 0;
+/*
+#dataTable td:hover{
+    color: white;
+}
+*/
+#dataTable td:hover h3 {
+    opacity: 0; /* 透明度を0にする */
 }
 
 
-/* ここから表 */
-.contenaA {
-    width: 90vw;
-    height: 100%;
-    margin: auto;
-    text-align:center;
-    display: flex;
-    background-color: #ffffff;
-    z-index:0;
-}
+/* スマホ画面では1列ずつ表示 */
+@media (max-width: 600px) {
+    #dataTable {
+        grid-template-columns: 1fr; /* スマホ画面では1列 */
+    }
 
-.contenaB {
-    width: 90vw;
-    height: 100%;
-    margin: auto;
-    text-align:center;
-    display: flex;
-    background-color: #ffffff;
-    z-index:1;
-}
+    #dataTable td {
+        height: 40vw; /* 画面横幅で調節 */
+        padding: 5%; 
+    }
 
-.contenaC {
-    width: 90vw;
-    height: 100%;
-    margin: auto;
-    text-align:center;
-    display: flex;
-    background-color: #ffffff;
-    z-index:2;   /* 重なりを制御し、線が太くなるのを防ぐ*/
-}
+    #dataTable td h3 {
+        font-size: 5vw;
+    }
 
-.subA img, .subB img, .subC img {
-    width: 80%;
-    height: 50%;
-    object-fit: cover;
-    margin-top:30px;
+    .lower-div {
+        font-size: 3vw;
+    }
 }
-
-.subA {
-    width: 33%;
-    
-    border: 2px solid #000000;
-    justify-content: center;
-}
-  
-.subB {
-    width: 33%;
-    
-    border-top: 2px solid #000000;
-    border-bottom: 2px solid #000000;
-    
-}
-  
-.subC {
-    width: 33%;
-    
-    border: 2px solid #000000;
-    justify-content: center;
-    
-}
-
-
-.subA h3, .subB h3, .subC h3 {
-    font-family: "游ゴシック", "游ゴシック体", serif;
-    background-color: #000000;
-    color: #ffffff;
-    font-size: 20px;
-    pointer-events: none;
-    text-align: left;
-    vertical-align: top;
-    margin: 20px 0px 0px 40px;
-}
-
-.subA p, .subB p, .subC p {
-    font-family: "游ゴシック", "游ゴシック体", serif;
-    background-color: #000000;
-    color: #ffffff;
-    font-size: 12px;
-    pointer-events: none;
-    text-align: left;
-    vertical-align: top;
-    margin: 10px 0px 0px 70px;
-}
-
-.subA img, .subB img, .subC img {
-    pointer-events: none;
-}
-
-.contenaA, .contenaB, .contenaC {
-    position: relative; /* 上下の線が重なるのを防いでくれる */
-  }
-  
-
