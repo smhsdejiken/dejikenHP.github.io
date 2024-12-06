@@ -15,7 +15,35 @@ function flexTextarea(el) {
       .replace(/c;/g, '</span><span class="text">'+ '\r\n')
       .replace(/\n/g, '<br>'+ '\r\n'); // 改行を<br>タグに置換
 
-    document.getElementById('result').textContent = '<!DOCTYPE html>\r\n<html>\r\n    <head>\r\n        <title>デジタル研究部ブログ（仮）</title>\r\n        <meta charset="UTF-8">\r\n        <link rel="stylesheet" href="../BL-css/BLOG-contents.css" type="text/css">\r\n    </head>\r\n        <header>\r\n            <p1>デジタル研究部</p1>\r\n            <ol class="breadlist">\r\n                <li><a href="../../HOME/HO-html/HOME-home.html">ホーム</a></li>\r\n                <li><a href="BLOG-home.html">ブログ</a></li>\r\n                <li><a href="blog.html">タイトルとＵＲＬを入れる</a></li>\r\n                </ol>\r\n            <nav>\r\n                <ul>\r\n                    <li><a class="current" href="../../HOME/HO-html/HOME-home.html">ホーム</a></li>\r\n                    <li><a href="BLOG-home.html">ブログ</a></li>\r\n                    <li><a href="../../MEMBERS/ME-html/MEMBERS1.html">部員紹介</a></li>\r\n                    <li><a href="../../GAMES/GA-html/GAMES-home.html">ゲーム</a></li>\r\n                    <li><a href="unity">unity紹介</a></li>\r\n                    </ul>\r\n            </nav>\r\n        </header>\r\n     <body>'+replacedText+'    </body>\r\n    <footer id="footer">\r\n        <small><span>デジタル研究部 2024</span></small>\r\n    </footer>\r\n\r\n</html>';
+    document.getElementById('result').textContent =
+     '<!DOCTYPE html>\r\n\
+     <html>\r\n\
+         <head>\r\n\
+            <title>デジタル研究部ブログ（仮）</title>\r\n\
+            <meta charset="UTF-8">\r\n\
+            <link rel="stylesheet" href="BLOG/BL-css/BLOG-contents.css" type="text/css">\r\n\
+        </head>\r\n\
+            <header>\r\n\
+                <p1>デジタル研究部</p1>\r\n\
+                <ol class="breadlist">\r\n\
+                    <li><a href="HOME-home.html">ホーム</a></li>\r\n\
+                    <li><a href="BLOG-home.html">ブログ</a></li>\r\n\
+                    <li><a href="blog.html">タイトルとＵＲＬを入れる</a></li>\r\n\
+                    </ol>\r\n\
+                <nav>\r\n\
+                    <ul>\r\n\
+                        <li><a class="current" href="HOME-home.html">ホーム</a></li>\r\n\
+                        <li><a href="BLOG-home.html">ブログ</a></li>\r\n\
+                        <li><a href="MEMBERS1.html">部員紹介</a></li>\r\n\
+                        <li><a href="GAMES-home.html">ゲーム</a></li>\r\n\
+                        <li><a href="unity">unity紹介</a></li>\r\n\
+                    </ul>\r\n\
+                </nav>\r\n\
+            </header>\r\n\
+         <body>'+replacedText+'</body>\r\n\
+        <footer id="footer">\r\n\
+                <small><span>デジタル研究部 2024</span></small>\r\n\
+    </footer>\r\n\r\n</html>';
   }
 
   function copyToClipboard() {
