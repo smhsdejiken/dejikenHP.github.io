@@ -20,7 +20,7 @@
       }
       .small {
         position: absolute;
-        top:30px;
+        top:40px;
         left: 0;
         bottom: 80px;
         color: #000000;
@@ -55,9 +55,20 @@
   color: white;
   padding: 5px 10px;
   cursor: pointer;
-  text-align: center;
   }
- 
+  .accordion ul {
+  margin: 0;
+  background: #e7e7e7;
+  max-height: 0;
+  overflow: hidden;
+  transition: all .5s;
+  }
+  .accordion.open ul {
+  max-height: 300px;
+  }
+  .accordion li {
+  padding: 5px 10px;
+  }
   
 
 .marquee title {
@@ -106,10 +117,3 @@
   0% { transform:translateX(0); }
   100% { transform:translateX(-100%); }
 }
-
-.p {
-  background: #01558d;
-  color: white;
-  padding: 5px 10px;
-  text-align: center;
-  }
