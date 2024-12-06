@@ -1,79 +1,53 @@
-// マウスカーセル
-const carousel = document.querySelector('.carousel');
-const carouselInner = document.querySelector('.carousel-inner');
-const prevBtn = document.querySelector('.prev');
-const nextBtn = document.querySelector('.next');
-const containers = document.querySelectorAll('.carousel-inner .container'); // 修正
+async function loadAndDisplayJSON() {
+  try {
+    const response = await fetch('data.json');
+    const data = await response.json(); //Jsonファイルを読み込む
+    const table = document.getElementById('dataTable');
 
-let currentIndex = 0;
-const slideWidth = carousel.offsetWidth;
+    // テーブル行の作成
+    data.forEach(item => { //forEachを使い、Jsonのデータ一つ一つにつき、以下の処理を行う
+      const row = document.createElement('tr'); // <tr>すなわち「行」を追加
+      const cell = document.createElement('td'); // その行に<td>すなわち「セル」を追加
+      const linkA = document.createElement('a');
+      const linkB = document.createElement('a');
+      const upperDiv = document.createElement('div');
+      const lowerDiv = document.createElement('div');
+      const text = document.createElement('h3');
+      const img = document.createElement('img');
 
-const updateCarousel = () => {
-    const slideWidth = carousel.offsetWidth; // カルーセルの幅を取得
-  carouselInner.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-};
+      upperDiv.classList.add('upper-div'); // 上部div用のCSSクラスを作って、CSSからこの要素にデザインを指定できるようにする
+      lowerDiv.classList.add('lower-div'); // 下部のDiv用のCSSクラス
+      text.classList.add('h3'); // h3のCSSクラス
 
-prevBtn.addEventListener('click', () => {
-  currentIndex = (currentIndex - 1 + containers.length) % containers.length;
-  updateCarousel();
-});
+      // 上部のDivを作成（画像を表示）
+      linkA.href = item.url;
+      linkA.target = '_blank';  // 新しいタブで開く
+      linkA.style.textDecoration = 'none'; // リンクの下線を削除
+      
+      img.src = item.photo;
+      img.alt = item.name; // 代替テキスト追加
+      img.classList.add('cell-image'); // 画像用のCSSクラス
+      upperDiv.appendChild(linkA);
+      linkA.appendChild(img);
 
-nextBtn.addEventListener('click', () => {
-  currentIndex = (currentIndex + 1) % containers.length;
-  updateCarousel();
-});
+      // 下部のDivを作成（文字を表示）
+      text.textContent = item.name;
+      linkB.href = item.url;
+      linkB.target = '_blank'; // 新しいタブで開く
+      linkB.style.textDecoration = 'none'; // リンクの下線を削除
+      linkB.innerHTML = `${item.name}<br>${item.about}`;
+      lowerDiv.appendChild(linkB); 
+      linkB.appendChild(text);
 
-window.addEventListener('resize', updateCarousel); // ウィンドウサイズ変更時にカルーセルを更新
+      // セルにDivを追加し、行に追加
+      cell.appendChild(upperDiv);
+      cell.appendChild(lowerDiv);
+      row.appendChild(cell);
+      table.appendChild(row);
+    });
+  } catch (error) {
+    console.error('JSONファイルの読み込み中にエラーが発生しました:', error);
+  }
+}
 
-// 自動スライドの設定
-const autoSlide = () => {
-    currentIndex = (currentIndex + 1) % containers.length;
-    updateCarousel();
-};
-  
-// 3秒ごとに自動でスライド
-let slideInterval = setInterval(autoSlide, 2800);
-  
-// マウスオーバーで自動スライドを停止
-carousel.addEventListener('mouseover', () => {
-    clearInterval(slideInterval);
-});
-
-// マウスアウトで自動スライドを再開
-// 再開後は、自動スライドのことをユーザーが知るため、あえて目立たせないよう、切り替え時間を長めに取る。
-carousel.addEventListener('mouseout', () => {
-    slideInterval = setInterval(autoSlide, 3000);
-});
-  
-updateCarousel();
-
-
-// CSS セレクタで要素を取得 (より効率的な方法)
-const allSubDivs = document.querySelectorAll('.contenaA .subA, .contenaA .subB, .contenaA .subC, .contenaB .subA, .contenaB .subB, .contenaB .subC, .contenaC .subA, .contenaC .subB, .contenaC .subC');
-
-// 各要素に対してイベントリスナーを追加
-allSubDivs.forEach(div => {
-  div.addEventListener('mouseover', () => {
-    div.style.backgroundColor = 'black';
-  });
-  div.addEventListener('mouseout', () => {
-    div.style.backgroundColor = 'white';
-  });
-});
-
-
-// subがクリックされたとき、リンクへ飛ぶ
-
-// 各要素に対してクリックイベントリスナーを追加
-document.querySelector('.subA').addEventListener('click', () => {
-  window.location.href = 'https://ja.wikipedia.org/wiki/Serial_experiments_lain'; // 遷移先のURLを指定
-});
-
-document.querySelector('.contenaB .subB').addEventListener('click', () => {
-  window.location.href = 'https://ja.wikipedia.org/wiki/Serial_experiments_lain'; // 遷移先のURLを指定
-});
-
-document.querySelector('.contenaC .subC').addEventListener('click', () => {
-  window.location.href = 'https://ja.wikipedia.org/wiki/Serial_experiments_lain'; // 遷移先のURLを指定
-});
-
+loadAndDisplayJSON();
