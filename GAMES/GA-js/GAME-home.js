@@ -1,6 +1,6 @@
 async function loadAndDisplayJSON() {
   try {
-    const response = await fetch('data.json');
+    const response = await fetch('GAMES/GA-js/data.json');
     const data = await response.json(); //Jsonファイルを読み込む
     const table = document.getElementById('dataTable');
 
