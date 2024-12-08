@@ -19,14 +19,13 @@ function flexTextarea(el) {
       .replace(/E;/g, '</u>')
       .replace(/f;/g, '<i>')
       .replace(/F;/g, '</i>')
-      .replace(/#r/g, '<p style="color:red;">')
-      .replace(/#g/g, '<p style="color:green;">')
-      .replace(/#b/g, '<p style="color:blue;">')
-      .replace(/##/g, '</p>')
-      .replace(/@y/g, '<p2 style="background:yellow;">')
-      .replace(/@r/g, '<p2 style="background:red;">')
-      .replace(/@b/g, '<p2 style="background:blue;"')
-      .replace(/@@/g, '</p2>')
+      .replace(/%/g, '</span>')
+      .replace(/#r/g, '<span style="color:red;">')
+      .replace(/#g/g, '<span style="color:green;">')
+      .replace(/#b/g, '<span style="color:blue;">')
+      .replace(/@y/g, '<span style="background:yellow;">')
+      .replace(/@r/g, '<span style="background:red;">')
+      .replace(/@b/g, '<span style="background:blue;>"')
       .replace(/\n/g, '<br>'+ '\r\n'); // 改行を<br>タグに置換
 
     document.getElementById('result').textContent =
@@ -34,8 +33,9 @@ function flexTextarea(el) {
      <html>\r\n\
          <head>\r\n\
             <title>デジタル研究部ブログ（仮）</title>\r\n\
+            <meta name="viewport" content="width=device-width,initial-scale=1">\r\n\
             <meta charset="UTF-8">\r\n\
-            <link rel="stylesheet" href="../BL-css/BLOG-contents.css" type="text/css">\r\n\
+            <link rel="stylesheet" href="BLOG/BL-css/BLOG-contents.css" type="text/css">\r\n\
         </head>\r\n\
             <header>\r\n\
                 <p1>デジタル研究部</p1>\r\n\
