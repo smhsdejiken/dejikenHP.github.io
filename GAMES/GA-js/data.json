@@ -1,100 +1,19 @@
 [
     { 
-        "name": "Alice", 
+        "name": "ピンポンゲーム！", 
         "age": 25, 
-        "city": "Tokyo", 
-        "photo": "https://cdn.vox-cdn.com/thumbor/Y9j9i9g_DfUW2__nFkas2gcPspA=/0x0:1920x1200/1820x1213/filters:focal(397x271:703x577)/cdn.vox-cdn.com/uploads/chorus_image/image/69748007/Copy_of_op_39main_copy.0.jpg", 
-        "url": "https://example.com/profile/alice",
-        "about":"エヴァンゲリオン：Air／まごころを君に。　旧劇場版とよばれ、TVアニメ版第２６話、２７話で描かれなかった人類補完計画の実行までを詳細に描いている"
+        "city": "", 
+        "photo": "https://lh3.google.com/u/0/d/1wv6iSJR91-Tkng8kxv0hBoWMfjkyRfSZ", 
+        "url": "https://scratch.mit.edu/projects/966423790/",
+        "about":"これは、Scrachでつくったゲームです★　難易度：高い　"
     },
-    { 
-        "name": "Bob", 
+    {
+        "name": "★ぬりえアプリ★（アニメ制作用）", 
         "age": 30, 
         "city": "Osaka", 
-        "photo": "https://www.wallpaperflare.com/static/921/663/725/anime-neon-genesis-evangelion-eva-unit-02-evangelion-wallpaper.jpg", 
-        "url": "https://example.com/profile/bob",
-        "about":"旧劇場版とよばれ、TVアニメ版第２６話、２７話で描かれなかった人類補完計画の実行までを詳細に描いている"
-    },
-    { 
-        "name": "Charlie", 
-        "age": 35, 
-        "city": "Kyoto", 
-        "photo": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d60eb987-3e9b-4da1-8c8b-2251b8513fa4/dfvmqdd-d4fcc5ea-fee4-4ba8-a28a-9a3968f71fd3.png/v1/fill/w_1280,h_1920,q_80,strp/evangelion_foot_worship__6c__misato_x_shinji_by_arphaxadcy_dfvmqdd-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Q2MGViOTg3LTNlOWItNGRhMS04YzhiLTIyNTFiODUxM2ZhNFwvZGZ2bXFkZC1kNGZjYzVlYS1mZWU0LTRiYTgtYTI4YS05YTM5NjhmNzFmZDMucG5nIiwiaGVpZ2h0IjoiPD0xOTIwIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uud2F0ZXJtYXJrIl0sIndtayI6eyJwYXRoIjoiXC93bVwvZDYwZWI5ODctM2U5Yi00ZGExLThjOGItMjI1MWI4NTEzZmE0XC9hcnBoYXhhZGN5LTQucG5nIiwib3BhY2l0eSI6OTUsInByb3BvcnRpb25zIjowLjQ1LCJncmF2aXR5IjoiY2VudGVyIn19.MvdRIvgq70R_RVOPtCZlt2ZEA7bl7-P_8f9BYZO01mw", 
-        "url": "https://example.com/profile/charlie",
-        "about":"エヴァンゲリオン：Air／まごころを君に。　旧劇場版とよばれ、TVアニメ版第２６話、２７話で描かれなかった人類補完計画の実行までを詳細に描いている。(シンジ)「アスカ、ねえ、助けてよ、アスカ、、、うあぁぁぁぁぁぁぁぁぁぁぁぁぁぁぁぁぁぁぁぁぁぁぁぁぁぁぁ。」(アスカ)「気持ち悪い、、」"
-    },
-    { 
-        "name": "Alice", 
-        "age": 25, 
-        "city": "Tokyo", 
-        "photo": "https://cdn.vox-cdn.com/thumbor/Y9j9i9g_DfUW2__nFkas2gcPspA=/0x0:1920x1200/1820x1213/filters:focal(397x271:703x577)/cdn.vox-cdn.com/uploads/chorus_image/image/69748007/Copy_of_op_39main_copy.0.jpg", 
-        "url": "https://example.com/profile/alice",
-        "about":"エヴァンゲリオン：Air／まごころを君に。　旧劇場版とよばれ、TVアニメ版第２６話、２７話で描かれなかった人類補完計画の実行までを詳細に描いている"
-    },
-    { 
-        "name": "Alice", 
-        "age": 25, 
-        "city": "Tokyo", 
-        "photo": "https://cdn.vox-cdn.com/thumbor/Y9j9i9g_DfUW2__nFkas2gcPspA=/0x0:1920x1200/1820x1213/filters:focal(397x271:703x577)/cdn.vox-cdn.com/uploads/chorus_image/image/69748007/Copy_of_op_39main_copy.0.jpg", 
-        "url": "https://example.com/profile/alice",
-        "about":"エヴァンゲリオン：Air／まごころを君に。　旧劇場版とよばれ、TVアニメ版第２６話、２７話で描かれなかった人類補完計画の実行までを詳細に描いている"
-    },
-    { 
-        "name": "Alice", 
-        "age": 25, 
-        "city": "Tokyo", 
-        "photo": "https://cdn.vox-cdn.com/thumbor/Y9j9i9g_DfUW2__nFkas2gcPspA=/0x0:1920x1200/1820x1213/filters:focal(397x271:703x577)/cdn.vox-cdn.com/uploads/chorus_image/image/69748007/Copy_of_op_39main_copy.0.jpg", 
-        "url": "https://example.com/profile/alice",
-        "about":"エヴァンゲリオン：Air／まごころを君に。　旧劇場版とよばれ、TVアニメ版第２６話、２７話で描かれなかった人類補完計画の実行までを詳細に描いている"
-    },
-    { 
-        "name": "Alice", 
-        "age": 25, 
-        "city": "Tokyo", 
-        "photo": "https://cdn.vox-cdn.com/thumbor/Y9j9i9g_DfUW2__nFkas2gcPspA=/0x0:1920x1200/1820x1213/filters:focal(397x271:703x577)/cdn.vox-cdn.com/uploads/chorus_image/image/69748007/Copy_of_op_39main_copy.0.jpg", 
-        "url": "https://example.com/profile/alice",
-        "about":"エヴァンゲリオン：Air／まごころを君に。　旧劇場版とよばれ、TVアニメ版第２６話、２７話で描かれなかった人類補完計画の実行までを詳細に描いている"
-    },
-    { 
-        "name": "Alice", 
-        "age": 25, 
-        "city": "Tokyo", 
-        "photo": "https://cdn.vox-cdn.com/thumbor/Y9j9i9g_DfUW2__nFkas2gcPspA=/0x0:1920x1200/1820x1213/filters:focal(397x271:703x577)/cdn.vox-cdn.com/uploads/chorus_image/image/69748007/Copy_of_op_39main_copy.0.jpg", 
-        "url": "https://example.com/profile/alice",
-        "about":"エヴァンゲリオン：Air／まごころを君に。　旧劇場版とよばれ、TVアニメ版第２６話、２７話で描かれなかった人類補完計画の実行までを詳細に描いている"
-    },
-    { 
-        "name": "Alice", 
-        "age": 25, 
-        "city": "Tokyo", 
-        "photo": "https://cdn.vox-cdn.com/thumbor/Y9j9i9g_DfUW2__nFkas2gcPspA=/0x0:1920x1200/1820x1213/filters:focal(397x271:703x577)/cdn.vox-cdn.com/uploads/chorus_image/image/69748007/Copy_of_op_39main_copy.0.jpg", 
-        "url": "https://example.com/profile/alice",
-        "about":"エヴァンゲリオン：Air／まごころを君に。　旧劇場版とよばれ、TVアニメ版第２６話、２７話で描かれなかった人類補完計画の実行までを詳細に描いている"
-    },
-    { 
-        "name": "Alice", 
-        "age": 25, 
-        "city": "Tokyo", 
-        "photo": "https://cdn.vox-cdn.com/thumbor/Y9j9i9g_DfUW2__nFkas2gcPspA=/0x0:1920x1200/1820x1213/filters:focal(397x271:703x577)/cdn.vox-cdn.com/uploads/chorus_image/image/69748007/Copy_of_op_39main_copy.0.jpg", 
-        "url": "https://example.com/profile/alice",
-        "about":"エヴァンゲリオン：Air／まごころを君に。　旧劇場版とよばれ、TVアニメ版第２６話、２７話で描かれなかった人類補完計画の実行までを詳細に描いている"
-    },
-    { 
-        "name": "Alice", 
-        "age": 25, 
-        "city": "Tokyo", 
-        "photo": "https://cdn.vox-cdn.com/thumbor/Y9j9i9g_DfUW2__nFkas2gcPspA=/0x0:1920x1200/1820x1213/filters:focal(397x271:703x577)/cdn.vox-cdn.com/uploads/chorus_image/image/69748007/Copy_of_op_39main_copy.0.jpg", 
-        "url": "https://example.com/profile/alice",
-        "about":"エヴァンゲリオン：Air／まごころを君に。　旧劇場版とよばれ、TVアニメ版第２６話、２７話で描かれなかった人類補完計画の実行までを詳細に描いている"
-    },
-    { 
-        "name": "Alice", 
-        "age": 25, 
-        "city": "Tokyo", 
-        "photo": "https://cdn.vox-cdn.com/thumbor/Y9j9i9g_DfUW2__nFkas2gcPspA=/0x0:1920x1200/1820x1213/filters:focal(397x271:703x577)/cdn.vox-cdn.com/uploads/chorus_image/image/69748007/Copy_of_op_39main_copy.0.jpg", 
-        "url": "https://example.com/profile/alice",
-        "about":"エヴァンゲリオン：Air／まごころを君に。　旧劇場版とよばれ、TVアニメ版第２６話、２７話で描かれなかった人類補完計画の実行までを詳細に描いている"
+        "photo": "https://lh3.google.com/u/0/d/1jKnq0azB6z2rW8aJDv2WeBNYEhREZXu-", 
+        "url": "https://n3s.nadesi.com/id.php?2794",
+        "about":"絵をタップすると、色が塗れます。黒い線で囲まれた部分をベタ塗りします！"
     }
-
 ]
   
