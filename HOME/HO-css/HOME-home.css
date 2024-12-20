@@ -1,38 +1,38 @@
 
  .h1{
-    font-size: 25px;
+    font-size: 25vw;
     }    
     .relative {
       position: relative;
-      width: 1183px;
+      width: 1183vw;
       }
       .absolute {
         position: absolute;
-        top:65px;
+        top:65vw;
         left: 0;
-        bottom: 80px;
+        bottom: 80vw;
         color: #000000;
-        width: 600px;
-        padding: 10px 0;
-        font-size:50px;
+        width: 600vw;
+        padding: 10vw 0;
+        font-size:50vw;
         font-weight:bold;
-        margin-left: 75px;
+        margin-left: 75vw;
       }
       .small {
         position: absolute;
-        top:40px;
+        top:40vw;
         left: 0;
-        bottom: 80px;
+        bottom: 80vw;
         color: #000000;
-        width: 600px;
-        padding: 10px 0;
-        font-size:30px;
+        width: 600vw;
+        padding: 10vw 0;
+        font-size:30vw;
         font-weight:bold;
-        margin-left: 50px;
+        margin-left: 50vw;
       }
 
       .news {
-        border: double 4px black;
+        border: double 4vw black;
         text-align: center;
         }
 
@@ -44,8 +44,8 @@
   text-align: center;
 }
 .box{
-  border: solid 2px black;
-  height: 100px;
+  border: solid 2vw black;
+  height: 100vw;
   overflow: hidden;
   text-align: center;
 }
@@ -53,7 +53,7 @@
 .menu {
   background: #01558d;
   color: white;
-  padding: 5px 10px;
+  padding: 5vw 10vw;
   cursor: pointer;
   }
   .accordion ul {
@@ -64,15 +64,15 @@
   transition: all .5s;
   }
   .accordion.open ul {
-  max-height: 300px;
+  max-height: 300vw;
   }
   .accordion li {
-  padding: 5px 10px;
+  padding: 5vw 10vw;
   }
   
 
 .marquee title {
-  width: 100%;
+  width: 100vw;
   white-space: nowrap;
   overflow: hidden;
   box-sizing: border-box;
@@ -80,8 +80,8 @@
 }
 
 @keyframes marquee {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
+  0vw { transform: translateX(100vw); }
+  100vw { transform: translateX(-100vw); }
 }
  .text{
   text-align: center;
@@ -92,29 +92,29 @@
   background: #0e546b;
   color: #fff;
   display: flex;
-  height: 40px;
-  line-height: 40px;
+  height: 40vw;
+  line-height: 40vw;
   overflow:hidden;
-  width: 100%;
+  width: 100vw;
   white-space:nowrap;
   z-index: 1;
   @keyframes flowing {
-    0% { transform:translateX(0); }
+    0vw { transform:translateX(0); }
     }
 }
 .bbs ul {
   animation: flowing 20s linear infinite;
-  font-size: 20px;
-  transform:translateX(100%);
+  font-size: 20vw;
+  transform:translateX(100vw);
   margin: 0;
   padding: 0;
 }
 .bbs ul li{
   display: inline-block;
-  padding-right: 10px;
+  padding-right: 10vw;
 }
 @keyframes flowing {
-  0% { transform:translateX(0); }
-  100% { transform:translateX(-100%); }
+  0vw { transform:translateX(0); }
+  100vw { transform:translateX(-100vw); }
 }
 .relative img { width: 100vw; }
