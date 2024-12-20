@@ -115,5 +115,5 @@
 }
 @keyframes flowing {
   0px { transform:translateX(0); }
-  100px { transform:translateX(-100px); }
+  100% { transform:translateX(-100%); }
 }
