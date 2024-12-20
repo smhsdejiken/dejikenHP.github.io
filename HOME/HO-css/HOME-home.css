@@ -1,10 +1,10 @@
 
  .h1{
-    font-size: 25vw;
+    font-size: 25px;
     }    
     .relative {
       position: relative;
-      img { width: 100vw; }
+      img { width: 100px; }
       }
       .absolute {
         position: absolute;
@@ -12,9 +12,9 @@
         left: 0;
         bottom: 80px;
         color: #000000;
-        width: 600vw;
+        width: 600px;
         padding: 10px 0;
-        font-size:50vw;
+        font-size:50px;
         font-weight:bold;
         margin-left: 75px;
       }
@@ -26,7 +26,7 @@
         color: #000000;
         width: 600px;
         padding: 10px 0;
-        font-size:30vw;
+        font-size:30px;
         font-weight:bold;
         margin-left: 50px;
       }
@@ -72,7 +72,7 @@
   
 
 .marquee title {
-  width: 100vw;
+  width: 100px;
   white-space: nowrap;
   overflow: hidden;
   box-sizing: border-box;
