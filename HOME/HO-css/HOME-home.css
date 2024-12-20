@@ -95,7 +95,7 @@
   height: 40px;
   line-height: 40px;
   overflow:hidden;
-  width: 100px;
+  width: 100%;
   white-space:nowrap;
   z-index: 1;
   @keyframes flowing {
