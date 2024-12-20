@@ -4,7 +4,7 @@
     }    
     .relative {
       position: relative;
-      img { width: 100px; }
+      img { width: 100vw; }
       }
       .absolute {
         position: absolute;
