@@ -16,6 +16,14 @@
         "about":"絵の線で囲まれた部分をクリックすると、色が塗れます。 自分の持っているファイルもアップロード可能です！"
     },
     {
+        "name": "タダサバイバー", 
+        "age": 30, 
+        "city": "Osaka", 
+        "photo": "https://lh3.googleusercontent.com/d/1byIbOMGLvZuRoGqvzDqD9_a7_L4lvB5T", 
+        "url": "https://scratch.mit.edu/projects/1109756793/"
+        "about":"押し寄せる敵を倒し、装備を強くして生き残ろう！　　随時更新予定。"
+    },
+    {
         "name": "ハンティングアクションもどき", 
         "age": 30, 
         "city": "Osaka", 
