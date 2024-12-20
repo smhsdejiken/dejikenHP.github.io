@@ -14,6 +14,46 @@
         "photo": "https://lh3.googleusercontent.com/d/1tmrNmnFac0ynC4rZoO411ciENHZ22CDA", 
         "url": "https://n3s.nadesi.com/id.php?2794",
         "about":"絵の線で囲まれた部分をクリックすると、色が塗れます。 自分の持っているファイルもアップロード可能です！"
-    }
+    },
+    {
+        "name": "ハンティングアクションもどき", 
+        "age": 30, 
+        "city": "Osaka", 
+        "photo": "https://lh3.googleusercontent.com/d/1tmrNmnFac0ynC4rZoO411ciENHZ22CDA", 
+        "url": "http://scratch.mit.edu/projects/1111780260",
+        "about":"某ハンティングアクションを意識して作りましたが、まだ調整が必要なのでアップデートにご期待ください。ページに行けば色々書いてあるので読んで頂けるとありがたいです。其方にも書いてあるのですが、作品の方向性が変わるかもしれないのでご意見お願いします。"
+    },
+    {
+        "name": "イライラ棒", 
+        "age": 30, 
+        "city": "Osaka", 
+        "photo": "https://lh3.googleusercontent.com/d/1tmrNmnFac0ynC4rZoO411ciENHZ22CDA", 
+        "url": "https://scratch.mit.edu/projects/1106947577",
+        "about":"イライラ棒です。イライラします"
+    },
+    {
+        "name": "お祈り乱数ゲー", 
+        "age": 30, 
+        "city": "Osaka", 
+        "photo": "https://lh3.googleusercontent.com/d/1tmrNmnFac0ynC4rZoO411ciENHZ22CDA", 
+        "url": "https://scratch.mit.edu/projects/1080435993/",
+        "about":"アンテやってた人なら多分簡単です。アンテのようなゲームの練習みたいな感じになってます。"
+    },
+    {
+        "name": "ジャグラー", 
+        "age": 30, 
+        "city": "Osaka", 
+        "photo": "https://lh3.googleusercontent.com/d/1tmrNmnFac0ynC4rZoO411ciENHZ22CDA", 
+        "url": "https://scratch.mit.edu/projects/1030095256",
+        "about":"ジャグラー初心者でも安心！シンプルなゲーム性で誰でも気軽に楽しめる！"
+    },
+    {
+        "name": "ウォーターメロンゲーム", 
+        "age": 30, 
+        "city": "Osaka", 
+        "photo": "https://lh3.googleusercontent.com/d/1tmrNmnFac0ynC4rZoO411ciENHZ22CDA", 
+        "url": "https://scratch.mit.edu/projects/1030440201",
+        "about":"同じ色の球をぶつけて、できるだけ大きい玉を作ろう！"
+    },
 ]
   
