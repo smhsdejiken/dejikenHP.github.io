@@ -4,35 +4,35 @@
     }    
     .relative {
       position: relative;
-      width: 1183vw;
+      img { width: 100vw; }
       }
       .absolute {
         position: absolute;
-        top:65vw;
+        top:65px;
         left: 0;
-        bottom: 80vw;
+        bottom: 80px;
         color: #000000;
         width: 600vw;
-        padding: 10vw 0;
+        padding: 10px 0;
         font-size:50vw;
         font-weight:bold;
-        margin-left: 75vw;
+        margin-left: 75px;
       }
       .small {
         position: absolute;
-        top:40vw;
+        top:40px;
         left: 0;
-        bottom: 80vw;
+        bottom: 80px;
         color: #000000;
-        width: 600vw;
-        padding: 10vw 0;
+        width: 600px;
+        padding: 10px 0;
         font-size:30vw;
         font-weight:bold;
-        margin-left: 50vw;
+        margin-left: 50px;
       }
 
       .news {
-        border: double 4vw black;
+        border: double 4px black;
         text-align: center;
         }
 
@@ -44,8 +44,8 @@
   text-align: center;
 }
 .box{
-  border: solid 2vw black;
-  height: 100vw;
+  border: solid 2px black;
+  height: 100px;
   overflow: hidden;
   text-align: center;
 }
@@ -53,7 +53,7 @@
 .menu {
   background: #01558d;
   color: white;
-  padding: 5vw 10vw;
+  padding: 5px 10px;
   cursor: pointer;
   }
   .accordion ul {
@@ -64,10 +64,10 @@
   transition: all .5s;
   }
   .accordion.open ul {
-  max-height: 300vw;
+  max-height: 300px;
   }
   .accordion li {
-  padding: 5vw 10vw;
+  padding: 5px 10px;
   }
   
 
@@ -80,8 +80,8 @@
 }
 
 @keyframes marquee {
-  0vw { transform: translateX(100vw); }
-  100vw { transform: translateX(-100vw); }
+  0px { transform: translateX(100px); }
+  100px { transform: translateX(-100px); }
 }
  .text{
   text-align: center;
@@ -92,29 +92,28 @@
   background: #0e546b;
   color: #fff;
   display: flex;
-  height: 40vw;
-  line-height: 40vw;
+  height: 40px;
+  line-height: 40px;
   overflow:hidden;
-  width: 100vw;
+  width: 100px;
   white-space:nowrap;
   z-index: 1;
   @keyframes flowing {
-    0vw { transform:translateX(0); }
+    0px { transform:translateX(0); }
     }
 }
 .bbs ul {
   animation: flowing 20s linear infinite;
-  font-size: 20vw;
-  transform:translateX(100vw);
+  font-size: 20px;
+  transform:translateX(100px);
   margin: 0;
   padding: 0;
 }
 .bbs ul li{
   display: inline-block;
-  padding-right: 10vw;
+  padding-right: 10px;
 }
 @keyframes flowing {
-  0vw { transform:translateX(0); }
-  100vw { transform:translateX(-100vw); }
+  0px { transform:translateX(0); }
+  100px { transform:translateX(-100px); }
 }
-.relative img { width: 100vw; }
