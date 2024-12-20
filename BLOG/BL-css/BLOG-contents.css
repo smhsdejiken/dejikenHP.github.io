@@ -113,3 +113,6 @@ iframe{
     margin-left:auto;
     margin-right:auto;
 }
+pre{
+    background-color:#dcdcdc;
+}
