@@ -72,7 +72,7 @@
   
 
 .marquee title {
-  width: 100px;
+  width: 100%;
   white-space: nowrap;
   overflow: hidden;
   box-sizing: border-box;
