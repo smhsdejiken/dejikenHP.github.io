@@ -48,6 +48,14 @@
         "about":"アンテやってた人なら多分簡単です。アンテのようなゲームの練習みたいな感じになってます。"
     },
     {
+        "name": "りんご取り🍎🍏🍎", 
+        "age": 30, 
+        "city": "Osaka", 
+        "photo": "https://lh3.googleusercontent.com/d/1azNuSStQ22WjYc9yVzOyM8vtipp5g-4j", 
+        "url": "hhttps://scratch.mit.edu/projects/1110287571/",
+        "about":"虫を避けてたくさんりんご取れ！"
+    },
+    {
         "name": "ジャグラー", 
         "age": 30, 
         "city": "Osaka", 
@@ -59,7 +67,7 @@
         "name": "ウォーターメロンゲーム", 
         "age": 30, 
         "city": "Osaka", 
-        "photo": "https://lh3.googleusercontent.com/d/1tmrNmnFac0ynC4rZoO411ciENHZ22CDA", 
+        "photo": "https://lh3.googleusercontent.com/d/1_2tzN-xHsxFzQlyy0o4tdy3H7yJeW6kX", 
         "url": "https://scratch.mit.edu/projects/1030440201",
         "about":"同じ色の球をぶつけて、できるだけ大きい玉を作ろう！"
     }
