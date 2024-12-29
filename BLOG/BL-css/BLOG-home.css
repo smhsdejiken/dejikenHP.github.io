@@ -73,3 +73,6 @@ footer{
     padding-top: clamp(16px,1.042vw,20px) ;
     list-style:none;
 }
+ul{
+    list-style: none;
+}
