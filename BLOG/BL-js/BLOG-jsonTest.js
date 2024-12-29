@@ -1,4 +1,4 @@
-fetch('BLOG/BL-js/blogs.json')
+
   .then(response => response.json())
   .then(data => {
     const n = 3; // 表示する記事の数
