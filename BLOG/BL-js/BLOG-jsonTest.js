@@ -1,15 +1,16 @@
 
 fetch('https://smhsdejiken.github.io/dejikenHP.github.io/BLOG/BL-js/blogs.json')
-
   .then(response => response.json())
   .then(data => {
-    const n = 3; // 表示する記事の数
-    const startIndex = Math.max(0, data.length - n);
-    const recentBlogs = data.slice(startIndex);
+    // データを逆順に並べ替える
+    const reversedBlogs = data.reverse();
 
-    const blogList = document.getElementById('recent-blog-list'); // HTMLのul要素のid
+    const blogList = document.getElementById('recent-blog-list');
 
-    recentBlogs.forEach(blog => {
+    // リストをクリア（既存のリストがある場合に備えて）
+    blogList.innerHTML = '';
+
+    reversedBlogs.forEach(blog => {
       const li = document.createElement('li');
       const a = document.createElement('a');
       a.href = blog.url;
