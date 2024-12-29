@@ -22,19 +22,5 @@ function gate(){
    document.getElementById("d2").innerHTML = new Date().toLocaleString();
  }, 1000);
 
- const link1 = document.getElementById('link1');
- const link2 = document.getElementById('link2');
- const page1 = document.getElementById('page1');
- const page2 = document.getElementById('page2');
-
- link1.addEventListener('click', () => {
-   page1.classList.add('show');
-   page2.classList.remove('show');
- });
-
- link2.addEventListener('click', () => {
-   page1.classList.remove('show');
-   page2.classList.add('show');
- });
 
  
