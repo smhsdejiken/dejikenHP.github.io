@@ -3,10 +3,12 @@ const searchResults = document.getElementById('searchResults');
 
 searchInput.addEventListener('input', () => {
   const keyword = searchInput.value.toLowerCase();
-  const articles = [
-    { title: '#1 便利なWebアプリを、 ChatGPTと Googleサイト（無料）で作ろう!!', url: '../BL-html/BLOG1.html' },
-    { title: '#2 今日からあなたもデジ研部員！！', url: '../BL-html/BLOG2.html' },
-  ];
+const fs = require('fs');
+
+const blogsJson = fs.readFileSync('blogs.json', 'utf-8'); // ファイルから読み込み
+
+const article = JSON.parse(blogsJson); // JSON 形式の文字列をオブジェクトに変換
+
 
   const results = articles.filter(article => article.title.toLowerCase().includes(keyword));
 
