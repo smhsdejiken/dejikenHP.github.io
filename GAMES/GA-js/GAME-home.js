@@ -1,5 +1,5 @@
 // JSONファイルを読み込み、カルーセルを動的に生成
-fetch('data.json')
+fetch('GAMES/GA-js/data.json')
     .then(response => response.json())
     .then(data => createCarousel(data))
     .catch(error => console.error('Error loading JSON:', error));
