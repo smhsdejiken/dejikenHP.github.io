@@ -46,6 +46,7 @@ window.addEventListener('scroll', function(){
     // 下記条件が成り立つときだけboxにis-activeクラスを付与する
     if(scroll + windowHeight > distanceToBox) {
       box.classList.add('is-active');
+    }
   });
 });
 
