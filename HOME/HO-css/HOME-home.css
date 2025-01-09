@@ -58,10 +58,7 @@
   }
   .accordion ul {
   margin: 0;
-  background: #e7e7e7;
-  max-height: 0;
-  overflow: hidden;
-  transition: all .5s;
+  background: #bbbbbb;
   }
   .accordion.open ul {
   max-height: 300px;
