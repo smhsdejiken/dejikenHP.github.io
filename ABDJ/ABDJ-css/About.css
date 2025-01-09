@@ -46,7 +46,6 @@
     left: -100%;
     width: 100%;
     height: 100vh;
-    background: white;
     transition: all .5s;
     }
     .menu.open {
@@ -115,6 +114,7 @@
   }
   .box {
     aspect-ratio: 16 / 9;
+    width: 45vw;
     background-color: #dedede;
     opacity: 0;
     visibility: hidden;
