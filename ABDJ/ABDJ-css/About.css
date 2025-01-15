@@ -1,3 +1,74 @@
+.hexagon3__wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	--wrapper-width: 30%;
+	width: var(--wrapper-width);/* 全体の大きさを変更できる */
+	margin-right: calc(-1 * var(--wrapper-width) / 3 * 0.25 * 2 - var(--wrapper-width) / 3 * 0.05 * 2);
+	margin-bottom: 20%;
+}
+@media(max-width: 768px) {
+	.hexagon3__wrapper {
+		--wrapper-width: 100%;
+		font-size: 3vw;
+	}
+}
+.hexagons {
+	width: calc(100% /3);
+}
+.honeycomb-area {
+	display: flex;
+	justify-content: center;
+}
+.hexagon-3_hexagon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	aspect-ratio: 200 / 173;/* 正六角形になる比率 */
+	background-color: #333;
+	clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+.inhex:hover{
+    background-color: aqua;
+}
+.hexagon-3_hexagon>span {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 90%;
+	height: 90%;
+	background-color: #fff;
+	clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+/* 2行目と3行目の六角形を上にずらして縁を重ねる */
+.hexagon-3_hexagon:nth-of-type(2),
+.hexagon-3_hexagon:nth-of-type(3) {
+	margin-top: -5%;
+}
+/* 中央の列を下にずらす */
+.honeycomb-area .hexagons-center {
+	transform: translateY(calc(100% / 6));
+}
+/* 2列目と3列目の六角形を左にずらして縁を重ねる */
+.honeycomb-area .hexagons-center,
+.honeycomb-area .hexagons-right {
+	margin-left: calc(-100% / 3 * 0.25 - 100% / 3 * 0.05);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .menubutton {
     position: fixed;
     top: 0;
@@ -72,13 +143,13 @@
         text-decoration:none;
         }
     a:link { /*アクセスしたことのないリンク*/
-        color:white;
+        color:rgb(0, 255, 85);
     }
     a:visited { /*アクセスしたことのあるリンク*/
-            color:white;
+            color:rgb(0, 255, 85);
     }
     a:hover {/*マウスが上に乗っている状態*/
-        color:black;
+        color:rgb(0, 255, 85);
     }
 
     
