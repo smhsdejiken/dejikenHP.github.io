@@ -29,7 +29,10 @@
 	clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 }
 .inhex:hover{
-    background-color: aqua;
+    background-color: #a783cf;
+}
+.inhex:hover{
+    background-color: #63319c;
 }
 .hexagon-3_hexagon>span {
 	display: flex;
@@ -143,13 +146,13 @@
         text-decoration:none;
         }
     a:link { /*アクセスしたことのないリンク*/
-        color:rgb(0, 255, 85);
+        color:#88d820;
     }
     a:visited { /*アクセスしたことのあるリンク*/
-            color:rgb(0, 255, 85);
+            color:#88d820;
     }
     a:hover {/*マウスが上に乗っている状態*/
-        color:rgb(0, 255, 85);
+        color:#88d820;
     }
 
     
