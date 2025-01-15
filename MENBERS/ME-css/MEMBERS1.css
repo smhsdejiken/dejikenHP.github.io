@@ -1,72 +1,201 @@
-body {
-    font-family: Arial, sans-serif;
-    text-decoration:none;
+.hexagon3__wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	--wrapper-width: 30%;
+	width: var(--wrapper-width);/* 全体の大きさを変更できる */
+	margin-right: calc(-1 * var(--wrapper-width) / 3 * 0.25 * 2 - var(--wrapper-width) / 3 * 0.05 * 2);
+	margin-bottom: 20%;
 }
-
-.member {
-    padding: 20px;
-    border-bottom: 1px solid #ccc; /* 各部員を区切る線 */
-    margin-bottom: 10px;
+@media(max-width: 768px) {
+	.hexagon3__wrapper {
+		--wrapper-width: 100%;
+		font-size: 3vw;
+	}
 }
-
-.member:last-child {
-    border-bottom: none; /* 最後の部員の下には線を表示しない */
+.hexagons {
+	width: calc(100% /3);
 }
-
-h2 {
-    margin: 0;
-    font-size: 1.5em;
+.honeycomb-area {
+	display: flex;
+	justify-content: center;
 }
-
-p {
-    margin: 5px 0 0;
-    font-size: 1em;
-    color: #666;
+.hexagon-3_hexagon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	aspect-ratio: 200 / 173;/* 正六角形になる比率 */
+	background-color: #333;
+	clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 }
-
-.menu{
-	width:160px;			/*幅の指定*/
-	margin:10px 10px 10px 25px;	/*位置調整（IE6のバグに注意）*/
-	display:inline;			/*IE6のマージン算出のバグ対策*/
-	float:left;			/*サブメニューのカラムを左寄せにする*/
-    position: absolute;
-    top: 30px;
-    right: 30px;
-    list-style:none;
-    font-weight:bold;
-    text-decoration:none;
-}
-.menuTytle{
-    font-size: 22px;
-    color:#88d820;
+.inhex:hover{
     background-color: #63319c;
 }
-.menu ul{
-	padding-bottom:10px;
-	background-image:url("images/bg_submenu_footer.gif");
-	background-repeat:no-repeat; background-position:bottom;
-	background-color:#cccccc;
-    list-style:none;
-    font-weight:bold;
-    text-decoration:none;
+.hexagon-3_hexagon>span {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 90%;
+	height: 90%;
+	background-color: #fff;
+	clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 }
-ul.menu li {
-	font-size:90%;			/*文字サイズを90%にする*/
-	list-style:none;		/*リストマーカー無しにする*/
-	display:inline;			/*リスト項目をインライン表示にする*/
-    font-weight:bold;
-    text-decoration:none;
-    margin:0px 10px 0px 4px;		/*サブメニュー項目のマージン*/
-	padding:2px 10px 2px 20px;
+/* 2行目と3行目の六角形を上にずらして縁を重ねる */
+.hexagon-3_hexagon:nth-of-type(2),
+.hexagon-3_hexagon:nth-of-type(3) {
+	margin-top: -5%;
 }
-ul.menu li a {
-	display:block;			/*リンクをブロック表示にする*/
-	margin:0px 10px 0px 4px;		/*サブメニュー項目のマージン*/
-	padding:2px 10px 2px 20px;	/*サブメニュー項目のパディング*/
-	background-color:#eeeeee;	/*サブメニュー項目の背景色*/
-	text-decoration:none;		/*リンクの下線を無くす*/
-    font-weight:bold;
+/* 中央の列を下にずらす */
+.honeycomb-area .hexagons-center {
+	transform: translateY(calc(100% / 6));
 }
-ul.menu li a:hover {
-	background-color:#ffffff;	/*リンクにマウスが乗ったら色を変える*/
+/* 2列目と3列目の六角形を左にずらして縁を重ねる */
+.honeycomb-area .hexagons-center,
+.honeycomb-area .hexagons-right {
+	margin-left: calc(-100% / 3 * 0.25 - 100% / 3 * 0.05);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.menubutton {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    background: black;
+    cursor: pointer;
+    z-index: 100;
+    }
+    .menubutton i {
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 30px;
+    height: 5px;
+    background: white;
+    transition: all .5s
+    }
+    .menubutton i:first-child {
+    top: 10px;
+    }
+    .menubutton i:nth-child(2) {
+    top: 50%;
+    }
+    .menubutton i:last-child {
+    top: 30px;
+    }
+    .menubutton.open i:first-child {
+    top: 50%;
+    transform: translate(-50%,-50%) rotate(45deg);
+    }
+    .menubutton.open i:nth-child(2) {
+    opacity: 0;
+    }
+    .menubutton.open i:last-child {
+    top: 50%;
+    transform: translate(-50%,-50%) rotate(-45deg);
+    }
+    /* メニュー */
+.menu {
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    transition: all .5s;
+    }
+    .menu.open {
+    left: 0;
+    }
+    .menu ul {
+    margin: 40px 0 0 0;
+    padding: 0;
+    list-style: none;
+    }
+    .menu li {
+    padding: 5px 0;
+    text-align: center;
+    background: black;
+    color: white;
+    transition: all .5s;
+    }
+    .menu li:hover {
+    background: white;
+    color: black;
+    }
+    a {
+        font-weight:bold;
+        text-decoration:none;
+        }
+    a:link { /*アクセスしたことのないリンク*/
+        color:#88d820;
+    }
+    a:visited { /*アクセスしたことのあるリンク*/
+            color:#88d820;
+    }
+    a:hover {/*マウスが上に乗っている状態*/
+        color:#88d820;
+    }
+
+    
+    /* 数字がカウントアップされるローディング画面 */
+#loading {
+	color: white;
+	width: 100%;
+	height: 100vh;
+	background:#323232;
+	text-align:center;
+	z-index: 999;
+	position: fixed;
+    top: 0; 
+    left: 0;
+}
+
+#loading_text {
+	color: white;
+	width: 100%;
+	top: 50%;
+	left: 50%;
+	z-index: 999;
+	position: absolute;
+	transform: translate(-50%, -50%);
+}
+
+.boxes{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+    row-gap: 80px;
+    margin-top: 100px;
+  }
+  .box {
+    aspect-ratio: 16 / 9;
+    width: 45vw;
+    background-color: #dedede;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 1s;
+    transform: translateY(150px);
+  }
+  .is-active {
+    /*要素を表示させる*/
+    opacity: 1;
+    visibility: visible;
+    /*元の位置に戻す*/
+    transform: translateY(0);
+  }
