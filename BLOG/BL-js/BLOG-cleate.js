@@ -40,7 +40,7 @@ function flexTextarea(el) {
             <header>\r\n\
                 <p1>デジタル研究部</p1>\r\n\
                 <ol class="breadlist">\r\n\
-                    <li><a href="../../HOME/HO-html/HOME-home.html">ホーム</a></li>\r\n\
+                    <li><a href="HOME-home.html">ホーム</a></li>\r\n\
                     <li><a href="BLOG-home.html">ブログ</a></li>\r\n\
                     <li><a href="blog.html">タイトルとＵＲＬを入れる</a></li>\r\n\
                     </ol>\r\n\
@@ -56,6 +56,7 @@ function flexTextarea(el) {
             </header>\r\n\
          <body>'+replacedText+'</body>\r\n\
         <footer id="footer">\r\n\
+            <script src="BLOG/BL-js/BLOG-home.js" defer></script>\r\n\
                 <small><span>デジタル研究部 2024</span></small>\r\n\
     </footer>\r\n\r\n</html>';
   }
