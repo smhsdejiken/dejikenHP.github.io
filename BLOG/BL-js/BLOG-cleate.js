@@ -46,10 +46,10 @@ function flexTextarea(el) {
                     </ol>\r\n\
                 <nav>\r\n\
                     <ul>\r\n\
-                        <li><a class="current" href="../../HOME/HO-html/HOME-home.html">ホーム</a></li>\r\n\
+                        <li><a class="current" href="HOME-home.html">ホーム</a></li>\r\n\
                         <li><a href="BLOG-home.html">ブログ</a></li>\r\n\
-                        <li><a href="../../MEMBERS/ME-html/MEMBERS1.html">部員紹介</a></li>\r\n\
-                        <li><a href="../../GAMES/GA-html/GAMES-home.html">ゲーム</a></li>\r\n\
+                        <li><a href="MEMBERS1.html">部員紹介</a></li>\r\n\
+                        <li><a href="GAMES-home.html">ゲーム</a></li>\r\n\
                         <li><a href="unity">unity紹介</a></li>\r\n\
                     </ul>\r\n\
                 </nav>\r\n\
