@@ -22,23 +22,24 @@ function gate(){
    document.getElementById("d2").innerHTML = new Date().toLocaleString();
  }, 1000);
 
-fetch('https://smhsdejiken.github.io/dejikenHP.github.io/BLOG/BL-js/blogs.json')
-  .then(response => response.json())
-  .then(data => {
-    // データを逆順に並べ替える
-    const reversedBlogs = data.reverse();
+ const link1 = document.getElementById('link1');
+ const link2 = document.getElementById('link2');
+ const page1 = document.getElementById('page1');
+ const page2 = document.getElementById('page2');
 
-    const blogList = document.getElementById('recent-blog-list');
+ link1.addEventListener('click', () => {
+   page1.classList.add('show');
+   page2.classList.remove('show');
+ });
 
-    // リストをクリア（既存のリストがある場合に備えて）
-    blogList.innerHTML = '';
+ link2.addEventListener('click', () => {
+   page1.classList.remove('show');
+   page2.classList.add('show');
+ });
 
-    reversedBlogs.forEach(blog => {
-      const li = document.createElement('li');
-      const a = document.createElement('a');
-      a.href = blog.url;
-      a.textContent = blog.title;
-      li.appendChild(a);
-      blogList.appendChild(li);
-    });
-  });
+ const textbox = document.getElementById('myTextbox');
+
+textbox.addEventListener('click', function() {
+  this.select();
+});
+
