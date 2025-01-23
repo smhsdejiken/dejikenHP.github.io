@@ -26,7 +26,5 @@ setInterval(function() {
  const textbox = document.getElementById('myTextbox');
 
 
-textbox.addEventListener('click', function() {
-  this.select();
-});
+
 
