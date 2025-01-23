@@ -21,7 +21,10 @@ setInterval(function() {
    document.getElementById("d2").innerHTML = new Date().toLocaleString();
  }, 1000);
 
-const textbox = document.getElementById('myTextbox');
+
+
+ const textbox = document.getElementById('myTextbox');
+
 
 textbox.addEventListener('click', function() {
   this.select();
