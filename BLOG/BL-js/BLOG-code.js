@@ -10,14 +10,9 @@ function flexTextarea(el) {
   function replaceText() {
     const inputText = document.getElementById('FlexTextarea').value;
     const replacedText = inputText
-      .replace(/</g, '&lt;') 
-      .replace(/>/g, '&gt;')
-      .replace(/\n/g, '\r\n')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;');
 
     document.getElementById('result').textContent =
-     '<pre>'+replacedText+'</pre>';
+     '<TEXTAREA class="tb" ROWS=3 COLS=70 readonly id="myTextbox">'+replacedText+'</TEXTAREA>';
   }
 
   function copyToClipboard() {
