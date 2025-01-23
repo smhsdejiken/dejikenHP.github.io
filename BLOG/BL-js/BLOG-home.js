@@ -17,18 +17,14 @@ function gate(){
     }
  }
  
- 
- setInterval(function() {
+setInterval(function() {
    document.getElementById("d2").innerHTML = new Date().toLocaleString();
  }, 1000);
 
- const link1 = document.getElementById('link1');
- const link2 = document.getElementById('link2');
- const page1 = document.getElementById('page1');
- const page2 = document.getElementById('page2');
 
 
  const textbox = document.getElementById('myTextbox');
+
 
 textbox.addEventListener('click', function() {
   this.select();
