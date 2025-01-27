@@ -56,29 +56,29 @@ h1{
     text-align: center;
 }
 
-span{
-    margin-left:auto;
-    margin-right:auto;
-}
 .title{
-    margin-left:auto;
-    margin-right:auto;
     font-size: clamp(24px,2.08vw,30px);
     word-break: break-word;
 }
 
 .subtitle{
-    margin-left:auto;
-    margin-right:auto;
     font-size: clamp(16px,1.39vw,20px);
     word-break: break-word;
+    padding: 10 10 10 10;
+    background-color: chartreuse;
 }
 
 .text{
-    margin-left:auto;
-    margin-right:auto;
+    line-height: 2;
     font-size: clamp(16px,1.042vw,20px);
     word-break: break-word;
+}
+.textContentsBox{
+    text-align: center;
+}
+.textContents{
+    display: inline-block;
+    text-align: left;
 }
 
 footer{
@@ -113,6 +113,7 @@ iframe{
     margin-left:auto;
     margin-right:auto;
 }
-pre{
-    background-color:#dcdcdc;
-}
+textarea {
+    resize: vertical;
+    background-color: rgb(207, 207, 207);
+  }
