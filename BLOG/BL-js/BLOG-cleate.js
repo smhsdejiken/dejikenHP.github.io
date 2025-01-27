@@ -54,7 +54,7 @@ function flexTextarea(el) {
                     </ul>\r\n\
                 </nav>\r\n\
             </header>\r\n\
-         <body>'+replacedText+'</body>\r\n\
+         <body>    <div class="textContentsBox"><div class="textContents">'+replacedText+'</div></div></body>\r\n\
         <footer id="footer">\r\n\
             <script src="BLOG/BL-js/BLOG-home.js" defer></script>\r\n\
                 <small><span>デジタル研究部 2024</span></small>\r\n\
