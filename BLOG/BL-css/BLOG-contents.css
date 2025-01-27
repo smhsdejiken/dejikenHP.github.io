@@ -77,7 +77,7 @@ h1{
 }
 
 .text{
-
+    line-height: 2;
     font-size: clamp(16px,1.042vw,20px);
     word-break: break-word;
 }
