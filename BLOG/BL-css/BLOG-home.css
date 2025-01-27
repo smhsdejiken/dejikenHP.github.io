@@ -78,3 +78,5 @@ ul{
     padding: clamp(16px,1.042vw,20px);
     font-size: clamp(16px,1.39vw,20px);
 }
+#recent-blog-list{
+    font-size:32px}
