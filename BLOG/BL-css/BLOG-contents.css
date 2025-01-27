@@ -64,12 +64,20 @@ h1{
 .subtitle{
     font-size: clamp(16px,1.39vw,20px);
     word-break: break-word;
-    padding: 10 10 10 10;
-    background-color: chartreuse;
+    padding:0.5rem 5rem 0.5rem 1rem ;
+    background-color: #63319c;
+    font-weight: bold;
+    color: #88d820;
+        line-height: 4;
+}
+.subtitle::before{
+    content: "＞＞";
+    color: #88d820;
+    font-weight: bold;
 }
 
 .text{
-    line-height: 2;
+
     font-size: clamp(16px,1.042vw,20px);
     word-break: break-word;
 }
