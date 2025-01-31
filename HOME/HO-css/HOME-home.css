@@ -8,21 +8,21 @@
       }
       .absolute {
         position: absolute;
-        top:calc(20px 5.5vw 65px);
+        top:65px;
         left: 0;
-        bottom: calc(23px 7.5vw 80px);
+        bottom: 80px;
         color: #000000;
         width: 600px;
         padding: 10px 0;
-        font-size:calc(17.5px 4.5vw 50px);
+        font-size:calc(16px 4.2vw 50px);
         font-weight:bold;
         margin-left: 75px;
       }
       .small {
         position: absolute;
-        top:calc(13px 3.3vw 40px);
+        top:40px;
         left: 0;
-        bottom: calc(26px 7.5vw 80px);
+        bottom: 80px;
         color: #000000;
         width: 600px;
         padding: 10px 0;
