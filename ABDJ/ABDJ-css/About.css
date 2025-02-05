@@ -197,11 +197,12 @@
   }
   .is-active {
     /*要素を表示させる*/
-    opacity: 1;
+    opacity: 0.5;
     visibility: visible;
     /*元の位置に戻す*/
     transform: translateY(0);
   }
+
 
   body {
     height: 100%;
