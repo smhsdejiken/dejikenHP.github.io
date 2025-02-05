@@ -203,12 +203,11 @@
     transform: translateY(0);
   }
 
-
   body {
     height: 100%;
   }
   
- body:after {/*擬似要素をつくる*/
+  body:after {/*擬似要素をつくる*/
     position: fixed;/*固定配置*/
     top: 0; left: 0;/*左上に固定*/
     width: 100%;
@@ -319,4 +318,38 @@
 }
 
 
-  
+
+.object3{
+  z-index: 1000;
+}
+
+.progress-circle {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  background-image: conic-gradient(rgb(136, 136, 136) 0% 0%, #d9d9d9 0% 100%);
+  border-radius: 50%;
+  margin: 0 auto;
+}
+.progress-circle-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 80%;
+  font-size: 16px;
+  font-weight: 700;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.dejirogo{
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 80px;
+}
