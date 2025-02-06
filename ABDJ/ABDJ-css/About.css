@@ -197,7 +197,7 @@
   }
   .is-active {
     /*要素を表示させる*/
-    opacity: 1;
+    opacity: 0.5;
     visibility: visible;
     /*元の位置に戻す*/
     transform: translateY(0);
@@ -214,9 +214,142 @@
     height: 100%;/*画面全体を覆う*/
     content: "";
     background: #f89174;/*保険用*/
-    background: -moz-linear-gradient(top, #a9fff4 0%,#cfbbff 100%);
-    background: -webkit-linear-gradient(top, #a9fff4 0%,#cfbbff 100%);
+    background: -moz-linear-gradient(top, #ffffff 0%,#999999 100%);
+    background: -webkit-linear-gradient(top, #ffffff 0%,#999999 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbcacb', endColorstr='#f79697',GradientType=0 );
-    background: linear-gradient(top, #a9fff4 0%,#cfbbff 100%);
+    background: linear-gradient(top, #ffffff 0%,#999999 100%);
     z-index: -1;
   }
+
+  
+  .circle { 
+    margin-left: 150px;
+    width: 300px;
+    height: 300px;
+    border: 1px solid #333;
+    border-radius: 50%;
+    position: fixed;
+  }
+  
+  .content {
+    width: 50%; 
+    height: 50%;
+    position: absolute;
+    left: 25%;
+    top: 25%;
+    border: 1px solid #333;
+  }
+  
+  /* top */
+  .top { 
+    animation: rotate_top 60s linear infinite;
+  }
+  @keyframes rotate_top { 
+    0% { 
+     transform: rotate(0deg) translateY(-100%) rotate(0deg);
+    }
+    100% {  
+      transform: rotate(360deg) translateY(-100%) rotate(-360deg);
+    }
+  }
+  
+  /* right */
+  .right { 
+    animation: rotate_right 60s linear infinite;
+  }
+  @keyframes rotate_right { 
+    0% { 
+     transform: rotate(0deg) translateX(100%) rotate(0deg);
+    }
+    100% {  
+      transform: rotate(360deg) translateX(100%) rotate(-360deg);
+    }
+  }
+  
+  /* bottom */
+  .bottom { 
+    animation: rotate_bottom 60s linear infinite;
+  }
+  @keyframes rotate_bottom { 
+    0% { 
+     transform: rotate(0deg) translateY(100%) rotate(0deg);
+    }
+    100% {  
+      transform: rotate(360deg) translateY(100%) rotate(-360deg);
+    }
+  }
+  
+  /* left */
+  .left { 
+    animation: rotate_left 60s linear infinite;
+  }
+  @keyframes rotate_left { 
+    0% { 
+     transform: rotate(0deg) translateX(-100%) rotate(0deg);
+    }
+    100% {  
+      transform: rotate(360deg) translateX(-100%) rotate(-360deg);
+    }
+  }
+
+  .object2{
+    margin-left:800px;
+    margin-top: 250px;
+    position: fixed;
+  }
+  
+  /* 点滅 */
+.blinking{
+	-webkit-animation:blink 0.35s ease-in-out infinite alternate;
+    -moz-animation:blink 0.35s ease-in-out infinite alternate;
+    animation:blink 0.35s ease-in-out infinite alternate;
+}
+@-webkit-keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@-moz-keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+
+
+.object3{
+  z-index: 1000;
+}
+
+.progress-circle {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  background-image: conic-gradient(rgb(136, 136, 136) 0% 0%, #d9d9d9 0% 100%);
+  border-radius: 50%;
+  margin: 0 auto;
+}
+.progress-circle-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 80%;
+  font-size: 16px;
+  font-weight: 700;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.dejirogo{
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 80px;
+}
