@@ -85,8 +85,11 @@ if(tx[count].length != txCount[count]){ // Count が初期の文字列の文字�
 }else{
 id[count].innerHTML = tx[count].substr( 0, ++txCount[count] ); // テキストの指定した数の間の要素を表示
   count++; // 次の段落に進む為のカウントアップ
+
   if(count != id.length){ // id数が最後なら終了
   setTimeout("itimozi()",dly); // 次の段落へ進む
+  var br = document.createElement('br'); // br要素を作成
+            id[count-1].appendChild(br); 
   }
 }
 }
@@ -110,7 +113,7 @@ id[count].innerHTML = tx[count].substr( 0, ++txCount[count] ); // テキスト�
       progress = 100;
     }
     pc_inner.innerText = progress + '%';
-    pc.style.backgroundImage = 'conic-gradient(rgb(160, 160, 160) 0% ' + progress + '%, #d9d9d9 ' + progress + '% 100%)';
+    pc.style.backgroundImage = 'conic-gradient(rgb(162, 0, 255) 0% ' + progress + '%, #d9d9d9 ' + progress + '% 100%)';
   }
 
   window.addEventListener('scroll', () => {
