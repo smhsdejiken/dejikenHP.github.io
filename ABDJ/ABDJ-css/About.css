@@ -220,15 +220,15 @@
     background: linear-gradient(top, #ffffff 0%,#999999 100%);
     z-index: -1;
   }
-
-  .object1{
+/* 観覧車 */
+  .object1{ 
     width: 30%;
   }
   .circle { 
     top: 30%;
     left: 10%;
-    width: 30%; /* 親要素の 30% の幅 */
-    padding-top: 30%; /* width と同じ値 */
+    width: 25%; /* 親要素の 30% の幅 */
+    padding-top: 25%; /* width と同じ値 */
     border: 1px solid #333;
     border-radius: 50%;
     position: fixed;
@@ -294,7 +294,7 @@
       transform: rotate(360deg) translateX(-100%) rotate(-360deg);
     }
   }
-
+/* タイピング */
   .object2{
     top: 50%;
     left: 60%;
@@ -321,7 +321,7 @@
 }
 
 
-
+/* 読んだ割合 */
 .object3{
   z-index: 1000;
 }
@@ -333,8 +333,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 15vw; /* Changed to viewport width unit */
-  height: 15vw; /* Changed to viewport width unit */
+  width: 10vw; /* Changed to viewport width unit */
+  height: 10vw; /* Changed to viewport width unit */
   background-image: conic-gradient(rgb(0, 247, 255) 0% 0%, #d9d9d9 0% 100%);
   border-radius: 50%;
   margin: 0 auto;
@@ -359,7 +359,7 @@
   margin-right: auto;
   font-size: 80px;
 }
-
+/* 準備中 */
 .object4{visibility: hidden;}
 
 @media (max-width: 1023px){
