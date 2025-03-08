@@ -58,20 +58,6 @@
 	margin-left: calc(-100% / 3 * 0.25 - 100% / 3 * 0.05);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .menubutton {
     position: fixed;
     top: 0;
@@ -361,6 +347,29 @@
 }
 /* 準備中 */
 .object4{visibility: hidden;}
+
+
+/* 更新中画面 */
+/*.update{
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  position: fixed;
+  background-color: #fff;
+}
+.update_now{
+  margin-left: auto;
+  margin-right: auto;
+}
+html,body {overflow: hidden;}
+.object1{display: none;}
+.object2{display: none;}
+.object3{display: none;}
+.object4{display: none;}
+.menubutton{display: none;}
+
+/* 更新中画面ここまで */
+
 
 @media (max-width: 1023px){
   .object2{
