@@ -96,7 +96,7 @@ footer{
 }
 
 .B-img{
-    width: clamp(16px, 80vw, 700px);
+    width: clamp(30px, 80vw, 700px);
 }
 
 #searchResults{
