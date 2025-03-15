@@ -2,34 +2,40 @@
 fetch('https://smhsdejiken.github.io/dejikenHP.github.io/MEMBERS/ME-js/member.json')
   .then(response => response.json())
   .then(data => {
-    const imagesDiv = document.getElementById('images');
+    const itemsDiv = document.getElementById('items');
 
-    // 画像を表示
+    // 画像と名前を表示
     data.forEach(item => {
+      const itemDiv = document.createElement('div');
+      itemDiv.classList.add('item');
+
       const img = document.createElement('img');
       img.src = item.image;
       img.alt = item.name;
-      img.addEventListener('click', () => {
-        // 画像がクリックされたときの処理
-        displayList(item.list, img);
-      });
-      imagesDiv.appendChild(img);
-    });
+      img.style.cursor = 'pointer'; // カーソルをポインターに変更
 
-    // リストを表示する関数
-    function displayList(list, img) {
-      // 既存のリストをクリア
-      const existingList = img.nextElementSibling;
-      if (existingList && existingList.tagName === 'UL') {
-        existingList.remove();
-      }
+      const nameDiv = document.createElement('div');
+      nameDiv.textContent = item.name;
+
+      const listDiv = document.createElement('div');
+      listDiv.classList.add('list');
 
       const ul = document.createElement('ul');
-      list.forEach(item => {
+      item.list.forEach(listItem => {
         const li = document.createElement('li');
-        li.textContent = item;
+        li.textContent = listItem;
         ul.appendChild(li);
       });
-      img.parentNode.insertBefore(ul, img.nextSibling); // 画像の下にリストを挿入
-    }
+      listDiv.appendChild(ul);
+
+      img.addEventListener('click', () => {
+        // 画像がクリックされたときの処理
+        listDiv.style.display = listDiv.style.display === 'block' ? 'none' : 'block';
+      });
+
+      itemDiv.appendChild(img);
+      itemDiv.appendChild(nameDiv);
+      itemDiv.appendChild(listDiv);
+      itemsDiv.appendChild(itemDiv);
+    });
   });
