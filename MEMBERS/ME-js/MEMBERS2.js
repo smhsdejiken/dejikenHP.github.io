@@ -1,5 +1,6 @@
 // JSONファイルの読み込み
-fetch('https://github.com/smhsdejiken/dejikenHP.github.io/blob/main/MEMBERS/ME-js/member.json')
+fetch('https://smhsdejiken.github.io/dejikenHP.github.io/MEMBERS/ME-js/member.json')
+  
   .then(response => response.json())
   .then(data => {
     // 画像の表示
