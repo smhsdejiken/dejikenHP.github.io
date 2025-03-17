@@ -1,8 +1,26 @@
     .item {
       display: inline-block;
-      text-align: center;
-      margin: 10px;
+      margin: 30px;
+      display: block;
+      width: 45%;
+      height: 45%;
     }
     .list {
+      position: absolute;
+      top:0px;
+      left: 30%;
+     margin-top:40px;
+      justify-content: center;
       display: none; /* 初期状態では非表示 */
+    }
+    img{
+      margin-bottom: 5%;
+      overflow: hidden;
+      width: 45%;
+      height: 45%;
+      transition: all 0.2s ease-out;
+      cursor: pointer;
+    }
+    img:hover{
+      transform: scale(1.1);
     }
