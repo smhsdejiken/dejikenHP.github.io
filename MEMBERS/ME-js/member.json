@@ -1,17 +1,22 @@
+
 [
-    {
-      "image": "https://lh3.googleusercontent.com/d/1NdAalgGi8HrV5iV1R7BFZHDh_XP9aXoi",
-      "list": ["リスト1-1", "リスト1-2", "リスト1-3"],
-      "name": "犬"
-    },
-    {
-      "image": "https://lh3.googleusercontent.com/d/1NdAalgGi8HrV5iV1R7BFZHDh_XP9aXoi",
-      "list": ["リスト2-1", "リスト2-2", "リスト2-3"],
-      "name": "犬"
-    },
-    {
-      "image": "https://lh3.googleusercontent.com/d/1NdAalgGi8HrV5iV1R7BFZHDh_XP9aXoi",
-      "list": ["リスト3-1", "リスト3-2", "リスト3-3"],
-      "name": "犬"
-    }
-  ]
+  {
+    "name": "猫",
+    "image": "cat.jpg",
+    "list": ["魚", "ねずみ", "ボール"],
+    "color": "#FF0000"
+  },
+  {
+    "name": "犬",
+    "image": "dog.jpg",
+    "list": ["骨", "ボール", "フリスビー"],
+    "color": "#00FF00"
+  },
+  {
+    "name": "うさぎ",
+    "image": "rabbit.jpg",
+    "list": ["にんじん", "キャベツ", "リンゴ"],
+    "color": "#0000FF"
+  }
+]
+
