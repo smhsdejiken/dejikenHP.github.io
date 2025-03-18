@@ -1,30 +1,20 @@
-    .item {
-      display: inline-block;
-      display: block;
-      width: 45%;
-      height: 45%;
-      margin-left: 60px;
-    }
-    .list {
-      position: relative;
-      top: -330px;
-      left: 300px;
-      height: 0px;
-      justify-content: center;
-      display: none; /* 初期状態では非表示 */
-    }
-    img{
-      margin-top: 20px;
-      margin-bottom: 8px;
-      overflow: hidden;
-      width: 45%;
-      height: 45%;
-      transition: all 0.2s ease-out;
-      cursor: pointer;
-    }
-    img:hover{
-      transform: scale(1.1);
-    }
+
+.image-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.list-container {
+  display: inline-block;
+  vertical-align: top;
+}
+img{
+  width: 30%;
+  height: 30%;
+}
+
+
 
     header{
       text-align: center;
