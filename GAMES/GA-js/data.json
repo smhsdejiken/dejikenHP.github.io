@@ -13,7 +13,7 @@
         "city": "依頼", 
         "photo": "https://lh3.googleusercontent.com/d/1NdAalgGi8HrV5iV1R7BFZHDh_XP9aXoi", 
         "url": "https://editor.p5js.org/eureka5129/full/fBKu4-qlv",
-        "about":"「ライフゲーム」というシミュレーションで遊べる作品です。自分でパターンを作成して、それが動くのを見ることができます。"
+        "about":"「ライフゲーム」というシミュレーションで遊べる作品です。自分でパターンを作成して、それが動くのを見ることができます。操作についてはヘルプを見てくれると嬉しいです"
     },
     {
         "name": "タダサバイバー", 
@@ -29,7 +29,7 @@
         "city": "Shikiishi", 
         "photo": "https://lh3.googleusercontent.com/d/1tmrNmnFac0ynC4rZoO411ciENHZ22CDA", 
         "url": "https://n3s.nadesi.com/id.php?2794",
-        "about":"絵の線で囲まれた部分をクリックすると、色が塗れます。 自分の持っているファイルもアップロード可能です！操作についてはヘルプを見てくれると嬉しいです。"
+        "about":"絵の線で囲まれた部分をクリックすると、色が塗れます。 自分の持っているファイルもアップロード可能です！"
     },
     { 
         "name": "ピンポンゲーム！", 
