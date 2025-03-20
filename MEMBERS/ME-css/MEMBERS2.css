@@ -73,3 +73,30 @@ li {
           color:#ff00d4;
           border-bottom:2px solid #ff00d4;
           }
+
+/* 画面幅が425px以下の場合 */
+@media screen and (max-width: 425px) {
+  .image-item {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+  }
+
+  .image-item img {
+    width: 80%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .image-item .name {
+    margin-left: 0;
+    text-align: center; /* 名前を中央揃え */
+  }
+
+  .image-item .name ul {
+    padding-left: 0;
+    text-align: left;
+    width: 100%;
+    margin-left: -90%; /* リストをさらに左に移動 */
+  }
+}
