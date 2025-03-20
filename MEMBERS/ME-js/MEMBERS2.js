@@ -4,6 +4,8 @@ fetch('https://smhsdejiken.github.io/dejikenHP.github.io/MEMBERS/ME-js/member.js
   .then(data => {
     const imagesDiv = document.getElementById('images');
     const containerDiv = document.getElementById('container');
+    let currentList = null; // 現在表示されているリスト
+    let currentParentDiv = null; // 現在リストが表示されている親要素
 
     // 画像と名前を表示
     data.forEach(item => {
@@ -15,7 +17,20 @@ fetch('https://smhsdejiken.github.io/dejikenHP.github.io/MEMBERS/ME-js/member.js
       img.alt = item.name;
       img.addEventListener('click', () => {
         // 画像がクリックされたときの処理
-        displayList(item.list, imageItemDiv);
+        if (currentList === item.list && currentParentDiv === imageItemDiv) {
+          // 同じ画像がクリックされた場合はリストを非表示にする
+          const existingList = imageItemDiv.querySelector('ul');
+          if (existingList) {
+            existingList.remove();
+          }
+          currentList = null;
+          currentParentDiv = null;
+        } else {
+          // 異なる画像がクリックされた場合はリストを表示する
+          displayList(item.list, imageItemDiv);
+          currentList = item.list;
+          currentParentDiv = imageItemDiv;
+        }
       });
       imageItemDiv.appendChild(img);
 
