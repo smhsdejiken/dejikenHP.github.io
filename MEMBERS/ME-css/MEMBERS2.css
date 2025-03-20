@@ -1,17 +1,15 @@
 
-.image-item {
+.container {
+  display: flex;
+}
+.images {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
-}
-.list-container {
-  display: inline-block;
-  vertical-align: top;
-}
-img{
-  width: 30%;
+    width: 30%;
   height: 30%;
+}
+.list {
+  margin-left: 20px;
 }
 
 
