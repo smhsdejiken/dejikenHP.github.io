@@ -1,26 +1,72 @@
-    .item {
-      display: inline-block;
-      margin: 30px;
-      display: block;
-      width: 45%;
-      height: 45%;
-    }
-    .list {
-      position: absolute;
-      top:0px;
-      left: 30%;
-     margin-top:40px;
-      justify-content: center;
-      display: none; /* 初期状態では非表示 */
-    }
-    img{
-      margin-bottom: 5%;
-      overflow: hidden;
-      width: 45%;
-      height: 45%;
-      transition: all 0.2s ease-out;
-      cursor: pointer;
-    }
-    img:hover{
-      transform: scale(1.1);
-    }
+
+.image-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.list-container {
+  display: inline-block;
+  vertical-align: top;
+}
+img{
+  width: 30%;
+  height: 30%;
+}
+
+
+
+    header{
+      text-align: center;
+      margin-bottom: 15vw;
+  }
+  p1{
+      font-size: xx-large;
+  }
+  .breadlist {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: clamp(14px,0.97vw,16px);
+      }
+      .breadlist li {
+      padding: 0;
+      }
+      .breadlist li::after {
+      content: '>';
+      margin: 0 0.347vw;
+      }
+      .breadlist li:last-child::after {
+      display: none;
+      }
+      nav{
+          margin-left:auto;
+          margin-right:auto;
+          font-size: clamp(16px,1.39vw,20px);
+          }
+          nav ul{
+          margin: 0 ;
+          padding: 0 ;
+          }
+          nav li{
+          list-style: none;
+          display: inline-block;
+          width: 10%;
+          min-width: 90px;
+          }
+          nav li:not(:last-child){
+          border-right:2px solid #ddd;
+          }
+          nav a{
+          text-decoration: none;
+          color: #333;
+          }
+          nav a.current{
+          color: #00B0F0;
+          border-bottom:2px solid #00B0F0;
+          }
+          nav a:hover{
+          color:#ff00d4;
+          border-bottom:2px solid #ff00d4;
+          }

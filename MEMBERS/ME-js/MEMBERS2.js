@@ -2,40 +2,49 @@
 fetch('https://smhsdejiken.github.io/dejikenHP.github.io/MEMBERS/ME-js/member.json')
   .then(response => response.json())
   .then(data => {
-    const itemsDiv = document.getElementById('items');
+    const contentDiv = document.getElementById('content');
 
-    // 画像と名前を表示
     data.forEach(item => {
-      const itemDiv = document.createElement('div');
-      itemDiv.classList.add('item');
+      const imageItemDiv = document.createElement('div');
+      imageItemDiv.classList.add('image-item');
 
       const img = document.createElement('img');
       img.src = item.image;
       img.alt = item.name;
-      img.style.cursor = 'pointer'; // カーソルをポインターに変更
+      img.addEventListener('click', () => {
+        // 画像がクリックされたときの処理
+        toggleList(item, listDiv);
+      });
+      imageItemDiv.appendChild(img);
 
       const nameDiv = document.createElement('div');
       nameDiv.textContent = item.name;
+      imageItemDiv.appendChild(nameDiv);
 
       const listDiv = document.createElement('div');
-      listDiv.classList.add('list');
+      listDiv.classList.add('list-container');
+      imageItemDiv.appendChild(listDiv);
 
-      const ul = document.createElement('ul');
-      item.list.forEach(listItem => {
-        const li = document.createElement('li');
-        li.textContent = listItem;
-        ul.appendChild(li);
-      });
-      listDiv.appendChild(ul);
-
-      img.addEventListener('click', () => {
-        // 画像がクリックされたときの処理
-        listDiv.style.display = listDiv.style.display === 'block' ? 'none' : 'block';
-      });
-
-      itemDiv.appendChild(img);
-      itemDiv.appendChild(nameDiv);
-      itemDiv.appendChild(listDiv);
-      itemsDiv.appendChild(itemDiv);
+      contentDiv.appendChild(imageItemDiv);
     });
+
+    function toggleList(item, listDiv) {
+      if (listDiv.innerHTML === '') {
+        // リストを表示
+        const ul = document.createElement('ul');
+        item.list.forEach(listItem => {
+          const li = document.createElement('li');
+          li.textContent = listItem;
+          ul.appendChild(li);
+        });
+        const colorSpan = document.createElement('span');
+        colorSpan.innerHTML = `&nbsp;${item.color}`;
+        colorSpan.style.backgroundColor = item.color;
+        ul.appendChild(colorSpan);
+        listDiv.appendChild(ul);
+      } else {
+        // リストを非表示
+        listDiv.innerHTML = '';
+      }
+    }
   });
