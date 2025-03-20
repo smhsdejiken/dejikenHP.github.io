@@ -2,49 +2,40 @@
 fetch('https://smhsdejiken.github.io/dejikenHP.github.io/MEMBERS/ME-js/member.json')
   .then(response => response.json())
   .then(data => {
-    const contentDiv = document.getElementById('content');
+    const imagesDiv = document.getElementById('images');
+    const listDiv = document.getElementById('list');
 
+    // 画像と名前を表示
     data.forEach(item => {
-      const imageItemDiv = document.createElement('div');
-      imageItemDiv.classList.add('image-item');
-
       const img = document.createElement('img');
       img.src = item.image;
       img.alt = item.name;
       img.addEventListener('click', () => {
         // 画像がクリックされたときの処理
-        toggleList(item, listDiv);
+        displayList(item.list);
       });
-      imageItemDiv.appendChild(img);
+      imagesDiv.appendChild(img);
 
       const nameDiv = document.createElement('div');
       nameDiv.textContent = item.name;
-      imageItemDiv.appendChild(nameDiv);
-
-      const listDiv = document.createElement('div');
-      listDiv.classList.add('list-container');
-      imageItemDiv.appendChild(listDiv);
-
-      contentDiv.appendChild(imageItemDiv);
+      imagesDiv.appendChild(nameDiv);
     });
 
-    function toggleList(item, listDiv) {
-      if (listDiv.innerHTML === '') {
-        // リストを表示
-        const ul = document.createElement('ul');
-        item.list.forEach(listItem => {
-          const li = document.createElement('li');
-          li.textContent = listItem;
-          ul.appendChild(li);
-        });
-        const colorSpan = document.createElement('span');
-        colorSpan.innerHTML = `&nbsp;${item.color}`;
-        colorSpan.style.backgroundColor = item.color;
-        ul.appendChild(colorSpan);
-        listDiv.appendChild(ul);
-      } else {
-        // リストを非表示
-        listDiv.innerHTML = '';
-      }
+    // リストを表示する関数
+    function displayList(list) {
+      listDiv.innerHTML = ''; // 既存のリストをクリア
+      const ul = document.createElement('ul');
+      list.forEach(item => {
+        const li = document.createElement('li');
+        if (item.startsWith('#')) {
+          // 色コードの場合
+          li.innerHTML = `<span style="background-color: ${item};">&nbsp;&nbsp;&nbsp;</span>${item}`;
+        } else {
+          // 色コード以外の場合
+          li.textContent = item;
+        }
+        ul.appendChild(li);
+      });
+      listDiv.appendChild(ul);
     }
   });
