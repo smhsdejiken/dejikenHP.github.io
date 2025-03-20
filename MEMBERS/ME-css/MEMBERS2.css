@@ -1,16 +1,14 @@
 
-.container {
+
+
+.image-item {
   display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
   margin-left: 10%;
 }
-.images {
-  display: flex;
-  flex-direction: column;
-    width: 30%;
-  height: 30%;
-}
-.list {
-  margin-left: 20px;
+.image-item img {
+  margin-right: 10px;
 }
 
 
