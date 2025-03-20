@@ -1,13 +1,10 @@
-// JSONファイルの読み込み
 fetch('https://smhsdejiken.github.io/dejikenHP.github.io/MEMBERS/ME-js/member.json')
   .then(response => response.json())
   .then(data => {
     const imagesDiv = document.getElementById('images');
-    const containerDiv = document.getElementById('container');
-    let currentList = null; // 現在表示されているリスト
-    let currentParentDiv = null; // 現在リストが表示されている親要素
+    let currentList = null;
+    let currentParentDiv = null;
 
-    // 画像と名前を表示
     data.forEach(item => {
       const imageItemDiv = document.createElement('div');
       imageItemDiv.classList.add('image-item');
@@ -15,10 +12,17 @@ fetch('https://smhsdejiken.github.io/dejikenHP.github.io/MEMBERS/ME-js/member.js
       const img = document.createElement('img');
       img.src = item.image;
       img.alt = item.name;
+      imageItemDiv.appendChild(img);
+
+      const nameDiv = document.createElement('div');
+      nameDiv.textContent = item.name;
+      nameDiv.classList.add('name'); // 名前用のクラスを追加
+      imageItemDiv.appendChild(nameDiv);
+
+      imagesDiv.appendChild(imageItemDiv);
+
       img.addEventListener('click', () => {
-        // 画像がクリックされたときの処理
         if (currentList === item.list && currentParentDiv === imageItemDiv) {
-          // 同じ画像がクリックされた場合はリストを非表示にする
           const existingList = imageItemDiv.querySelector('ul');
           if (existingList) {
             existingList.remove();
@@ -26,24 +30,14 @@ fetch('https://smhsdejiken.github.io/dejikenHP.github.io/MEMBERS/ME-js/member.js
           currentList = null;
           currentParentDiv = null;
         } else {
-          // 異なる画像がクリックされた場合はリストを表示する
-          displayList(item.list, imageItemDiv);
+          displayList(item.list, imageItemDiv, nameDiv); // リストを表示する際にnameDivを渡す
           currentList = item.list;
           currentParentDiv = imageItemDiv;
         }
       });
-      imageItemDiv.appendChild(img);
-
-      const nameDiv = document.createElement('div');
-      nameDiv.textContent = item.name;
-      imageItemDiv.appendChild(nameDiv);
-
-      imagesDiv.appendChild(imageItemDiv);
     });
 
-    // リストを表示する関数
-    function displayList(list, parentDiv) {
-      // 既存のリストをクリア
+    function displayList(list, parentDiv, nameDiv) { // nameDivを引数に追加
       const existingList = parentDiv.querySelector('ul');
       if (existingList) {
         existingList.remove();
@@ -53,14 +47,12 @@ fetch('https://smhsdejiken.github.io/dejikenHP.github.io/MEMBERS/ME-js/member.js
       list.forEach(item => {
         const li = document.createElement('li');
         if (item.startsWith('#')) {
-          // 色コードの場合
           li.innerHTML = `<span style="background-color: ${item};">&nbsp;&nbsp;&nbsp;</span>${item}`;
         } else {
-          // 色コード以外の場合
           li.textContent = item;
         }
         ul.appendChild(li);
       });
-      parentDiv.appendChild(ul);
+      nameDiv.appendChild(ul); // 名前divの下にリストを追加
     }
   });
