@@ -47,7 +47,7 @@ fetch('https://smhsdejiken.github.io/dejikenHP.github.io/MEMBERS/ME-js/member.js
       list.forEach(item => {
         const li = document.createElement('li');
         if (item.startsWith('#')) {
-          li.innerHTML = `<span style="background-color: ${item};">&nbsp;&nbsp;&nbsp;</span>${item}`;
+          li.innerHTML = `<span style="background-color: ${item};">&nbsp;</span>${item}`;
         } else {
           li.textContent = item;
         }
