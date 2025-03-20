@@ -7,7 +7,7 @@
     {
     "name": "マロン",
     "image": "https://lh3.googleusercontent.com/d/1NdAalgGi8HrV5iV1R7BFZHDh_XP9aXoi",
-    "list": ["好きな場所:家", "興味があること:pcのパーツ", "＃000000"]
+    "list": ["好きな場所:家", "興味があること:pcのパーツ", "#000000"]
   },
       {
     "name": "ucd",
@@ -50,9 +50,9 @@
     "list": ["好きな場所:沖縄", "興味があること:unity", "#000000"]
   },
       {
-    "name": "hokkun",
+    "name": "shikiishi",
     "image": "https://lh3.googleusercontent.com/d/1NdAalgGi8HrV5iV1R7BFZHDh_XP9aXoi",
-    "list": ["好きな場所:部室", "興味があること:ゲーム、イラスト、パソコンの分解", "#c71585"]
+    "list": ["好きな場所:脳内世界", "興味があること:Webアプリ、アニメ制作、VR、スタートアップ、ビットコイン", "#00ced1"]
   },
         {
     "name": "hokkun",
