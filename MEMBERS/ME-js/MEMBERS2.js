@@ -16,7 +16,7 @@ fetch('https://smhsdejiken.github.io/dejikenHP.github.io/MEMBERS/ME-js/member.js
 
       const nameDiv = document.createElement('div');
       nameDiv.textContent = item.name;
-      nameDiv.classList.add('name'); // 名前用のクラスを追加
+      nameDiv.classList.add('name');
       imageItemDiv.appendChild(nameDiv);
 
       imagesDiv.appendChild(imageItemDiv);
@@ -30,14 +30,14 @@ fetch('https://smhsdejiken.github.io/dejikenHP.github.io/MEMBERS/ME-js/member.js
           currentList = null;
           currentParentDiv = null;
         } else {
-          displayList(item.list, imageItemDiv, nameDiv); // リストを表示する際にnameDivを渡す
+          displayList(item.list, imageItemDiv, nameDiv);
           currentList = item.list;
           currentParentDiv = imageItemDiv;
         }
       });
     });
 
-    function displayList(list, parentDiv, nameDiv) { // nameDivを引数に追加
+    function displayList(list, parentDiv, nameDiv) {
       const existingList = parentDiv.querySelector('ul');
       if (existingList) {
         existingList.remove();
@@ -47,12 +47,33 @@ fetch('https://smhsdejiken.github.io/dejikenHP.github.io/MEMBERS/ME-js/member.js
       list.forEach(item => {
         const li = document.createElement('li');
         if (item.startsWith('#')) {
-          li.innerHTML = `好きな色:<span style="background-color: ${item};">&nbsp;</span>${item}`;
+          li.innerHTML = `好きな色:<span style="background-color: ${item};">&nbsp;&nbsp;&nbsp;</span>${item}`;
         } else {
-          li.textContent = item;
+          // ウィンドウ幅に応じて空白を改行または空白なしに変換
+          if (window.innerWidth <= 425) {
+            li.textContent = item.replace(/\s+/g, '\n'); // 空白を改行に変換
+          } else {
+            li.textContent = item.replace(/\s+/g, ''); // 空白を削除
+          }
         }
         ul.appendChild(li);
       });
-      nameDiv.appendChild(ul); // 名前divの下にリストを追加
+      nameDiv.appendChild(ul);
     }
   });
+
+// ウィンドウサイズ変更時にリストの表示を更新
+window.addEventListener('resize', () => {
+  const lists = document.querySelectorAll('.name ul');
+  lists.forEach(list => {
+    const nameDiv = list.parentElement;
+    const parentDiv = nameDiv.parentElement;
+    const dataItem = Array.from(parentDiv.querySelectorAll('img')).map(img => ({
+      name: img.alt,
+      list: Array.from(list.querySelectorAll('li')).map(li => li.textContent)
+    })).find(item => item.name === nameDiv.textContent);
+    if (dataItem) {
+      displayList(dataItem.list, parentDiv, nameDiv);
+    }
+  });
+});
