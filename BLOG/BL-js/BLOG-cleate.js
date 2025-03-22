@@ -10,8 +10,8 @@ document.querySelectorAll('.FlexTextarea').forEach(flexTextarea)
 function replaceText() {
   const inputText = document.getElementById('FlexTextarea').value;
   const replacedText = inputText
-    .replace(/a;/g, '</span><span class="tytle">'+ '\r\n') 
-    .replace(/b;/g, '</span><span class="subtytle">'+ '\r\n')
+    .replace(/a;/g, '</span><span class="title">'+ '\r\n') 
+    .replace(/b;/g, '</span><span class="subtitle">'+ '\r\n')
     .replace(/c;/g, '</span><span class="text">'+ '\r\n')
     .replace(/d;/g, '<b>')
     .replace(/D;/g, '</b>')
