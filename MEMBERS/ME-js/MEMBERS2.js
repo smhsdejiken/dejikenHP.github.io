@@ -47,13 +47,13 @@ fetch('https://smhsdejiken.github.io/dejikenHP.github.io/MEMBERS/ME-js/member.js
       list.forEach(item => {
         const li = document.createElement('li');
         if (item.startsWith('#')) {
-          li.innerHTML = `好きな色:<span style="background-color: ${item};">&nbsp;</span>${item}`;
+          li.innerHTML = `好きな色:<span style="background-color: ${item};">&nbsp;&nbsp;&nbsp;</span>${item}`;
         } else {
-          // ウィンドウ幅に応じて空白を改行または空白なしに変換
-          if (window.innerWidth <= 425) {
-            li.innerHTML = item.replace(/\s+/g, '<br>');// 空白を改行に変換
+          // ウィンドウ幅に応じて空白と"-"を改行または削除
+          if (window.innerWidth <= 768) {
+            li.innerHTML = item.replace(/\s+/g, '<br>').replace(/-/g, ''); // 空白を改行、"-"を削除
           } else {
-            li.textContent = item.replace(/\s+/g, ''); // 空白を削除
+            li.innerHTML = item.replace(/\s+/g, '').replace(/-/g, '<br>'); // 空白を削除、"-"を改行
           }
         }
         ul.appendChild(li);
