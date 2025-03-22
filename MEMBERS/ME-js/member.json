@@ -2,66 +2,66 @@
   {
     "name": "あさきんぼし",
     "image": "https://lh3.googleusercontent.com/d/1NdAalgGi8HrV5iV1R7BFZHDh_XP9aXoi",
-    "list": ["好きな場所:家", "興味があること:よくYouTubeで見るような編集に力の入った動画の作り方など、 動画編集をやってみたい", "#F4E511"]
+    "list": ["好きな場所:家", "#F4E511"]
   },
     {
     "name": "マロン",
     "image": "https://lh3.googleusercontent.com/d/1NdAalgGi8HrV5iV1R7BFZHDh_XP9aXoi",
-    "list": ["好きな場所:家", "興味があること:pcのパーツ", "#000000"]
+    "list": ["好きな場所:家", "#000000"]
   },
       {
     "name": "ucd",
     "image": "https://lh3.googleusercontent.com/d/1NdAalgGi8HrV5iV1R7BFZHDh_XP9aXoi",
-    "list": ["好きな場所:寝室", "興味があること:プログラミング", "#9e9478"]
+    "list": ["好きな場所:寝室","#9e9478"]
   },
       {
     "name": "kaede",
     "image": "https://lh3.googleusercontent.com/d/1NdAalgGi8HrV5iV1R7BFZHDh_XP9aXoi",
-    "list": ["好きな場所:北海道", "興味があること:ゲーム制作", "#000000"]
+    "list": ["好きな場所:北海道",  "#000000"]
   },
       {
     "name": "のりたま",
     "image": "https://lh3.googleusercontent.com/d/1NdAalgGi8HrV5iV1R7BFZHDh_XP9aXoi",
-    "list": ["好きな場所:宿題がない日のペッドの上", "興味があること:パソコンを使うやつなら全部気になりますが音系が特に気になります", "#25b7c0"]
+    "list": ["好きな場所:宿題がない日のペッドの上", "#25b7c0"]
   },
       {
     "name": "林檎ヲムイテ歩コウ",
     "image": "https://lh3.googleusercontent.com/d/1NdAalgGi8HrV5iV1R7BFZHDh_XP9aXoi",
-    "list": ["好きな場所:ハードオフ", "興味があること:デジタルを利用した、活動の効率化について", "#6020df"]
+    "list": ["好きな場所:ハードオフ","#6020df"]
   },
         {
     "name": "Riki",
     "image": "https://lh3.googleusercontent.com/d/1NdAalgGi8HrV5iV1R7BFZHDh_XP9aXoi",
-    "list": ["好きな場所:日本平動物園", "興味があること:Unity・VR・ユニバース", "#32c8ff"]
+    "list": ["好きな場所:日本平動物園","#32c8ff"]
   },
       {
     "name": "びー",
     "image": "https://lh3.googleusercontent.com/d/1NdAalgGi8HrV5iV1R7BFZHDh_XP9aXoi",
-    "list": ["好きな場所:家のトイレ", "興味があること:ゲーム作り", "#FF0000"]
+    "list": ["好きな場所:家のトイレ","#FF0000"]
   },
       {
     "name": "C",
     "image": "https://lh3.googleusercontent.com/d/1NdAalgGi8HrV5iV1R7BFZHDh_XP9aXoi",
-    "list": ["好きな場所:日本", "興味があること:ゲーム制作", "#00bfff"]
+    "list": ["好きな場所:日本","#00bfff"]
   },
         {
     "name": "のたか",
     "image": "https://lh3.googleusercontent.com/d/1NdAalgGi8HrV5iV1R7BFZHDh_XP9aXoi",
-    "list": ["好きな場所:沖縄", "興味があること:unity", "#000000"]
+    "list": ["好きな場所:沖縄","#000000"]
   },
       {
     "name": "shikiishi",
     "image": "https://lh3.googleusercontent.com/d/1NdAalgGi8HrV5iV1R7BFZHDh_XP9aXoi",
-    "list": ["好きな場所:脳内世界", "興味があること:Webアプリ、アニメ制作、VR、スタートアップ、ビットコイン", "#00ced1"]
+    "list": ["好きな場所:脳内世界","#00ced1"]
   },
         {
     "name": "hokkun",
     "image": "https://lh3.googleusercontent.com/d/1NdAalgGi8HrV5iV1R7BFZHDh_XP9aXoi",
-    "list": ["好きな場所:部室", "興味があること:ゲーム、イラスト、パソコンの分解", "#c71585"]
+    "list": ["好きな場所:部室","#c71585"]
   },
       {
     "name": "依頼",
     "image": "https://lh3.googleusercontent.com/d/1NdAalgGi8HrV5iV1R7BFZHDh_XP9aXoi",
-    "list": ["好きな場所:空いてる電車の中", "興味があること:プログラミングと数学", "#0095d9","#ffd900"]
+    "list": ["好きな場所:空いてる電車の中","#0095d9","#ffd900"]
   }
 ]
