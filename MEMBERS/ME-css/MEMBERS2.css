@@ -80,6 +80,7 @@ li {
     flex-direction: column;
     align-items: center;
     margin-left: 0;
+    
   }
 
   .image-item img {
@@ -97,6 +98,6 @@ li {
     padding-left: 0;
     text-align: left;
     width: 100%;
-    margin-left: -90%; /* リストをさらに左に移動 */
+    margin-right: -20%; /* リストをさらに左に移動 */
   }
 }
