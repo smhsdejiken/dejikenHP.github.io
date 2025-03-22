@@ -2,14 +2,21 @@
 .image-item {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   margin-left: 10%;
 }
 
 .image-item img {
   width: 20%;
   margin-right: 10px;
+  transition: all 0.2s ease-out;
+  cursor: pointer;
 }
+
+.image-item img:hover {
+  transform: scale(1.1);
+}
+
 
 .image-item .name { /* 名前用のスタイル */
   margin-left: 10px; /* 画像との間隔 */
@@ -80,14 +87,23 @@ li {
     flex-direction: column;
     align-items: center;
     margin-left: 0;
-    
+  }
+  .image-item .name { /* 名前用のスタイル */
+    margin-left: 10px; /* 画像との間隔 */
+    margin-top: 20px;
   }
 
   .image-item img {
     width: 80%;
     margin-right: 0;
     margin-bottom: 10px;
+    transition: all 0.2s ease-out;
+    cursor: pointer;
   }
+  .image-item img:hover {
+    transform: scale(1.1);
+  }
+
 
   .image-item .name {
     margin-left: 0;
