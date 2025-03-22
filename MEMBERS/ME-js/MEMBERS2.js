@@ -53,7 +53,7 @@ fetch('https://smhsdejiken.github.io/dejikenHP.github.io/MEMBERS/ME-js/member.js
           if (window.innerWidth <= 425) {
             li.innerHTML = item.replace(/\s+/g, '<br>');// 空白を改行に変換
           } else {
-            li.textContent = item.replace(/@/g, ''); // 空白を削除
+            li.textContent = item.replace(/\s+/g, ''); // 空白を削除
           }
         }
         ul.appendChild(li);
