@@ -99,5 +99,6 @@ li {
     text-align: left;
     width: 100%;
     margin-right: -20%; /* リストをさらに左に移動 */
+    white-space: nowrap;
   }
 }
