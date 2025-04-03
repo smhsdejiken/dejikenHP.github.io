@@ -20,6 +20,9 @@
 li {
   list-style: none;
 }
+.image-item .name ul {
+  font-size: clamp(16px,1.042vw,20px);
+}
 
     header{
       text-align: center;
@@ -129,4 +132,9 @@ li {
     margin-right: -20%; /* リストをさらに左に移動 */
     white-space: nowrap;
   }
+}
+@media screen and (max-width: 320px) {
+.image-item .name ul {
+  font-size: clamp(14px,1.042vw,20px);
+}
 }
