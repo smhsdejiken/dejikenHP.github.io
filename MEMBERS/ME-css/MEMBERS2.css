@@ -9,13 +9,8 @@
 .image-item img {
   width: 20%;
   margin-right: 10px;
-  transition: all 0.2s ease-out;
-  cursor: pointer;
 }
 
-.image-item img:hover {
-  transform: scale(1.1);
-}
 
 
 .image-item .name { /* 名前用のスタイル */
@@ -81,6 +76,16 @@ li {
           border-bottom:2px solid #ff00d4;
           }
 
+/* 画面幅が426px以上の場合 */
+@media screen and (min-width: 426px) {
+.image-item img:hover {
+  transform: scale(1.1);
+}
+.image-item img {
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+}
+}
 /* 画面幅が425px以下の場合 */
 @media screen and (max-width: 425px) {
   .image-item {
@@ -99,9 +104,16 @@ li {
     margin-bottom: 10px;
     transition: all 0.2s ease-out;
     cursor: pointer;
+    animation: poyopoyo 3s ease-out infinite;
+    opacity: 1;
   }
-  .image-item img:hover {
-    transform: scale(1.1);
+  @keyframes poyopoyo {
+    0%, 40%, 60%, 80% {
+      transform: scale(1.0);
+    }
+    50%, 70% {
+      transform: scale(0.95);
+    }
   }
 
 
