@@ -133,7 +133,7 @@ li {
     white-space: nowrap;
   }
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 376px) {
 .image-item .name ul {
   font-size: clamp(14px,1.042vw,20px);
 }
