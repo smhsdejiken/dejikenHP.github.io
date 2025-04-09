@@ -1,0 +1,140 @@
+
+.image-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 30px;
+  margin-left: 10%;
+}
+
+.image-item img {
+  width: 20%;
+  margin-right: 10px;
+}
+
+
+
+.image-item .name { /* 名前用のスタイル */
+  margin-left: 10px; /* 画像との間隔 */
+}
+
+li {
+  list-style: none;
+}
+.image-item .name ul {
+  font-size: clamp(16px,1.042vw,20px);
+}
+
+    header{
+      text-align: center;
+      margin-bottom: 15vw;
+  }
+  p1{
+      font-size: xx-large;
+  }
+  .breadlist {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: clamp(14px,0.97vw,16px);
+      }
+      .breadlist li {
+      padding: 0;
+      }
+      .breadlist li::after {
+      content: '>';
+      margin: 0 0.347vw;
+      }
+      .breadlist li:last-child::after {
+      display: none;
+      }
+      nav{
+          margin-left:auto;
+          margin-right:auto;
+          font-size: clamp(16px,1.39vw,20px);
+          }
+          nav ul{
+          margin: 0 ;
+          padding: 0 ;
+          }
+          nav li{
+          list-style: none;
+          display: inline-block;
+          width: 10%;
+          min-width: 90px;
+          }
+          nav li:not(:last-child){
+          border-right:2px solid #ddd;
+          }
+          nav a{
+          text-decoration: none;
+          color: #333;
+          }
+          nav a.current{
+          color: #00B0F0;
+          border-bottom:2px solid #00B0F0;
+          }
+          nav a:hover{
+          color:#ff00d4;
+          border-bottom:2px solid #ff00d4;
+          }
+
+/* 画面幅が426px以上の場合 */
+@media screen and (min-width: 426px) {
+.image-item img:hover {
+  transform: scale(1.1);
+}
+.image-item img {
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+}
+}
+/* 画面幅が425px以下の場合 */
+@media screen and (max-width: 425px) {
+  .image-item {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+  }
+  .image-item .name { /* 名前用のスタイル */
+    margin-left: 10px; /* 画像との間隔 */
+    margin-top: 20px;
+  }
+
+  .image-item img {
+    width: 80%;
+    margin-right: 0;
+    margin-bottom: 10px;
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+    animation: poyopoyo 3s ease-out infinite;
+    opacity: 1;
+  }
+  @keyframes poyopoyo {
+    0%, 40%, 60%, 80% {
+      transform: scale(1.0);
+    }
+    50%, 70% {
+      transform: scale(0.95);
+    }
+  }
+
+
+  .image-item .name {
+    margin-left: 0;
+    text-align: center; /* 名前を中央揃え */
+  }
+
+  .image-item .name ul {
+    padding-left: 0;
+    text-align: left;
+    width: 100%;
+    margin-right: -20%; /* リストをさらに左に移動 */
+    white-space: nowrap;
+  }
+}
+@media screen and (max-width: 376px) {
+.image-item .name ul {
+  font-size: clamp(14px,1.042vw,20px);
+}
+}
