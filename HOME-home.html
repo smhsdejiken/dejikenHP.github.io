@@ -13,7 +13,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <title>静岡市立高等学校デジタル研究部のホームページ</title>
      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-     <link rel="stylesheet" type="text/css" href="HOME/HO-css/HOME-home.css" /> 
+     <link rel="stylesheet" type="text/css" href="HOME-home.css" /> 
 </head>
 <body>
 
@@ -53,14 +53,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="accordion">
 
     <div class="menu" onmouseover="toggle()">
-      もくじ
+      ■もくじ■
     </div>
     <ul>
-     <a href="MEMBERS1.html"=target="_blank">部員紹介</a><br>
-    <a href="GAMES-home.html" target="_blank" target="_blank">ゲームのリンク</a><br>
-    <a >沿革</a><br>
-    <a href="BLOG-home.html" target="_blank">ブログ</a><br>
-    <a href="unity">unity紹介</a><br>
+     <a class="rink" href="MEMBERS1.html" target="_blank">部員紹介</a><br>
+     <a class="rink" href="GAMES-home.html" target="_blank" target="_blank">ゲームのリンク</a><br>
+     <a class="rink">沿革</a><br>
+     <a class="rink" href="BLOG-home.html" target="_blank">ブログ</a><br>
+     <a class="rink" href="unity">unity紹介</a><br>
     </ul>
     </div>
     <script>
@@ -68,7 +68,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.querySelector('.accordion').classList.toggle('open');
     }
     </script>
- <h2 class="text">お知らせ</h2> 
+ <h2 class="text">お知らせ</h2>
+
+ <table id="dataTable">
+    <!-- JavaScriptで動的に内容が追加されます -->
+  </table>
+
  <p class="box">
     最近更新されたもの<br>
      ゲームのサイトにゲーム上がっています
@@ -78,7 +83,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
  <h3 class="text">おすすめ記事</h3>
 
     
- <p class="news"　href="https://shizuokacity-h.edumap.jp/blogs/blog_entries/view/91/149c9ebcf7e010e7742caf6dcbfa0f4e?frame_id=119" target="_blank">
+ <p class="news" href="https://shizuokacity-h.edumap.jp/blogs/blog_entries/view/91/149c9ebcf7e010e7742caf6dcbfa0f4e?frame_id=119" target="_blank">
 　マイクロドローンの講義を受け、マイクロドローンを寄贈していただきました。<br>
 
 
@@ -95,5 +100,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
  <p class="news">
   現在ホームページ制作中<br>
 </p>
+<script src="script.js"></script>
 </body>
 </html>
