@@ -51,9 +51,7 @@ p1{
         color:#ff00d4;
         border-bottom:2px solid #ff00d4;
         }
-p3{
-    text-align: center;
-}
+
 .blog-tytle{
     padding: clamp(16px,1.042vw,20px);
     font-size: clamp(16px,1.39vw,20px);
@@ -81,3 +79,46 @@ ul{
 }
 #recent-blog-list{
     font-size:25px;}
+
+    #recent-blog-list li {
+        display: block;
+        margin-bottom: 10px;
+        padding: 8px;
+        border: 1px solid #ccc;
+      }
+      
+      #recent-blog-list li a {
+        display: flex; /* Flexboxコンテナにする */
+        flex-direction: row; /* 要素を横並びにする（デフォルト） */
+        align-items: center; /* 縦方向中央揃え */
+        text-decoration: none;
+        color: #333;
+        padding-left: 0;
+      }
+      
+      .blog-image {
+        width: 200px; /* 通常時の画像の幅 */
+        height: auto;
+        margin-right: 10px;
+        vertical-align: middle;
+      }
+      
+      /* 425px以下の画面幅の場合に適用されるスタイル */
+      @media screen and (max-width: 425px) {
+        #recent-blog-list li a {
+          flex-direction: column; /* 要素を縦並びにする */
+          align-items: flex-start; /* 縦方向左揃え */
+          
+        }
+      
+        .blog-image {
+          width: 100%; /* 画像を横長にする（親要素の幅に合わせる） */
+          height: auto;
+          margin-right: 0; /* 横方向のマージンをなくす */
+          margin-bottom: 10px; /* 画像とタイトルの間に縦方向のマージンを追加 */
+          vertical-align: top; /* 上部に配置 */
+        }
+
+        #recent-blog-list{
+            font-size:20px;}
+      }
