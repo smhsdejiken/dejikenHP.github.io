@@ -1,9 +1,14 @@
 [
   {
+  {
     "name": "あさきんぼし",
     "image": "https://lh3.googleusercontent.com/d/1NdAalgGi8HrV5iV1R7BFZHDh_XP9aXoi",
     "list": ["好きな場所:家", "#F4E511","自己紹介","平凡な市高生A。- PCについて特別詳しいわけでもなく、 プログラミングが特別できるわけでもなく、- 特に特徴はないけど数学だけできます…"],
-  "altList": ["代替項目A", "代替項目B", "#00FF00"]
+    "altList": [
+      { "image": "https://lh3.googleusercontent.com/d/1NdAalgGi8HrV5iV1R7BFZHDh_XP9aXoi", "title": "代替タイトルA" },
+      { "image": "alt_image2_url", "title": "代替タイトルB" },
+      { "image": "alt_image3_url", "title": "代替タイトルC" }
+    ]
   },
     {
     "name": "マロン",
