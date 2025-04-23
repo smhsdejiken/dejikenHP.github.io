@@ -109,7 +109,7 @@ fetch('https://smhsdejiken.github.io/dejikenHP.github.io/MEMBERS/ME-js/member.js
 
      toggleSwitch.addEventListener('change', () => {
       if (toggleSwitch.checked) {
-         body.style.backgroundColor = 'black';
+         body.style.backgroundColor = '#006400';
          body.style.color = 'white'; // テキストの色も変更
          // JSONデータにaltListが存在する場合、リストを切り替える
          data.forEach(item => {
