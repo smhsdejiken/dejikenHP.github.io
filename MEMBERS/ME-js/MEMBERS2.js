@@ -109,8 +109,8 @@ fetch('https://smhsdejiken.github.io/dejikenHP.github.io/MEMBERS/ME-js/member.js
 
      toggleSwitch.addEventListener('change', () => {
       if (toggleSwitch.checked) {
-         body.style.backgroundColor = '#4b0082';
-         body.style.color = '#ff4500'; // テキストの色も変更
+         body.style.backgroundColor = '#00bfff';
+         body.style.color = 'white'; // テキストの色も変更
          // JSONデータにaltListが存在する場合、リストを切り替える
          data.forEach(item => {
           const imageItemDiv = Array.from(imagesDiv.children).find(div => div.querySelector('img').alt === item.name);
