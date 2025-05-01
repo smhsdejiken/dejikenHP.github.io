@@ -5,7 +5,7 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    background-color: #fafafa;
+    background-color: white;
     flex-direction: column; /* 縦並びへ */
 }
 
@@ -86,25 +86,26 @@ h1 {
 /* 以上がカーセル */
 
 
+
 /* テーブル全体をグリッドレイアウトに変更 */
 #dataTable {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* PC画面では横3列 */
-    width: 84vw; /* テーブル全体の幅 */
+    width: 80vw; /* テーブル全体の幅 */
     border-collapse: collapse; /* セル同士をくっつける */
     margin: 4vh 8vw; /* 上下 || 左右 */
-    border: 2px solid #000000;
+    border: 1px solid #000000;
 }
 
 #dataTable td {
     color:white;
-    border: 2px solid black;
+    border: 1px solid black;
     padding: 5% 5% 0; /* 上 | 左右 | 下 */
     text-align: center;
     cursor: pointer; /* カーソルが指マークになる */
     display: flex;
     flex-direction: column; /* 上下に分けるための設定 */
-    height: 18vw; /* 白銀比 */
+    height: 22vw; /* 白銀比 */
     overflow: hidden;
 
 }
@@ -138,14 +139,50 @@ h1 {
     font-size: 1.1vw; /* 画面の横幅から文字の大きさを変化。これがないとaboutの文章が多すぎて縦に幅を取り、写真の幅が狭くなってしまう。*/
 }
 
-#dataTable td h3 {
-    color:black;
-    position: absolute; /* 親要素から完全に独立して配置できる。重なりも指定可能に。 */
+/* title内の２つの要素を横に並べる */
+.title {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    /*position: relative; /* 親要素から完全に独立して配置できる。重なりも指定可能に。 */
+    position: absolute;
     top: 0;
     left: 0;
-    z-index: 10;
-    font-size: 1.5vw; /* 画面の横幅より大きさを設定。vhは高さから */
+    z-index: 2;
+    padding: 8% 8% 0 8%;
+    border-bottom: 2px solid #000;
 }
+
+#dataTable td h3 {
+    color:black;
+    background-color: white;
+    /*position: absolute; /* 親要素から完全に独立して配置できる。重なりも指定可能に。 */
+    /*top: 0;
+    left: 0;*/
+    margin: 0;
+    padding-right: 1.0vw;
+    text-align:left;
+    z-index: 2;
+    font-size: 1.3vw; /* 画面の横幅より大きさを設定。vhは高さから */
+    font-weight: 600;/*フォント太さ*/
+    flex-shrink: 0; /* サイズを維持 */
+}
+
+.background-fill {
+    background-color: black;
+    flex-grow: 1;
+    height: 1.3vw; /* 高さを文字のサイズに合わせるに設定 */
+    width: 100%;
+}
+
+.about {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    color: rgba(255, 255, 255, 0);
+}
+
 
 /* 画像のスタイル */
 .cell-image {
@@ -155,20 +192,12 @@ h1 {
     display: block;
 }
 
-/* 文字のスタイル */
-.text-with-background {
-    background-color: black;
-    color: white;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 1rem;
-    display: inline-block;
-}
-
 /* マウスホバー時の背景色を黒に変更 */
 #dataTable td:hover {
     background-color: black;
     transition: opacity 0.3s ease-in-out; /* 透明度が変わる際のアニメーション */
+    /* トランジションの設定 */
+    transition: background-color 0.5s ease;
 }
 /*
 #dataTable td:hover{
@@ -179,15 +208,28 @@ h1 {
     opacity: 0; /* 透明度を0にする */
 }
 
+td:hover .title {
+    border-bottom: 0px solid #000;
+}
+
+td:hover .background-fill {
+    background-color: rgba(0,0,0,0); /* 透明度を0にする */
+}
+
+td:hover .about {
+    color: rgba(255, 255, 255, 1);
+}
+
 
 /* スマホ画面では1列ずつ表示 */
 @media (max-width: 600px) {
     #dataTable {
         grid-template-columns: 1fr; /* スマホ画面では1列 */
+        width: 70vw; /* テーブル全体の幅 */
     }
 
     #dataTable td {
-        height: 40vw; /* 画面横幅で調節 */
+        height: 50vw; /* 画面横幅で調節 */
         padding: 5%; 
     }
 
@@ -205,9 +247,8 @@ h1 {
     }
 }
 
-
 /* スマホ画面でのレイアウト調整 */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     h1 {
         font-size: 7vw;
     }
@@ -236,5 +277,20 @@ h1 {
         margin: 0;
         font-size: 3vw;
     }
+
+    .title {
+        border-bottom: 1px solid #000;
+    }
+
+    #dataTable td h3 {
+        font-size: 3vw; /* 画面の横幅より大きさを設定。vhは高さから */
+    }
+
+    .background-fill {
+        background-color: black;
+        flex-grow: 1;
+        height: 3.5vw; /* 高さを文字のサイズに合わせるに設定 */
+        width: 100%;
+    }    
     
 }
