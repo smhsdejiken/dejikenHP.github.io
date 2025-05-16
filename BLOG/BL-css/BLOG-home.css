@@ -1,8 +1,8 @@
 header{
     text-align: center;
 }
-p1{
-    font-size: xx-large;
+img.headerImg{
+  width: 40%;
 }
 .breadlist {
     display: flex;
