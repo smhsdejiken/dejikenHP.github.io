@@ -1,4 +1,6 @@
-
+img.headerImg{
+  width: 35%;
+}
 .image-item {
   display: flex;
   align-items: flex-start;
