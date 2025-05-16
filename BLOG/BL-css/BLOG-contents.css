@@ -1,9 +1,9 @@
 header{
     text-align: center;
 }
-p1{
-    font-size: xx-large;
-}
+img.headerImg{
+    width: 35%;
+  }
 .breadlist {
     display: flex;
     list-style: none;
@@ -59,6 +59,7 @@ h1{
 .title{
     font-size: clamp(24px,2.08vw,30px);
     word-break: break-word;
+    text-align: center;
 }
 
 .subtitle{
