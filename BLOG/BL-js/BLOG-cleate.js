@@ -38,7 +38,7 @@ function replaceText() {
           <link rel="stylesheet" href="BLOG/BL-css/BLOG-contents.css" type="text/css">\r\n\
       </head>\r\n\
           <header>\r\n\
-              <p1>デジタル研究部</p1>\r\n\
+              <p1><img  class="headerImg"src="https://lh3.googleusercontent.com/d/19q5HdAGS9HyTxRr9CdYvq6KFsjuMd_0X"></img></p1>\r\n\
               <ol class="breadlist">\r\n\
                   <li><a href="HOME-home.html">ホーム</a></li>\r\n\
                   <li><a href="BLOG-home.html">ブログ</a></li>\r\n\
