@@ -408,3 +408,117 @@ html,body {overflow: hidden;}
     color: rgba(0, 126, 165, 0.678);
   }
 }
+
+
+/* style.css */
+
+.object6 {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden; /* 横スクロールバーを非表示にする */
+}
+
+.intro-section {
+    position: relative;
+    height: 100vh; /* 画面いっぱいの高さ */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vanish-box-container {
+    position: fixed; /* 箱を画面に固定 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap; /* 箱を折り返して配置 */
+    z-index: 100; /* コンテンツの上に表示 */
+}
+
+.vanish-box {
+    width: 33.33%; /* 3列に配置 */
+    height: 50%; /* 2行に配置 */
+    background-color: #3498db; /* 箱の色 */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* 箱の境界線 */
+    box-sizing: border-box; /* paddingとborderをwidth/heightに含める */
+    transition: transform 0.8s ease-out; /* アニメーションの速度と滑らかさ */
+}
+
+/* 各段階での箱の移動 */
+/* Stage 1: 中央から外へ */
+.vanish-box.stage-1-left {
+    transform: translateX(-100%);
+}
+.vanish-box.stage-1-right {
+    transform: translateX(100%);
+}
+
+/* Stage 2: さらに外へ */
+.vanish-box.stage-2-left {
+    transform: translateX(-200%);
+}
+.vanish-box.stage-2-right {
+    transform: translateX(200%);
+}
+
+/* Stage 3: 完全に消える */
+.vanish-box.stage-3-left {
+    transform: translateX(-300%);
+}
+.vanish-box.stage-3-right {
+    transform: translateX(300%);
+}
+
+/* 箱の色を段階的に変えるなど、バリエーションを加えることも可能 */
+.box-1, .box-6 { background-color: #99fcff; } /* 赤 */
+.box-2, .box-5 { background-color: #afd5f8; } /* 黄 */
+.box-3, .box-4 { background-color: #b4f7b4; } /* 緑 */
+
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 50px;
+    text-align: center;
+    color: #555;
+    z-index: 101; /* 箱の上に表示 */
+    animation: bounce 1s infinite alternate; /* 矢印を上下に動かすアニメーション */
+}
+
+.scroll-indicator .arrow {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #555;
+    margin: 10px auto;
+}
+
+@keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+}
+
+
+/* コンテンツ部分のスタイル */
+.content-section {
+    padding-top: 100vh; /* 箱が消えた後に表示されるように、初期位置を調整 */
+    text-align: center;
+    padding: 50px 20px;
+    min-height: 150vh; /* スクロールを発生させるため */
+    opacity: 0; /* 初期状態では非表示 */
+    transition: opacity 1s ease-in; /* フェードインアニメーション */
+}
+
+.content-section.show {
+    opacity: 1;
+}
+
+/* ページ最下部にスクロールバーが表示されるように、さらにスペースを追加 */
+.object6::after {
+    content: '';
+    display: block;
+    height: 100vh; /* スクロールできる余白 */
+}
