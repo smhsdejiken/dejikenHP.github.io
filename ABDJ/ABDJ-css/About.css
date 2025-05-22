@@ -557,7 +557,7 @@ html,body {overflow: hidden;}
     min-height: 100vh;
     font-family: sans-serif;
     overflow: hidden; /* 画像がはみ出さないように */
-    z-index: 999;
+    z-index: 998;
 }
 
 .animated-button {
@@ -575,7 +575,7 @@ html,body {overflow: hidden;}
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 998;
+    z-index: 997;
 }
 
 .animated-button:hover {
