@@ -189,11 +189,13 @@
     transform: translateY(0);
   }
 
-  body {
-    height: 100%;
-  }
-  
-  body:after {/*擬似要素をつくる*/
+body {
+   background: -webkit-linear-gradient(top, #ffffff 0%,#999999 100%);
+
+    transition: background-color 0.5s ease-in-out; /* body自体の背景色遷移（必要であれば） */
+}
+
+  body::before {/*擬似要素をつくる*/
     position: fixed;/*固定配置*/
     top: 0; left: 0;/*左上に固定*/
     width: 100%;
@@ -206,6 +208,31 @@
     background: linear-gradient(top, #ffffff 0%,#999999 100%);
     z-index: -1;
   }
+
+body:after { /* 擬似要素をつくる */
+    position: fixed; /* 固定配置 */
+    top: 0;
+    left: 0; /* 左上に固定 */
+    width: 100%;
+    height: 100%; /* 画面全体を覆う */
+    content: "";
+   background: -webkit-linear-gradient(top, #ffffff 0%,#999999 100%);
+    /* radial-gradient を使用し、カスタムプロパティで色とサイズを制御 */
+    background: radial-gradient(
+        circle at center, /* 中心から円形に広がる */
+        var(--after-bg-start-color) 0%,
+        var(--after-bg-end-color) 70% /* 70%あたりで色が完全に変わるように調整 */
+    );
+    /* 背景サイズをカスタムプロパティで指定し、アニメーション対象にする */
+    background-size: var(--after-bg-size);
+    background-repeat: no-repeat;
+    background-position: center center; /* 背景の基準点を中央に */
+
+    z-index: -1;
+    /* transition を background-size に適用してアニメーションさせる */
+    transition: background-size 0.8s ease-out, background-color 0.8s ease-out; /* background-colorはフォールバック用 */
+}
+
 /* 観覧車 */
   .object1{ 
     width: 30%;
@@ -283,7 +310,7 @@
 /* タイピング */
   .object2{
     top: 50%;
-    left: 60%;
+    left: 70%;
     position: fixed;
   }
   
@@ -416,6 +443,7 @@ html,body {overflow: hidden;}
     margin: 0;
     font-family: 'Arial', sans-serif;
     overflow-x: hidden; /* 横スクロールバーを非表示にする */
+    z-index: 98;
 }
 
 .intro-section {
@@ -507,7 +535,6 @@ html,body {overflow: hidden;}
     padding-top: 100vh; /* 箱が消えた後に表示されるように、初期位置を調整 */
     text-align: center;
     padding: 50px 20px;
-    min-height: 150vh; /* スクロールを発生させるため */
     opacity: 0; /* 初期状態では非表示 */
     transition: opacity 1s ease-in; /* フェードインアニメーション */
 }
@@ -521,4 +548,104 @@ html,body {overflow: hidden;}
     content: '';
     display: block;
     height: 100vh; /* スクロールできる余白 */
+}
+
+.object5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: sans-serif;
+    overflow: hidden; /* 画像がはみ出さないように */
+    z-index: 999;
+}
+
+.animated-button {
+    width: 200px;
+    height: 60px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    position: relative; /* 子要素の配置基準に */
+    overflow: hidden; /* はみ出した画像を隠す */
+    transition: all 0.3s ease-in-out; /* 変形のアニメーション */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 998;
+}
+
+.animated-button:hover {
+    width: 250px; /* ホバー時に幅を広げる */
+    height: 80px; /* ホバー時に高さを広げる */
+    border-radius: 10px; /* 角を丸くする */
+    background-color: #0056b3; /* 背景色を変更 */
+    transform: scale(1.1); /* 少し拡大する */
+}
+
+.button-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out; /* テキストのフェードアウト */
+    white-space: nowrap; /* テキストが折り返さないように */
+}
+
+.animated-button:hover .button-text {
+    opacity: 0; /* ホバー時にテキストを非表示に */
+}
+
+.button-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0); /* 初期状態では非表示で縮小 */
+    max-width: 90%; /* ボタン内に収まるように */
+    max-height: 90%; /* ボタン内に収まるように */
+    opacity: 0; /* 初期状態では非表示 */
+    transition: all 0.3s ease-in-out; /* 画像のアニメーション */
+}
+
+.animated-button:hover .button-image {
+    opacity: 1; /* ホバー時に画像を表示 */
+    transform: translate(-50%, -50%) scale(1); /* 拡大して表示 */
+}
+
+.summon_container {
+    display: flex;
+    flex-direction: column; /* 要素を縦に並べる */
+    align-items: center;
+    gap: 50px; /* ボタンと外部画像の間のスペース */
+}
+
+/* --- 外部に表示される画像のスタイル --- */
+.external-image-wrapper {
+    width: 300px; /* 画像を囲むラッパーの幅 */
+    height: 200px; /* 画像を囲むラッパーの高さ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box; /* paddingとborderを幅と高さに含める */
+
+    opacity: 0; /* 初期状態では非表示 */
+    transform: translateY(20px); /* 少し下に移動した状態で隠す */
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out; /* アニメーション */
+}
+
+.animated-button:hover + .external-image-wrapper {
+    /* `+` は隣接セレクタ。animated-buttonのすぐ隣のexternal-image-wrapperに適用 */
+    opacity: 1; /* ホバー時に表示 */
+    transform: translateY(0); /* 元の位置に戻す */
+}
+
+.external-image {
+    max-width: 100%; /* ラッパー内に収まるように */
+    max-height: 100%; /* ラッパー内に収まるように */
+    display: block; /* 画像の下に余白ができないように */
+    object-fit: contain; /* 画像がラッパーに収まるように調整 */
 }
