@@ -201,30 +201,51 @@ async function loadAndDisplayJSON() {
             upperDiv.appendChild(linkA);
             linkA.appendChild(img);
 
-            // 下部のDivを作成（文字を表示）
-            text.textContent = item.title || '無題';
-            linkB.href = item.url || '#';
-            linkB.target = '_blank';
-            linkB.style.textDecoration = 'none';
-            about.textContent = `${item.name || ''}<br>${item.about || ''}` || '無題';
-            //about.textContent = item.about;
-            //linkB.innerHTML = `${item.name || ''}<br>${item.about || ''}`;
-            lowerDiv.appendChild(linkB);
-            linkB.appendChild(title);
-            linkB.appendChild(about);
-            title.appendChild(text);
-            title.appendChild(backgroundFill);
+// 下部のDivを作成（文字を表示）
+           text.textContent = item.title || '無題';
+           linkB.href = item.url || '#';
+           linkB.target = '_blank';
+           linkB.style.textDecoration = 'none';
 
-            // セルにDivを追加し、行に追加
-            cell.appendChild(upperDiv);
-            cell.appendChild(lowerDiv);
-            row.appendChild(cell);
-            table.appendChild(row);
-        });
-        console.log("データ表示完了:", data);
-    } catch (error) {
-        console.error('JSONファイルの読み込み中にエラーが発生しました:', error);
-    }
+           // <br>要素を作成
+           const br = document.createElement('br');
+
+           // item.name のテキストノードを作成し、追加
+           const nameText = document.createTextNode(item.name || '');
+           about.appendChild(nameText);
+
+           // item.name が存在する場合にのみ <br> 要素を追加
+           if (item.name) {
+               about.appendChild(br);
+           }
+
+           // item.about のテキストノードを作成し、追加
+           const aboutText = document.createTextNode(item.about || '');
+           about.appendChild(aboutText);
+
+           // name と about の両方が空の場合、「無題」を設定
+           if (!item.name && !item.about) {
+               about.textContent = '無題';
+           }
+
+           //about.textContent = item.about;
+           //linkB.innerHTML = `${item.name || ''}<br>${item.about || ''}`;
+           lowerDiv.appendChild(linkB);
+           linkB.appendChild(title);
+           linkB.appendChild(about);
+           title.appendChild(text);
+           title.appendChild(backgroundFill);
+
+           // セルにDivを追加し、行に追加
+           cell.appendChild(upperDiv);
+           cell.appendChild(lowerDiv);
+           row.appendChild(cell);
+           table.appendChild(row);
+       });
+       console.log("データ表示完了:", data);
+   } catch (error) {
+       console.error('JSONファイルの読み込み中にエラーが発生しました:', error);
+   }
 }
 
 // DOMが読み込まれた後に実行
