@@ -175,7 +175,7 @@
   .box {
     aspect-ratio: 16 / 9;
     width: 45vw;
-    background-color: #dedede;
+    background-color:transparent;
     opacity: 0;
     visibility: hidden;
     transition: all 1s;
@@ -183,7 +183,7 @@
   }
   .is-active {
     /*要素を表示させる*/
-    opacity: 0.5;
+    opacity: 1;
     visibility: visible;
     /*元の位置に戻す*/
     transform: translateY(0);
@@ -309,9 +309,7 @@ body:after { /* 擬似要素をつくる */
   }
 /* タイピング */
   .object2{
-    top: 50%;
-    left: 70%;
-    position: fixed;
+    margin-left: 55%;
   }
   
   /* 点滅 */
@@ -445,6 +443,21 @@ html,body {overflow: hidden;}
     overflow-x: hidden; /* 横スクロールバーを非表示にする */
     z-index: 98;
 }
+.about_title{
+  color: #000;
+  font-size: 30px;
+}
+
+.text_box{
+  opacity: 1;
+  color: #000;
+  background-color:transparent;
+}
+
+img{
+  opacity: 1;
+  width: 100%;
+}
 
 .intro-section {
     position: relative;
@@ -547,7 +560,6 @@ html,body {overflow: hidden;}
 .object6::after {
     content: '';
     display: block;
-    height: 100vh; /* スクロールできる余白 */
 }
 
 .object5 {
