@@ -1,3 +1,68 @@
+// 初期データ配列
+let data = [];
+let originalData = [];
+
+
+document.getElementById('filter').addEventListener('change', async function () { // イベントリスナー(セレクトボックスが変更したら作動)
+    const value = this.value;
+    console.log("イベントリスナー")
+
+    /* ランダムに表示 */
+    if (value === 'random') {
+      data = shuffleArray([...originalData]);
+
+      const table = document.getElementById('dataTable');
+      table.innerHTML = ''; // 既存のデータをクリア
+
+      await loadAndDisplayJSON();
+      await createCarousel();
+    }
+
+    /* カテゴリー別に処理 */
+    else if (value === 'category') {
+      const categories = ['game', 'simulation', 'video-anime', 'app-tool'];
+
+      const table = document.getElementById('dataTable');
+        table.innerHTML = ''; // 既存のデータをクリア
+
+      for (const category of categories) {
+        data = originalData.filter(item => {
+          if (!item.categories) return false;
+          return item.categories.split(',').map(x => x.trim()).includes(category);
+        });
+        await categoriesName(category);
+        await loadAndDisplayJSON();
+        await createCarousel();
+      }
+    }
+
+    /* 時系列に並べる */
+    else if (value === 'timestamp') {
+      data = [...originalData].filter(d => d.Timestamp).sort((a, b) => {
+        return new Date(a.Timestamp) - new Date(b.Timestamp);
+      });
+
+      const table = document.getElementById('dataTable');
+      table.innerHTML = ''; // 既存のデータをクリア
+
+      await loadAndDisplayJSON();
+      await createCarousel();
+    }
+});
+
+// ランダムにシャッフルする関数
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+  
+  
+
+
+
 // URL から Drive ID を抽出する関数
 function extractDriveId(url) {
     // url が undefined または null の場合は早期リターン
@@ -15,8 +80,6 @@ function generateImageSrc(url) {
     return driveId ? `https://lh3.googleusercontent.com/d/${driveId}` : null;
 }
 
-// 初期データ配列
-let data = []; 
 
 // データを取得する非同期関数
 async function fetchData() {
@@ -25,7 +88,7 @@ async function fetchData() {
     const url = `https://script.google.com/macros/s/AKfycbyx4V1sfafo9jpLSLESk_tdWX6MWpYBEthf5A-7ZM-fdgc_fdHLKS9RcWdg94ujFQpI/exec?t=${timestamp}`;
     
     try {
-        const response = await fetch(url, { 
+        const response = await fetch(url, {
             mode: 'cors',
             cache: 'no-store' // キャッシュを使用しない
         });
@@ -68,7 +131,7 @@ async function createCarousel() {
     
     // データがない場合は取得する
     if (data.length === 0) {
-        data = await fetchData();
+        // data = await fetchData();
     }
 
     // プロファイルの画像をカルーセルに追加
@@ -156,7 +219,7 @@ async function loadAndDisplayJSON() {
     try {
         // データがない場合は取得する
         if (data.length === 0) {
-            data = await fetchData();
+            // data = await fetchData();
         }
         
         if (!data || !Array.isArray(data)) {
@@ -164,7 +227,7 @@ async function loadAndDisplayJSON() {
         }
 
         const table = document.getElementById('dataTable');
-        table.innerHTML = ''; // 既存のデータをクリア
+        // table.innerHTML = ''; // 既存のデータをクリア
 
         // データをテーブルとして追加
         data.forEach(item => {
@@ -179,13 +242,19 @@ async function loadAndDisplayJSON() {
             const img = document.createElement('img');
             const title = document.createElement('div');
             const backgroundFill = document.createElement('div');
+            const nameDiv = document.createElement('div');
+            const backgroundFillName = document.createElement('div');
+            const name = document.createElement('p');
 
             upperDiv.classList.add('upper-div');
             lowerDiv.classList.add('lower-div');
-            text.classList.add('h3');
+            text.classList.add('text');
             about.classList.add('about');
             title.classList.add('title');
             backgroundFill.classList.add('background-fill');
+            name.classList.add('name');
+            nameDiv.classList.add('nameDiv');
+            backgroundFillName.classList.add('backgroundFillName');
 
             // 上部のDivを作成（画像を表示）
             linkA.href = item.url || '#';
@@ -201,57 +270,120 @@ async function loadAndDisplayJSON() {
             upperDiv.appendChild(linkA);
             linkA.appendChild(img);
 
-// 下部のDivを作成（文字を表示）
-           text.textContent = item.title || '無題';
-           linkB.href = item.url || '#';
-           linkB.target = '_blank';
-           linkB.style.textDecoration = 'none';
+            // 下部のDivを作成（文字を表示）
+            text.textContent = `${item.title || ''}:: `;
+            linkB.href = item.url || '#';
+            linkB.target = '_blank';
+            linkB.style.textDecoration = 'none';
+            about.textContent = `${item.name || ''}:|| ${item.about || ''}` || '無題';
+            lowerDiv.appendChild(linkB);
+            linkB.appendChild(title);
+            linkB.appendChild(about);
+            title.appendChild(text);
+            title.appendChild(backgroundFill);
 
-           // <br>要素を作成
-           const br = document.createElement('br');
+            name.textContent = `${item.name || ''}:: `;
+            
+            nameDiv.appendChild(name);
+            linkB.appendChild(nameDiv);
 
-           // item.name のテキストノードを作成し、追加
-           const nameText = document.createTextNode(item.name || '');
-           about.appendChild(nameText);
 
-           // item.name が存在する場合にのみ <br> 要素を追加
-           if (item.name) {
-               about.appendChild(br);
-           }
-
-           // item.about のテキストノードを作成し、追加
-           const aboutText = document.createTextNode(item.about || '');
-           about.appendChild(aboutText);
-
-           // name と about の両方が空の場合、「無題」を設定
-           if (!item.name && !item.about) {
-               about.textContent = '無題';
-           }
-
-           //about.textContent = item.about;
-           //linkB.innerHTML = `${item.name || ''}<br>${item.about || ''}`;
-           lowerDiv.appendChild(linkB);
-           linkB.appendChild(title);
-           linkB.appendChild(about);
-           title.appendChild(text);
-           title.appendChild(backgroundFill);
-
-           // セルにDivを追加し、行に追加
-           cell.appendChild(upperDiv);
-           cell.appendChild(lowerDiv);
-           row.appendChild(cell);
-           table.appendChild(row);
-       });
-       console.log("データ表示完了:", data);
-   } catch (error) {
-       console.error('JSONファイルの読み込み中にエラーが発生しました:', error);
-   }
+            // セルにDivを追加し、行に追加
+            cell.appendChild(upperDiv);
+            cell.appendChild(lowerDiv);
+            row.appendChild(cell);
+            table.appendChild(row);
+        });
+        console.log("データ表示完了:", data);
+    } catch (error) {
+        console.error('JSONファイルの読み込み中にエラーが発生しました:', error);
+    }
 }
+
+// 「種類別」項目選択した時、項目名を表示させる関数
+async function categoriesName(categorieName) {
+    try {
+        const table = document.getElementById('dataTable');
+        // table.innerHTML = ''; // 既存のデータをクリア
+
+        // データをテーブルとして追加
+        //data.forEach(item => {
+            const row = document.createElement('tr');
+            const cell = document.createElement('td');
+            // const linkA = document.createElement('a');
+            const linkB = document.createElement('a');
+            // const about = document.createElement('p');
+            // const upperDiv = document.createElement('div');
+            const lowerDiv = document.createElement('div');
+            const text = document.createElement('h3');
+            // const img = document.createElement('img'); ←将来、画像とかもおしゃれにつけたいね。
+            const title = document.createElement('div');
+            // const backgroundFill = document.createElement('div');
+            // const nameDiv = document.createElement('div');
+            // const backgroundFillName = document.createElement('div');
+            // const name = docment.createElement('p');
+
+            // upperDiv.classList.add('upper-div');
+            lowerDiv.classList.add('categoryLowerDiv');
+            text.classList.add('categoryH3');
+            // about.classList.add('about');
+            title.classList.add('categoryTitle');
+            // backgroundFill.classList.add('background-fill');
+            // name.classList.add('name');
+            // nameDiv.classList.add('nameDiv');
+            // backgroundFillName.classList.add('backgroundFillName');
+
+            // 上部のDivを作成（画像を表示）
+            // linkA.href = item.url || '#';
+            // linkA.target = '_blank';
+            // linkA.style.textDecoration = 'none';
+
+            // photo プロパティの存在確認
+            /*
+            const photoUrl = item.img || null;
+            const imgSrc = generateImageSrc(photoUrl);
+            img.src = imgSrc || 'https://lh3.googleusercontent.com/d/1NdAalgGi8HrV5iV1R7BFZHDh_XP9aXoi';
+            img.alt = item.title || '無題';
+            img.classList.add('cell-image');
+            upperDiv.appendChild(linkA);
+            linkA.appendChild(img); */
+
+            // 下部のDivを作成（文字を表示）
+            text.textContent = `${categorieName || ''}｜▶ `;
+            linkB.href = '#';
+            linkB.target = '_blank';
+            linkB.style.textDecoration = 'none';
+            // about.textContent = `${item.name || ''}:|| ${item.about || ''}` || '無題';
+            lowerDiv.appendChild(linkB);
+            linkB.appendChild(title);
+            // linkB.appendChild(about);
+            title.appendChild(text);
+            // title.appendChild(backgroundFill);
+
+            // name.textContent = `${item.name || ''}:: `;
+            
+            // nameDiv.appendChild(name);
+            // linkB.appendChild(nameDiv);
+
+
+            // セルにDivを追加し、行に追加
+            // cell.appendChild(upperDiv);
+            cell.appendChild(lowerDiv);
+            row.appendChild(cell);
+            table.appendChild(row);
+        // });
+        console.log("データ表示完了:", data);
+    } catch (error) {
+        console.error('JSONファイルの読み込み中にエラーが発生しました:', error);
+    }
+}
+
 
 // DOMが読み込まれた後に実行
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        await fetchData();      // まずデータを取得
+        originalData = await fetchData();      // まずデータを取得
+        data = shuffleArray([...originalData]);
         await loadAndDisplayJSON();   // テーブルにデータを表示
         await createCarousel();       // カルーセルを作成
     } catch (error) {
