@@ -50,7 +50,7 @@ boxes.forEach(function(box) {
 });
 });
 
-var id = ['a','b','c','d','e']; //指定するidを全て配列で渡す
+var id = ['a','b','c']; //指定するidを全て配列で渡す
 var tx = [];
 var txCount = [];
 var txSp = 70; // テキストの表示速度
