@@ -3,46 +3,45 @@
 <head>
   <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PNBT5WK2');</script>
-<!-- End Google Tag Manager -->
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PNBT5WK2');</script>
+  <!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>■ デジタル研究部　作品 ■</title>
+  <title>JSON Table Display with Links</title>
   <link rel="stylesheet" href="GAMES/GA-css/GAME-home.css">
-  <link rel="shortcut icon" type="image/x-icon" href="https://lh3.googleusercontent.com/d/16C-6uoxinaRmGQUa6gZmJ4Rf5OW25dSd">
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PNBT5WK2"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
   <header>
-            <p1><span onclick="greet('こんにちは')">デジタル研究部</span></p1>
-            <!--所謂パンくずリスト-->
-            <ol class="breadlist">
-                <li><a href="HOME-home.html">ホーム</a></li>
+    <p1><span onclick="greet('こんにちは')">デジタル研究部</span></p1>
+    <!--所謂パンくずリスト-->
+    <ol class="breadlist">
+        <li><a href="HOME-home.html">ホーム</a></li>
+        <li><a href="BLOG-home.html">ブログ</a></li>
+        </ol>
+    <!--メニュー-->
+        <nav>
+            <ul>
+                <li><a class="current" href="HOME-home.html">ホーム</a></li>
                 <li><a href="BLOG-home.html">ブログ</a></li>
-                </ol>
-            <!--メニュー-->
-                <nav>
-                    <ul>
-                        <li><a class="current" href="HOME-home.html">ホーム</a></li>
-                        <li><a href="BLOG-home.html">ブログ</a></li>
-                        <li><a href="MEMBERS2.html">部員紹介</a></li>
-                        <li><a href="GAMES-home.html">ゲーム</a></li>
-                        <li><a href="aboutDejiken.html">部活紹介</a></li>
-                        </ul>
-                </nav>
-        </header>
-  読み込みに時間がかかることがあります
-        <p3>
-        <br><div>
-        </p3>
-    </div>
-  
+                <li><a href="MEMBERS2.html">部員紹介</a></li>
+                <li><a href="GAMES-home.html">ゲーム</a></li>
+                <li><a href="aboutDejiken.html">部活紹介</a></li>
+                </ul>
+        </nav>
+</header>
+<p3>
+<br><div>
+</p3>
+</div>
+
   <div class="main-container">
     <div class="carousel-container">
         <div class="carousel-images" id="carousel-images"></div>
@@ -54,6 +53,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p id="profile-about">説明</p>
     </div>
   </div>
+
+  <select id="filter" class="filter">
+    <option value="random">ランダム</option>
+    <option value="category">種類</option>
+    <option value="timestamp">更新順</option>
+  </select>
+
   <table id="dataTable">
     <!-- JavaScriptで動的に内容が追加されます -->
   </table>
