@@ -2,9 +2,7 @@
 header{
     text-align: center;
 }
-p1{
-    font-size: xx-large;
-}
+
 .breadlist {
     display: flex;
     list-style: none;
@@ -55,6 +53,7 @@ p1{
 
 /* ヘッダーここまで */
 
+
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -68,6 +67,12 @@ body {
 
 h1 {
     font-size: 4vw;
+}
+
+.filter{
+    margin-left: 10vw;
+    height: 3vw;
+    width: 12vw;
 }
 
 .main-container {
@@ -206,21 +211,37 @@ h1 {
     top: 0;
     left: 0;
     z-index: 2;
-    padding: 8% 8% 0 8%;
+    padding: 13% 8% 0 8%;
     border-bottom: 2px solid #000;
 }
 
-#dataTable td h3 {
-    color:black;
-    background-color: white;
-    /*position: absolute; /* 親要素から完全に独立して配置できる。重なりも指定可能に。 */
-    /*top: 0;
-    left: 0;*/
+.categoryTitle {
+    padding: 15% 8% 0 8%;
+}
+
+.categoryH3 {
+    color:white;
+    background-color: black;
     margin: 0;
-    padding-right: 1.0vw;
+    padding-right: 0vw;
     text-align:left;
     z-index: 2;
-    font-size: 1.3vw; /* 画面の横幅より大きさを設定。vhは高さから */
+    font-size: 2vw; /* 画面の横幅より大きさを設定。vhは高さから */
+    font-weight: 600;/*フォント太さ*/
+}
+
+.categoryLowerDiv {
+    background-color: black;
+}
+
+.text {
+    color:black;
+    background-color: white;
+    margin: 0;
+    padding-right: 0vw;
+    text-align:left;
+    z-index: 2;
+    font-size: 1.4vw;
     font-weight: 600;/*フォント太さ*/
     flex-shrink: 0; /* サイズを維持 */
 }
@@ -228,7 +249,7 @@ h1 {
 .background-fill {
     background-color: black;
     flex-grow: 1;
-    height: 1.3vw; /* 高さを文字のサイズに合わせるに設定 */
+    height: 1.7vw; /* 高さを文字のサイズに合わせるに設定 */
     width: 100%;
 }
 
@@ -240,6 +261,30 @@ h1 {
     color: rgba(255, 255, 255, 0);
 }
 
+.nameDiv {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    top: 2.3vw;
+    left: 0;
+    z-index: 2;
+    padding: 15% 8% 0 8%;
+    margin-left: 0vw;
+    border-bottom: 1px solid #000;
+}
+
+.name{
+    color:black;
+    background-color: white;
+    margin: 0;
+    padding-right: 0vw;
+    text-align:left;
+    z-index: 2;
+    font-size: 1.1vw; /* 画面の横幅より大きさを設定。vhは高さから */
+    font-weight: 500;/*フォント太さ*/
+    flex-shrink: 0; /* サイズを維持 */
+}
 
 /* 画像のスタイル */
 .cell-image {
@@ -248,6 +293,7 @@ h1 {
     object-fit: cover; /* 歪みを防止し、枠内に収める */
     display: block;
 }
+
 
 /* マウスホバー時の背景色を黒に変更 */
 #dataTable td:hover {
@@ -277,12 +323,18 @@ td:hover .about {
     color: rgba(255, 255, 255, 1);
 }
 
+td:hover .name {
+    background-color: rgba(0,0,0,0); /* 透明度を0にする */
+    color: rgba(255, 255, 255, 0);
+}
+
 
 /* スマホ画面では1列ずつ表示 */
 @media (max-width: 600px) {
     #dataTable {
         grid-template-columns: 1fr; /* スマホ画面では1列 */
-        width: 70vw; /* テーブル全体の幅 */
+        width: 80vw; /* テーブル全体の幅 */
+        margin-left: 10vw; /* ヘッダーをつけたら、表が左に寄るようになったので追加 */
     }
 
     #dataTable td {
@@ -290,7 +342,7 @@ td:hover .about {
         padding: 5%; 
     }
 
-    #dataTable td h3 {
+    #dataTable td text {
         font-size: 5vw;
     }
 
@@ -309,6 +361,13 @@ td:hover .about {
     h1 {
         font-size: 7vw;
     }
+
+    .filter{
+        height: 5vw;
+        width: 20vw;
+        font-size: 3vw;
+    }
+    
 
     .main-container {
         flex-direction: column; /* 横並びから縦並びへ変更 */
@@ -340,7 +399,7 @@ td:hover .about {
     }
 
     #dataTable td h3 {
-        font-size: 3vw; /* 画面の横幅より大きさを設定。vhは高さから */
+        font-size: 3.5vw; /* 画面の横幅より大きさを設定。vhは高さから */
     }
 
     .background-fill {
@@ -349,5 +408,42 @@ td:hover .about {
         height: 3.5vw; /* 高さを文字のサイズに合わせるに設定 */
         width: 100%;
     }    
+
+    .nameDiv {
+        top: 6vw;
+        left: 0;
+        z-index: 2;
+        padding: 15% 8% 0 6%;
+        margin-left: 0vw;
+        border-bottom: 1px solid #000;
+    }
     
+    .name{
+        margin: 0;
+        padding-right: 0vw;
+        text-align:left;
+        z-index: 2;
+        font-size: 2.5vw; /* 画面の横幅より大きさを設定。vhは高さから */
+        font-weight: 500;/*フォント太さ*/
+        flex-shrink: 0; /* サイズを維持 */
+    }
+
+    .categoryTitle {
+        padding: 60% 0 10% 5%;
+    }
+    
+    .categoryH3 {
+        color:white;
+        background-color: black;
+        margin: 0;
+        padding-right: 0vw;
+        text-align:left;
+        z-index: 2;
+        font-size: 12vw; /* 調節できてない、、、 */
+        font-weight: 600;/*フォント太さ*/
+    }
+    
+    .categoryLowerDiv {
+        background-color: black;
+    }
 }
