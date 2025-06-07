@@ -247,7 +247,7 @@ h1 {
 }
 
 .background-fill {
-    background-color: black;
+    background-color: white;
     flex-grow: 1;
     height: 1.7vw; /* 高さを文字のサイズに合わせるに設定 */
     width: 100%;
