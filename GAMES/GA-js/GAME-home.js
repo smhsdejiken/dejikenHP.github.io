@@ -271,7 +271,7 @@ async function loadAndDisplayJSON() {
             linkA.appendChild(img);
 
             // 下部のDivを作成（文字を表示）
-            text.textContent = `${item.title || ''}:: `;
+            text.textContent = `${item.title || ''} `;
             linkB.href = item.url || '#';
             linkB.target = '_blank';
             linkB.style.textDecoration = 'none';
@@ -282,7 +282,7 @@ async function loadAndDisplayJSON() {
             title.appendChild(text);
             title.appendChild(backgroundFill);
 
-            name.textContent = `${item.name || ''}:: `;
+            name.textContent = `${item.name || ''} `;
             
             nameDiv.appendChild(name);
             linkB.appendChild(nameDiv);
