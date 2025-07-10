@@ -62,3 +62,11 @@
   0% { transform:translateX(0); }
   100% { transform:translateX(-100%); }
 }
+body{
+  margin: 0;
+  padding: 0;
+}
+#zoomImage {
+  transition: transform 0.3s ease-out; /* 拡大・縮小のアニメーションを滑らかにする */
+  transform-origin: center center; /* 拡大の中心を画像の中央に設定 */
+}
