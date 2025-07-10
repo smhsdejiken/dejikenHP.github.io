@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+   <html>
+       <head>
+          <title>塗り絵アプリを作ろう！　〜画像処理とアルゴリズム入門〜</title>
+          <meta name="viewport" content="width=device-width,initial-scale=1">
+          <meta charset="UTF-8">
+          <link rel="stylesheet" href="BLOG/BL-css/BLOG-contents.css" type="text/css">
+			 <style type="text/css">
+		.subtitle{
+			font-size: clamp(16px,1.39vw,20px);
+			word-break: break-word;
+			padding:0.5rem 5rem 0.5rem 1rem ;
+			background-color: #164a84;
+			font-weight: bold;
+			color: #ffffff;
+			line-height: 4;
+		}
+		.subtitle::before{
+			content: "❏";
+			color: #ffffff;
+			font-weight: bold;
+		}
+	</style>
+      </head>
+          <header>
+              <p1><img  class="headerImg"src="https://lh3.googleusercontent.com/d/19q5HdAGS9HyTxRr9CdYvq6KFsjuMd_0X"></img></p1>
+              <ol class="breadlist">
+                  <li><a href="HOME-home.html">ホーム</a></li>
+                  <li><a href="BLOG-home.html">ブログ</a></li>
+                  <li><a href="blog.html">タイトルとＵＲＬを入れる</a></li>
+                  </ol>
+              <nav>
+                  <ul>
+                      <li><a class="current" href="HOME-home.html">ホーム</a></li>
+                      <li><a href="BLOG-home.html">ブログ</a></li>
+                      <li><a href="MEMBERS2.html">部員紹介</a></li>
+                      <li><a href="GAMES-home.html">ゲーム</a></li>
+                      <li><a href="unity">unity紹介</a></li>
+                  </ul>
+              </nav>
+          </header>
+       <body>
+      <div class="textContentsBox">
+          <div class="textContents">
+          <br>
+<br>
+</span><div class="title">
+<br>
+<b><br>
+ぬり絵アプリをつくろう！</b><br>
+〜画像処理とアルゴリズムの実装〜<br>
+</div><br>
+<br>
+<br>
+<img class="B-img" src="https://lh3.googleusercontent.com/d/1-INO6Bnw7tniw0wqQnHH_1LQYlS2-VV-"></img>
+<br>
+<br>
+</span><span class="text">
+<br>
+<br>
+｜制作期間：2023年 10月 ~ 2024年 5月（筆者１〜２年生）<br>
+｜制作環境：ChromeBook<br>
+｜動作環境：Webブラウザ（PC、スマホ 可）<br>
+｜プログラミング言語：日本語プログラミング言語なでしこ<br>
+｜作者：shikiishi<br>
+｜<br>
+｜作品のリンク：<br>
+<br>
+<br>
+<br>
+２年の文化祭、何出そうかなぁ、、、<br>
+<br>
+高校生で初めて、プログラミングというものを体験。<br>
+<br>
+それから半年間、私は「画像処理」を実装していました。<br>
+でも、基本的な画像処理ができるようになったくらい、、、。<br>
+<br>
+そこで、<b>単純に実線（黒い線）で囲まれた部分に色を付けるアプリ</b>を制作しようと思い立ちました。<br>
+<br>
+絵を描くならともかく、ワンクリックで色を塗るだけなら簡単〜♫<br>
+たぶん、お客さんも体験しやすいでしょう！<br>
+</span><br>
+<img class="B-img" src="https://lh3.googleusercontent.com/d/1-cyaXAwRcUTpAJkyyd-S3BsJwCGEPCLp"></img><br>
+<br>
+<br>
+</span><span class="subtitle">
+意外と複雑なしくみ、、、(泣) </span><br>
+</span><span class="text">
+<br>
+<br>
+さて、どうやって黒い線で囲まれた部分を塗りましょうか、、、<br>
+<br>
+そもそも、<b>コンピューター上では画像はピクセルという一つの色しか表せない四角形でできてます。</b><br>
+それが縦と横にたくさん並ぶことで画像となります。<br>
+<br>
+一つのピクセルも赤(Red)、青(Blue)、緑(Green)と透明度(Transparency)で構成されています。それぞれ 0~255の値です。<br>
+</span><br>
+<br>
+<img class="B-img" src="https://lh3.googleusercontent.com/d/1ya7y5XvsvtACuw38yPK2NNdERw2_NENI"></img>
+<br>
+引用：https://www.sokupuri.jp/archives/3948
+</span><span class="text">
+<br>
+<br>
+ピクセルの並び方は、画像の左下を０として、縦にY軸、横にX軸をとり、座標で表します。例：(3,10)←X軸３番目、Y軸１０番目のピクセル。<br>
+<br>
+コンピューターは基本、１つのピクセルごとに色を塗ったり値を計算したりします。<br>
+<br>
+ですから、ある部分に色を塗りたくても、一息にすべて塗ることはできません。<br>
+<b>１ピクセルごと塗っていきます。</b><br>
+<br>
+<br>
+ある黒い線で囲まれた領域を塗るとき、<br>
+<br>
+<b>❶クリックされた座標のピクセルから、左右上下の４方向のうち好きな方に１ピクセルずつ塗りながら進んでいき、<br>
+<br>
+➋黒い線（黒いピクセル）に当たった時点で、別の逃げ道を探して、<br>
+<br>
+❸また進んでいく、、、</b><br>
+</span><br>
+<img class="B-img" src="https://lh3.googleusercontent.com/d/"></img><br><br>
+</span><span class="text">
+<br>
+<br>
+という感じです。<br>
+<br>
+でも、このままだと、選択しなかった別のルートに色が塗られていないかも、、、、。<br>
+そこで、<b>選択しななかった別ルートの座標を記録しながら進み、<br>
+もう進めなくなるまで塗ったときに、記録した座標にジャンプします。</b><br>
+そしてそこからまた色を塗ります。<br>
+</span><br>
+<img class="B-img" src="https://lh3.googleusercontent.com/d/"></img><br><br>
+</span><span class="text">
+<br>
+<br>
+よって、<br>
+<b>ピクセル一つ一つを線を描くように塗っていき、実線にぶつかったら違う向きに進むという仕組みです。</b><br>
+<br>
+<br>
+※事前に、塗り終わったピクセルたちの座標も記録しておきます。<br>
+これがないと、塗り終わったピクセルを何度も塗り直して無限ループになります。<br>
+</span><br>
+<br>
+<br>
+</span><span class="subtitle">
+デバッグ作業の流れ </span><br>
+</span><span class="text">
+<br>
+<br>
+プログラムの実装は、一気にできません。<br>
+一つのプログラムを、多くの「部分」に分けて行います。<br>
+<br>
+そして、<br>
+<b><br>
+❶実装（プログラムを書く）<br>
+➋テスト（うまく動くかどうか）<br>
+</b><br>
+を繰り返します。<br>
+<br>
+うまく動かないときは、、、<br>
+<br>
+<b>✅️「エラー」が表示されていないか確認</b><br>
+プログラムの構文のミス、スペルミス、数値がないとき、表示されます。<br>
+多くの言語では、綴りが一つ違っていても動きません、、、<br>
+<br>
+<b>✅️どの関数が動いてないか確認</b><br>
+全く動かないときは、関数や命令の前後で、「関数〇〇実行」のような文字を表示するコードを書くことで、<br>どの関数が実行されていないか確認できます。これを「ログ」と言ったりします。<br>
+</span><br>
+<img class="B-img" src="https://lh3.googleusercontent.com/d/1-4FtgqHNJs8a6UJKYm6tv1bAzbITerGV"></img><br><br>
+</span><span class="text">
+<br>
+↑↑こんなふうに、どの行のプログラムを実行しているかリアルタイムで見ることも可能です✨️<br>
+<br>
+<b>✅️関数の入力・出力データが適切かどうか確認</b><br>
+怪しい箇所が見つかったら、そこで扱っているデータを「ログ」として表示させ、設計通りのデータか確認しましょう！<br>
+画像データを扱うので、情報は膨大です。<br>
+</span><br>
+<img class="B-img" src="https://lh3.googleusercontent.com/d/10cLxgQtzJ8jjy38KGeyxERsnUdjsfb8-"></img><br><br>
+</span><span class="text">
+<br>
+<br>
+↑「Undefined＝数値が見つからない」「null＝数値なし」が表示されるとわかりやすい<br>
+<br>
+</span><br>
+
+</span><span class="text">
+<br>
+<br>
+<br>
+<br>
+いままで作ってきたアルゴリズムの中では、一番複雑なもので、はじめはほとんど動きません💧<br>
+</span><br>
+<img class="B-img" src="https://lh3.googleusercontent.com/d/"></img><br><br>
+<br>
+<img class="B-img" src="https://lh3.googleusercontent.com/d/"></img><br><br>
+</span><span class="text">
+<br>
+<br>
+やっと動きました✨️<br>
+</span><br>
+<img class="B-img" src="https://lh3.googleusercontent.com/d/1-dSD_NAUORfQ5A8OGlgbcaZaNeoGZJT4"></img><br><br>
+<iframe width="400" height="250" src="https://www.youtube.com/embed/I09FaL2IrR0?si=vSy3WgkJ8QuFhtOM?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</span><span class="text">
+ 
+<br>
+<br>
+全く動かないプログラムが、生き物のように動き出す瞬間が、プログラミングの醍醐味です🔥<br>
+この時、昼休みに一人で発狂していました、、、</span><br>
+<img class="B-img" src="https://lh3.googleusercontent.com/d/1-INO6Bnw7tniw0wqQnHH_1LQYlS2-VV-"></img><br>
+<img class="B-img" src="https://lh3.googleusercontent.com/d/1-9x3BFliT6NAhpcRk_ub4yDJ6VDMYgd4"></img><br>
+↑完成当初、こんな写真をLINEで 友達に送りまくりました、、、
+<br>
+<br>
+<br>
+<span class="subtitle">
+まだ作業は終わらない、、、</span><br>
+</span><span class="text">
+<br>
+<br>
+塗れるようになっても、まだ完成ではありません。<br>
+まず、塗る色を変えることができません。<br>
+<br>
+今回は３つの「値指定バー」で、赤、青、緑を調節するとして、、、、、<br>
+自分が作った色がどんな色か確認できるようにしたいです。<br>
+<br>
+ということでこんな感じ〜♪<br>
+</span><br>
+<img class="B-img" src="https://lh3.googleusercontent.com/d/1-h5pkV44LVUekj0ndu_ErEihgqsmhIt0"></img><br><br>
+</span><span class="text">
+<br>
+<br>
+色を表示する窓に、値指定バーからの数値の色を塗って表示してます。<br>
+値指定バーの上にカーソルが乗っている間、<br>
+窓の色を更新し続けることで、リアルタイムで色を確認できます。<br>
+<br>
+<br>
+また、今回は、線のみの画像をいくつか用意しますが、持ち合わせていないユーザーのために、サンプル画像として、「初音ミク」も用意しました。<br>
+</span><br>
+<img class="B-img" src="https://lh3.googleusercontent.com/d/1qEkw3FezHaiXkui0p7TrOZExQ1eVE6vg"></img><br><br>
+</span><span class="text">
+<br>
+<br>
+文化祭本番では、お客さんが塗った絵を印刷します！<br>
+ですから、印刷のために、画像をダウンロードする機能もつけます。<br>
+</span><br>
+<img class="B-img" src="https://lh3.googleusercontent.com/d/10KICVNnMimJES5oE2LkfykgOXu6t0z5f"></img><br><br>
+<br>
+<br>
+<br>
+</span><span class="subtitle">
+そして、文化祭当日 </span><br>
+</span><span class="text">
+<br>
+<br>
+私が用意した画像は以下の６枚。<br>
+</span><br>
+<img class="B-img" src="https://lh3.googleusercontent.com/d/1-V3GTIkwy0oYL9QMOHDkeybPkWDxvS9O"></img><br>
+<img class="B-img" src="https://lh3.googleusercontent.com/d/1-Y7c98_UFrryN4LdQrMOx2PENcyoQXC4"></img><br>
+<img class="B-img" src="https://lh3.googleusercontent.com/d/1-Stp0gCXXQB80xilnVf-eERBKth3P3Ux"></img><br>
+<img class="B-img" src="https://lh3.googleusercontent.com/d/1-O4OcshNhUfJHBvAot4LomGHEVJUQJ0L"></img><br>
+<img class="B-img" src="https://lh3.googleusercontent.com/d/1-KEr8mLy6pJteuFNsEEBMBd3i2Zxoc3p"></img><br>
+</span><span class="text">
+絵の線に、１ピクセルでも隙間があると、意図していない部分に色が広がるので注意⚡️
+今回は、調節したものを用意して塗ってもらいました！
+<br>
+<br>
+<br>
+まず、最初のお客さんは、二人の女子高校生でした！<br>
+<br>
+なんと、二人とも「Lain」をご存知で、クオリティーが高いです！<br>
+ここで、コピー機の不具合で、印刷が真っ黒に、、、💦<br>
+</span><br>
+<img class="B-img" src="https://lh3.googleusercontent.com/d/1-YyCwnRbEaw_3Hdr_OKL0mKHU9MDup7Q"></img><br><br>
+<img class="B-img" src="https://lh3.googleusercontent.com/d/1-ioCZhf86COaEaSlLEMt3LwIi1VNEWT9"></img><br><br>
+</span><span class="text">
+<br>
+<br>
+事前に準備が足りないデジ研の恒例行事です。<br>
+かなりの時間待たせてしまいました。本当に申し訳なかったです。<br>
+<br>
+こんなふうに、<b>多くの方に自分のアプリを実際に使ってもらうのは、かなり感動します。</b><br>
+これは、実際に体験してみないとわからない感情です。<br>
+<br>
+自己満足で終わらず、人の役に立つ（？）というのがデジタル研究部の活動の大きな特徴でしょう。<br>
+</span><br>
+<br>
+<br>
+</span><span class="subtitle">
+なぜ、色塗りソフトなんて作ったのか </span><br>
+</span><span class="text">
+<br>
+<br>
+もともと中学の頃、コピー用紙でアニメを制作していました。<br>
+<img class="B-img" src="https://lh3.googleusercontent.com/d/14AGEVdbuKhvPidZoEh70XT3ovIfAA1pq"></img><br>
+↑コピー用紙
+<br>
+<br>
+中学３年生でコロナに感染したとき、リモートで授業を受けるため初めてパソコンに触れました。<br>
+<b>初めて電卓以外のコンピューターを触り、初めてインターネットにまともに触れ、初めてYoutubeというものを使いました。</b><br>（もっぱら、SNSたるものを使ったのは高校１年生でした、、、）<br>
+だらだらしながら数え切れないほどのコンテンツを漁る最初の体験です。<br>
+<br>
+一方、中学の授業でもGoogleスライドとかを使うようになりました。<br>
+<br>
+このGoogleスライド、ページを複製して、複製された２枚を切り替えても、全く画面が動きませんでした、、、、<br>
+当たり前です。<br>
+だって複製されたスライド２枚は、データが全く同じ複製だからです。<br>
+<br>
+<b>でもこれがすごいんです！！</b><br>
+<br>
+だって、紙に描いた線は、どんなに忠実になぞってもズレが生じていて、それがアニメとしてパラパラ動かすとブレてしまいます。<br>
+でも、デジタル技術を使えば、ブレは生じない。夢のような機械です。<br>
+<br>
+私は、紙ベースの、実線に色を塗るような現代のアニメに疑問を抱いていました。<br>
+デジタル技術を使えば、濃淡のある水彩画や、鉛筆のデッサンとかもアニメにできて、もっと自由なアニメーションを作れるのではないかと思ったのです。<br>
+<br>
+「アニメ制作用アプリを開発して、そのアプリを使ってアニメをつくろう！」<br>
+<br>
+そう考え、私は「デジタル研究部」に入部したのでした。<br>
+<br>
+<br>
+<br>
+そんな感じで、当時はかなり帰宅部の雰囲気が強いデジ研で、プログラミングを独学し、簡単な画像処理を見様見真似で作ってきました。<br>
+「画像のコピー」からはじめ、「画像の白黒化」「ビネガー」「エッジ検出」とかとか、、、<br>
+</span><br>
+<img class="B-img" src="https://lh3.googleusercontent.com/d/1-8-NS6TG5VjGwE_a_2e1jnCqKU1cUQjd"></img><br>
+私のプログラムでエッジ検出した写真。<br>物の境界を線で表してくれる面白い処理です！
+<br>
+<br>
+</span><span class="text">
+でも、アニメ制作用アプリとか、そんな高度なもの作れません、、、💧<br>
+<br>
+そこで、単純に実線（黒い線）で囲まれた部分に色を付けるアプリを制作しようと思い立ちました。<br>
+アニメ制作の中で、ベタ塗り（彩色）の作業はとても面白いんです。<br>
+<img class="B-img" src="https://lh3.googleusercontent.com/d/1-cyaXAwRcUTpAJkyyd-S3BsJwCGEPCLp"></img><br><br>
+<br>
+ワンクリックでキャラクターに色が塗られていく。<br>
+もちろん商業アニメで何百枚と塗るとしたら地獄ですが、、、。<br>
+<br>
+そのうえ絵を描くより、色を塗るだけのほうが、お客さんもわかりやすい！<br>
+<br>
+ってわけです。<br>
+<br>
+<br>
+この文化祭から約１年。<br>
+いま私は、短編アニメ『よるにはやむよ』を作っています。<br>
+これを、自分の開発している「imageOS」というツールを使って制作できればと思っています。<br>
+<img class="B-img" src="https://lh3.googleusercontent.com/d/1gqV7tFyfUFjtNBeomUfooSIl15hxOvvF"></img><br>
+↑『よるにはやむよ』の教室シーンの背景。Googleスライドで作成。
+<br>
+ではまた。<br>
+</span><br>
+<br>
+<br>
+<br>
+（制作：shikiishi）<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+      </div>
+</div></body>
+      <footer id="footer">
+          <script src="BLOG/BL-js/BLOG-home.js" defer></script>
+              <small><span>デジタル研究部 2024</span></small>
+  </footer>
+
+</html>
