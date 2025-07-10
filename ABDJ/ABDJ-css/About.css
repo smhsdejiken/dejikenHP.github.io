@@ -175,7 +175,9 @@
   .box {
     aspect-ratio: 16 / 9;
     width: 45vw;
+
     background-color:transparent;
+
     opacity: 0;
     visibility: hidden;
     transition: all 1s;
