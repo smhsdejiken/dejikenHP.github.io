@@ -1,0 +1,91 @@
+[
+    { 
+        "name": "トロフィーを倒すな！", 
+        "age": 25, 
+        "city": "Riki", 
+        "photo": "https://lh3.googleusercontent.com/d/1G0HrybhUPbEwfsmRgHmkv1q8_xThQcaQ", 
+        "url": "https://unityroom.com/games/dont_knock_it_over",
+        "about":"ブロックを消して、トロフィーを倒さずに地面に下ろすゲームです！"
+    },
+    {
+        "name": "コンウェイのライフゲーム", 
+        "age": 30, 
+        "city": "依頼", 
+        "photo": "https://lh3.googleusercontent.com/d/1NdAalgGi8HrV5iV1R7BFZHDh_XP9aXoi", 
+        "url": "https://editor.p5js.org/eureka5129/full/fBKu4-qlv",
+        "about":"「ライフゲーム」というシミュレーションで遊べる作品です。自分でパターンを作成して、それが動くのを見ることができます。操作についてはヘルプを見てくれると嬉しいです"
+    },
+    {
+        "name": "タダサバイバー", 
+        "age": 30, 
+        "city": "のたか", 
+        "photo": "https://lh3.googleusercontent.com/d/1byIbOMGLvZuRoGqvzDqD9_a7_L4lvB5T", 
+        "url": "https://scratch.mit.edu/projects/1109756793/",
+        "about":"押し寄せる敵を倒し、装備を強くして生き残ろう！　　随時更新予定。"
+    },
+    {
+        "name": "★ぬりえアプリ★（アニメ制作用）", 
+        "age": 30, 
+        "city": "Shikiishi", 
+        "photo": "https://lh3.googleusercontent.com/d/1tmrNmnFac0ynC4rZoO411ciENHZ22CDA", 
+        "url": "https://n3s-sandbox.nadesi.com/widget.php?2794&run=1&allow=1",
+        "about":"絵の線で囲まれた部分をクリックすると、色が塗れます。 自分の持っているファイルもアップロード可能です！"
+    },
+    { 
+        "name": "ピンポンゲーム！", 
+        "age": 25, 
+        "city": "", 
+        "photo": "https://lh3.googleusercontent.com/d/1wv6iSJR91-Tkng8kxv0hBoWMfjkyRfSZ", 
+        "url": "https://scratch.mit.edu/projects/966423790/",
+        "about":"これは、Scrachでつくったゲームです★　難易度：高い　"
+    },
+    {
+        "name": "ハンティングアクションもどき", 
+        "age": 30, 
+        "city": "のりたま", 
+        "photo": "https://lh3.googleusercontent.com/d/1JPfNYjTWjGuZFS8ndIFctANzOeOObK0d", 
+        "url": "http://scratch.mit.edu/projects/1111780260",
+        "about":"某ハンティングアクションを意識して作りましたが、まだ調整が必要なのでアップデートにご期待ください。其方にも書いてあるのですが、作品の方向性が変わるかもしれないのでご意見お願いします。"
+    },
+    {
+        "name": "イライラ棒", 
+        "age": 30, 
+        "city": "あさきんぼし", 
+        "photo": "https://lh3.googleusercontent.com/d/1NdAalgGi8HrV5iV1R7BFZHDh_XP9aXoi", 
+        "url": "https://scratch.mit.edu/projects/1106947577",
+        "about":"イライラ棒です。イライラします"
+    },
+    {
+        "name": "お祈り乱数ゲー", 
+        "age": 30, 
+        "city": "ucd", 
+        "photo": "https://lh3.googleusercontent.com/d/1h-ATIUtT5bQAZ4_KNEVNnzrdjk8m919T", 
+        "url": "https://scratch.mit.edu/projects/1080435993/",
+        "about":"アンテやってた人なら多分簡単です。アンテのようなゲームの練習みたいな感じになってます。"
+    },
+    {
+        "name": "りんご取り🍎🍏🍎", 
+        "age": 30, 
+        "city": "", 
+        "photo": "https://lh3.googleusercontent.com/d/1azNuSStQ22WjYc9yVzOyM8vtipp5g-4j", 
+        "url": "hhttps://scratch.mit.edu/projects/1110287571/",
+        "about":"虫を避けてたくさんりんご取れ！"
+    },
+    {
+        "name": "ジャグラー", 
+        "age": 30, 
+        "city": "トミカプラレール", 
+        "photo": "https://lh3.googleusercontent.com/d/1NdAalgGi8HrV5iV1R7BFZHDh_XP9aXoi", 
+        "url": "https://scratch.mit.edu/projects/1030095256",
+        "about":"ジャグラー初心者でも安心！シンプルなゲーム性で誰でも気軽に楽しめる！"
+    },
+    {
+        "name": "ウォーターメロンゲーム", 
+        "age": 30, 
+        "city": "cud", 
+        "photo": "https://lh3.googleusercontent.com/d/1_2tzN-xHsxFzQlyy0o4tdy3H7yJeW6kX", 
+        "url": "https://scratch.mit.edu/projects/1030440201",
+        "about":"同じ色の球をぶつけて、できるだけ大きい玉を作ろう！"
+    }
+]
+  

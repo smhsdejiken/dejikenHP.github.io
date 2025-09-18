@@ -1,0 +1,449 @@
+/* ヘッダー */
+header{
+    text-align: center;
+}
+
+.breadlist {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: clamp(14px,0.97vw,16px);
+    }
+    .breadlist li {
+    padding: 0;
+    }
+    .breadlist li::after {
+    content: '>';
+    margin: 0 0.347vw;
+    }
+    .breadlist li:last-child::after {
+    display: none;
+    }
+    nav{
+        margin-left:auto;
+        margin-right:auto;
+        font-size: clamp(16px,1.39vw,20px);
+        }
+        nav ul{
+        margin: 0 ;
+        padding: 0 ;
+        }
+        nav li{
+        list-style: none;
+        display: inline-block;
+        width: 10%;
+        min-width: 90px;
+        }
+        nav li:not(:last-child){
+        border-right:2px solid #ddd;
+        }
+        nav a{
+        text-decoration: none;
+        color: #333;
+        }
+        nav a.current{
+        color: #00B0F0;
+        border-bottom:2px solid #00B0F0;
+        }
+        nav a:hover{
+        color:#ff00d4;
+        border-bottom:2px solid #ff00d4;
+        }
+
+/* ヘッダーここまで */
+
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: white;
+    flex-direction: column; /* 縦並びへ */
+}
+
+h1 {
+    font-size: 4vw;
+}
+
+.filter{
+    margin-left: 10vw;
+    height: 3vw;
+    width: 12vw;
+}
+
+.main-container {
+    margin: 0 8vw; /* 上下 || 左右 */ 
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.carousel-container {
+    width: 60%;
+    max-width: 600px;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid black;
+    border-radius: 10px;
+    aspect-ratio: 16 / 9; /* 表示領域のアスペクト比を設定 */
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-images img {
+    flex-shrink: 0;
+    width: 100%; /* 表示領域の幅に合わせる */
+    height: 100%; /* 親要素に合わせて高さをトリミング */
+    object-fit: cover; /* 画像のトリミング方法を指定 */
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.carousel-button.prev {
+    left: 10px;
+}
+
+.carousel-button.next {
+    right: 10px;
+}
+
+.info-container {
+    width: 30%;
+    max-width: 300px;
+    background-color: #fff;
+    border: 2px solid #aaa;
+    border-radius: 2vw; /*たぶん丸み */
+    padding: 2vw;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
+}
+
+.info-container h2 {
+    margin: 0 0 10px;
+    font-size: 2vw;
+    color: black;
+}
+
+.info-container p {
+    margin: 0;
+    font-size: 1.2vw;
+    color: #444;
+}
+
+/* 以上がカーセル */
+
+
+
+/* テーブル全体をグリッドレイアウトに変更 */
+#dataTable {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* PC画面では横3列 */
+    width: 80vw; /* テーブル全体の幅 */
+    border-collapse: collapse; /* セル同士をくっつける */
+    margin: 4vh 8vw; /* 上下 || 左右 */
+    border: 1px solid #000000;
+}
+
+#dataTable td {
+    color:white;
+    border: 1px solid black;
+    padding: 5% 5% 0; /* 上 | 左右 | 下 */
+    text-align: center;
+    cursor: pointer; /* カーソルが指マークになる */
+    display: flex;
+    flex-direction: column; /* 上下に分けるための設定 */
+    height: 22vw; /* 白銀比 */
+    overflow: hidden;
+
+}
+
+/* セル内のリンクがセル全体を覆う＊＊＊ */
+#dataTable td a {
+    display: block; /* ブロック要素にしてセル全体を覆う */
+    width: 100%; /* セルの幅に合わせる */
+    height: 100%; /* セルの高さに合わせる */
+    text-decoration: none; /* 下線を削除 */
+    color: inherit; /* テキスト色を親要素に継承 */
+    position: relative; /* <h3> を相対的に配置するための基準 */
+}
+
+/* 上部のDiv（画像用） */
+.upper-div {
+    flex: 1.1; /* 上半分を占める */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* 画像が枠をはみ出さないように */
+}
+
+/* 下部のDiv（文字用） */
+.lower-div {
+    flex: 1; /* 下半分を占める */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* <h3> を相対的に配置するための基準 */
+    font-size: 1.1vw; /* 画面の横幅から文字の大きさを変化。これがないとaboutの文章が多すぎて縦に幅を取り、写真の幅が狭くなってしまう。*/
+}
+
+/* title内の２つの要素を横に並べる */
+.title {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    /*position: relative; /* 親要素から完全に独立して配置できる。重なりも指定可能に。 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    padding: 13% 8% 0 8%;
+    border-bottom: 2px solid #000;
+}
+
+.categoryTitle {
+    padding: 15% 8% 0 8%;
+}
+
+.categoryH3 {
+    color:white;
+    background-color: black;
+    margin: 0;
+    padding-right: 0vw;
+    text-align:left;
+    z-index: 2;
+    font-size: 2vw; /* 画面の横幅より大きさを設定。vhは高さから */
+    font-weight: 600;/*フォント太さ*/
+}
+
+.categoryLowerDiv {
+    background-color: black;
+}
+
+.text {
+    color:black;
+    background-color: white;
+    margin: 0;
+    padding-right: 0vw;
+    text-align:left;
+    z-index: 2;
+    font-size: 1.4vw;
+    font-weight: 600;/*フォント太さ*/
+    flex-shrink: 0; /* サイズを維持 */
+}
+
+.background-fill {
+    background-color: white;
+    flex-grow: 1;
+    height: 1.7vw; /* 高さを文字のサイズに合わせるに設定 */
+    width: 100%;
+}
+
+.about {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    color: rgba(255, 255, 255, 0);
+}
+
+.nameDiv {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    top: 2.3vw;
+    left: 0;
+    z-index: 2;
+    padding: 15% 8% 0 8%;
+    margin-left: 0vw;
+    border-bottom: 1px solid #000;
+}
+
+.name{
+    color:black;
+    background-color: white;
+    margin: 0;
+    padding-right: 0vw;
+    text-align:left;
+    z-index: 2;
+    font-size: 1.1vw; /* 画面の横幅より大きさを設定。vhは高さから */
+    font-weight: 500;/*フォント太さ*/
+    flex-shrink: 0; /* サイズを維持 */
+}
+
+/* 画像のスタイル */
+.cell-image {
+    width: 100%; /* 画像の幅をセル内で調整 */
+    height: 100%;
+    object-fit: cover; /* 歪みを防止し、枠内に収める */
+    display: block;
+}
+
+
+/* マウスホバー時の背景色を黒に変更 */
+#dataTable td:hover {
+    background-color: black;
+    transition: opacity 0.3s ease-in-out; /* 透明度が変わる際のアニメーション */
+    /* トランジションの設定 */
+    transition: background-color 0.5s ease;
+}
+/*
+#dataTable td:hover{
+    color: white;
+}
+*/
+#dataTable td:hover h3 {
+    opacity: 0; /* 透明度を0にする */
+}
+
+td:hover .title {
+    border-bottom: 0px solid #000;
+}
+
+td:hover .background-fill {
+    background-color: rgba(0,0,0,0); /* 透明度を0にする */
+}
+
+td:hover .about {
+    color: rgba(255, 255, 255, 1);
+}
+
+td:hover .name {
+    background-color: rgba(0,0,0,0); /* 透明度を0にする */
+    color: rgba(255, 255, 255, 0);
+}
+
+
+/* スマホ画面では1列ずつ表示 */
+@media (max-width: 600px) {
+    #dataTable {
+        grid-template-columns: 1fr; /* スマホ画面では1列 */
+        width: 80vw; /* テーブル全体の幅 */
+        margin-left: 10vw; /* ヘッダーをつけたら、表が左に寄るようになったので追加 */
+    }
+
+    #dataTable td {
+        height: 50vw; /* 画面横幅で調節 */
+        padding: 5%; 
+    }
+
+    #dataTable td text {
+        font-size: 5vw;
+    }
+
+    .upper-div {
+        flex: 1.5; /* 上半分よりすこし大きく */
+    }
+
+    .lower-div {
+        flex: 1;
+        font-size: 3vw;
+    }
+}
+
+/* スマホ画面でのレイアウト調整 */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 7vw;
+    }
+
+    .filter{
+        height: 5vw;
+        width: 20vw;
+        font-size: 3vw;
+    }
+    
+
+    .main-container {
+        flex-direction: column; /* 横並びから縦並びへ変更 */
+        align-items: center;
+        gap: 3px;
+    }
+
+    .carousel-container {
+        width: 100%; /* スマホ画面ではカルーセルを画面幅に合わせる */
+    }
+
+    .info-container {
+        width: 100%; /* 情報表示も画面幅に合わせる */
+        margin-top: 0px; /* 縦並びの余白を追加 */
+    }
+
+    .info-container h2 {
+        margin: 0 0 5px;
+        font-size: 5vw;
+    }
+    
+    .info-container p {
+        margin: 0;
+        font-size: 3vw;
+    }
+
+    .title {
+        border-bottom: 1px solid #000;
+    }
+
+    #dataTable td h3 {
+        font-size: 3.5vw; /* 画面の横幅より大きさを設定。vhは高さから */
+    }
+
+    .background-fill {
+        background-color: black;
+        flex-grow: 1;
+        height: 3.5vw; /* 高さを文字のサイズに合わせるに設定 */
+        width: 100%;
+    }    
+
+    .nameDiv {
+        top: 6vw;
+        left: 0;
+        z-index: 2;
+        padding: 15% 8% 0 6%;
+        margin-left: 0vw;
+        border-bottom: 1px solid #000;
+    }
+    
+    .name{
+        margin: 0;
+        padding-right: 0vw;
+        text-align:left;
+        z-index: 2;
+        font-size: 2.5vw; /* 画面の横幅より大きさを設定。vhは高さから */
+        font-weight: 500;/*フォント太さ*/
+        flex-shrink: 0; /* サイズを維持 */
+    }
+
+    .categoryTitle {
+        padding: 60% 0 10% 5%;
+    }
+    
+    .categoryH3 {
+        color:white;
+        background-color: black;
+        margin: 0;
+        padding-right: 0vw;
+        text-align:left;
+        z-index: 2;
+        font-size: 12vw; /* 調節できてない、、、 */
+        font-weight: 600;/*フォント太さ*/
+    }
+    
+    .categoryLowerDiv {
+        background-color: black;
+    }
+}

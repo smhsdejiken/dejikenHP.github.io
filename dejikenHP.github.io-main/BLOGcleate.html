@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex">
+<title>デジタル研究部ブログ（仮）</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="BLOG/BL-css/BLOG-cleate.css" type="text/css">
+<link rel="shortcut icon" type="image/x-icon" href="https://lh3.googleusercontent.com/d/16C-6uoxinaRmGQUa6gZmJ4Rf5OW25dSd">
+</head>
+<body>
+    a;タイトル<br>
+    b;サブタイトル<br>
+    c;それ以外<br>
+    d;太字,D;終了<br>
+    e;下線,E;終了<br>
+    f;斜め,F;終了<br>
+    #r赤文字,#g緑文字,#b青文字<br>
+    @y黄背景,@r赤背景,@b青背景<br>
+    %背景or文字終了(重ねてるものの回数分打つ)<br>
+    ※改行時の文字の置きなおしは不要<br>
+    <a href="BLOG-update.html">ブログ更新方法</a><br>
+    <a href="BLOGcode.html">埋め込み用ソースコードhtml変換</a>
+        <!-- 広がるテキストボックス -->
+    <label for="FlexTextarea"></label>
+    <div class="FlexTextarea">
+      <div class="FlexTextarea__dummy" aria-hidden="true"></div>
+      <textarea id="FlexTextarea" class="FlexTextarea__textarea" placeholder="ここに入力"></textarea>
+    </div>
+        <!-- いろいろ処理 -->
+    <button onclick="replaceText()">作成</button>
+    <button onclick="copyToClipboard()">コピー</button>
+    <button onclick="downloadText()">ダウンロード</button>
+    <textarea id="result" rows="10" cols="180"placeholder="結果"></textarea>
+  
+
+</body>
+<footer id="footer"><small>
+  <span>デジタル研究部 2024</span>
+  <div id="d2">&nbsp;</div></small>
+</footer>
+<script src="BLOG/BL-js/BLOG-cleate.js" defer></script>
+</html>

@@ -1,0 +1,95 @@
+/* 基本設定 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+a {
+    text-decoration: none;
+    color: inherit; /* リンクの色を親要素に合わせる */
+}
+
+/* 部員のリスト */
+.member {
+    padding: 20px;
+    border-bottom: 1px solid #ccc; /* 各部員を区切る線 */
+    margin-bottom: 10px;
+}
+
+.member:last-child {
+    border-bottom: none; /* 最後の部員の下には線を表示しない */
+}
+
+h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+p {
+    margin: 5px 0 0;
+    font-size: 1em;
+    color: #666;
+}
+
+/* メニュー */
+.menu {
+    width: 160px;
+    margin: 10px;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    list-style: none;
+    font-weight: bold;
+    background-color: #cccccc; /* 背景色を追加 */
+}
+
+.menuTitle {
+    font-size: 22px;
+    color: #88d820;
+    background-color: #63319c;
+    padding: 10px;
+    text-align: center;
+}
+
+.menu ul {
+    padding: 0;
+    background-image: url("images/bg_submenu_footer.gif");
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+
+ul.menu li {
+    font-size: 90%;
+    list-style: none;
+    display: block; /* リスト項目を縦に並べる */
+    font-weight: bold;
+    margin: 0;
+    padding: 10px 20px;
+}
+
+ul.menu li a {
+    display: block;
+    padding: 8px 20px; /* パディングを調整 */
+    background-color: #eeeeee;
+    color: #333;
+    text-decoration: none;
+}
+
+ul.menu li a:hover {
+    background-color: #ffffff;
+}
+
+/* メニューの位置調整（レスポンシブ対応） */
+@media (max-width: 768px) {
+    .menu {
+        position: static;
+        width: 100%;
+        margin: 0;
+    }
+
+    .menu ul {
+        background-color: #f4f4f4;
+    }
+}
