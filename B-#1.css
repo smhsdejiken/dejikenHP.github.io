@@ -1,0 +1,35 @@
+<style type="text/css">
+h1 {
+    font-size: 30px;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 8px 14px;
+}
+ol {
+    border: 2px solid #F3F3F3;
+    padding: 14px 14px 14px 32px;
+}
+/* メニューボタン */
+.menubutton {
+    position: fixed;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    z-index: 100;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    background: white;
+    display: none;
+    }
+    .menubutton i {
+    display: block;
+    width: 30px;
+    height: 5px;
+    background: white;
+    margin-bottom: 7.5px;
+    }
+    .menubutton i:last-child {
+    margin-bottom: 0;
+    }
+</style>
