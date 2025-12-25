@@ -1,97 +1,67 @@
-function flexTextarea(el) {
-  const dummy = el.querySelector('.FlexTextarea__dummy')
-  el.querySelector('.FlexTextarea__textarea').addEventListener('input', e => {
-    dummy.textContent = e.target.value + '\u200b'
-  })
+/* 全体レイアウト */
+.main-container { display: flex; gap: 20px; margin: 10px 0; }
+.editor-side, .preview-side { flex: 1; min-width: 0; }
+.label { font-size: 12px; color: #666; margin-bottom: 5px; }
+
+/* 魔法の入力エリア（自動伸縮 ＋ ハイライト） */
+.FlexTextarea {
+    position: relative;
+    font-size: 1rem;
+    line-height: 1.8;
+    border: 1px solid #b6c3c6;
+    border-radius: 4px;
+    background: #fff;
+    min-height: 300px;
+}
+.FlexTextarea__dummy {
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 10px;
+    min-height: 300px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: #333; /* 本文の色 */
+}
+.FlexTextarea__textarea {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    box-sizing: border-box; padding: 10px;
+    background-color: transparent; /* 背景を透明にしてダミーの文字を透かす */
+    color: transparent; /* 入力文字自体は透明にする */
+    caret-color: #333; /* カーソルだけは見せる */
+    border: none; font: inherit; resize: none; overflow: hidden;
 }
 
-document.querySelectorAll('.FlexTextarea').forEach(flexTextarea)
+/* タグのハイライト色 */
+.hl-tag { color: #ff4500; font-weight: bold; background: #fff0f0; border-radius: 2px; }
 
-function replaceText() {
-  const inputText = document.getElementById('FlexTextarea').value;
-  const replacedText = inputText
-    .replace(/a;/g, '</span><span class="title">'+ '\r\n') 
-    .replace(/b;/g, '</span><span class="subtitle">'+ '\r\n')
-    .replace(/c;/g, '</span><span class="text">'+ '\r\n')
-    .replace(/d;/g, '<b>')
-    .replace(/D;/g, '</b>')
-    .replace(/e;/g, '<u>')
-    .replace(/E;/g, '</u>')
-    .replace(/f;/g, '<i>')
-    .replace(/F;/g, '</i>')
-    .replace(/%/g, '</span>')
-    .replace(/#r/g, '<span style="color:red;">')
-    .replace(/#g/g, '<span style="color:green;">')
-    .replace(/#b/g, '<span style="color:blue;">')
-    .replace(/@y/g, '<span style="background:yellow;">')
-    .replace(/@r/g, '<span style="background:red;">')
-    .replace(/@b/g, '<span style="background:blue;>"')
-    .replace(/\n/g, '<br>'+ '\r\n'); // 改行を<br>タグに置換
-
-  document.getElementById('result').textContent =
-   '<!DOCTYPE html>\r\n\
-   <html>\r\n\
-       <head>\r\n\
-          <title>デジタル研究部ブログ（仮）</title>\r\n\
-          <meta name="viewport" content="width=device-width,initial-scale=1">\r\n\
-          <meta charset="UTF-8">\r\n\
-          <link rel="stylesheet" href="BLOG/BL-css/BLOG-contents.css" type="text/css">\r\n\
-      </head>\r\n\
-          <header>\r\n\
-              <p1><img  class="headerImg"src="https://lh3.googleusercontent.com/d/19q5HdAGS9HyTxRr9CdYvq6KFsjuMd_0X"></img></p1>\r\n\
-              <ol class="breadlist">\r\n\
-                  <li><a href="HOME-home.html">ホーム</a></li>\r\n\
-                  <li><a href="BLOG-home.html">ブログ</a></li>\r\n\
-                  <li><a href="blog.html">タイトルとＵＲＬを入れる</a></li>\r\n\
-                  </ol>\r\n\
-              <nav>\r\n\
-                  <ul>\r\n\
-                      <li><a class="current" href="HOME-home.html">ホーム</a></li>\r\n\
-                      <li><a href="BLOG-home.html">ブログ</a></li>\r\n\
-                      <li><a href="MEMBERS2.html">部員紹介</a></li>\r\n\
-                      <li><a href="GAMES-home.html">ゲーム</a></li>\r\n\
-                      <li><a href="unity">unity紹介</a></li>\r\n\
-                  </ul>\r\n\
-              </nav>\r\n\
-          </header>\r\n\
-       <body>\r\n\
-      <div class="textContentsBox">\r\n\
-          <div class="textContents">\r\n\
-          '+replacedText+'\r\n\
-      </div>\r\n\
-          </div></body>\r\n\
-      <footer id="footer">\r\n\
-          <script src="BLOG/BL-js/BLOG-home.js" defer></script>\r\n\
-              <small><span>デジタル研究部 2024</span></small>\r\n\
-  </footer>\r\n\r\n</html>';
+/* プレビュー装飾 */
+.textContents { border: 1px solid #ddd; padding: 20px; background: #fff; min-height: 300px; }
+.title { font-size: 1.5rem; font-weight: bold; border-bottom: 2px solid #333; margin: 10px 0; }
+.subtitle { font-size: 1.2rem; border-left: 5px solid #ccc; padding-left: 10px; margin: 10px 0; }
+.code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 5px; font-family: monospace; overflow-x: auto; }
+.blog-image { max-width: 100%; height: auto; display: block; margin: 10px 0; }
+.toolbar {
+    background: #f0f4f5;
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+    border: 1px solid #b6c3c6;
+    border-bottom: none;
 }
 
-function copyToClipboard() {
-  // コピー対象をJavaScript上で変数として定義する
-  var copyTarget = document.getElementById("result");
-
-  // コピー対象のテキストを選択する
-  copyTarget.select();
-
-  // 選択しているテキストをクリップボードにコピーする
-  document.execCommand("Copy");
-
-  // コピーをお知らせする
-  alert("コピーできました！ : " );
+.toolbar button {
+    cursor: pointer;
+    padding: 5px 10px;
+    margin: 2px;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 3px;
+    font-size: 0.8rem;
 }
 
-function guide() {
-alert("1.文章を書く\r\n2.変換ボタンを押す\r\n3.コピーまたはダウンロード");
+.toolbar button:hover {
+    background: #e0eeb0;
 }
 
-function downloadText() {
-const blob = new Blob([result.value],{type:"text/html"});
-const link = document.createElement('a');
-link.href = URL.createObjectURL(blob);
-link.download ='blog-writing.html';
-link.click();
+.controls {
+    margin: 10px 0;
 }
-
-setInterval(function() {
-document.getElementById("d2").innerHTML = new Date().toLocaleString();
-}, 1000);

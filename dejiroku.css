@@ -1,0 +1,139 @@
+
+
+.door-container {
+  /* 画面いっぱいに広がるコンテナ */
+}
+
+.door {
+  position: fixed; /* 画面に固定 */
+  top: 0;
+  height: 100vh;
+  width: 50vw; /* 画面の半分 */
+  background-color: #028496;
+  transition: transform 0.1s; /* スムーズな動きのために */
+  z-index: 996;
+}
+
+.left-door1 {
+  left: 0;
+}
+
+.right-door1 {
+  right: 0;
+}
+
+.left-door2 {
+  left: 0;
+  z-index: 998;
+  background-color: #00e1ff;
+}
+
+.right-door2 {
+  right: 0;
+  z-index: 998;
+  background-color: #00e1ff;
+}
+
+.left-door3 {
+  left: 0;
+  z-index: 997;
+  background-color: #000000;
+}
+
+.right-door3 {
+  right: 0;
+  z-index: 997;
+  background-color: #000000;
+}
+
+.content {
+  /* 扉の下に配置し、スクロールを発生させる */
+  min-height: 300vh; 
+  padding-top: 100vh;
+}
+
+.image-section {
+  padding-top: 60%;
+    text-align: center;
+    padding: 50px 0;
+    /* このセクションをスクロールの基準にすることも多い */
+    z-index: 999;
+}
+
+.fade-image {
+    width: 50%;
+    max-width: 500px;
+    opacity: 1; /* 初期状態は完全に表示 (不透明) */
+    
+    /* 変化を滑らかにするための設定 */
+    transition: opacity 0.05s linear; 
+    z-index: 999;
+}
+
+/* ナビゲーションとリストの基本スタイル */
+nav ul {
+  list-style: none; /* リストの点 (・) を非表示 */
+  display: flex;
+  gap: 30px; /* メニュー間のスペース */
+  padding: 0;
+}
+
+nav a {
+  display: flex; /* アイコンとテキストを横並びにする */
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+}
+
+/* 画像の基本スタイル */
+nav img {
+  width: 50px; /* 画像のサイズ調整 */
+  height: 50px;
+  margin-right: 10px;
+  
+  /* ★★★ 回転アニメーションを滑らかにする設定 ★★★ */
+  /* transitionで、どのプロパティをどれくらいの時間で変化させるかを指定します。 */
+  transition: transform 0.6s ease-out; 
+}
+
+/* ★★★ ホバー時のアニメーションの適用 ★★★ */
+/* リンク (a) にマウスが乗ったとき、その中の画像 (img) を回転させる */
+nav a:hover img {
+  /* 画像をZ軸を中心に360度回転させる */
+  /* 角度を90degや180degなどに変更すれば、回転の仕方が変わります */
+  transform: rotate(360deg); 
+  
+  /* 補足: 2周回転させたい場合は rotate(720deg) にします */
+}
+
+/* テキスト（<span>）も少し動かしたい場合 */
+nav a:hover span {
+  color: #007bff; /* テキストの色を変える */
+  transform: translateX(5px); /* テキストを右に5px動かす */
+  transition: transform 0.3s ease;
+}
+
+.scroll-indicator {
+  z-index: 1000;
+    position: absolute;
+    bottom: 50px;
+    margin-left: 40%;
+    margin-right: 40%;
+    color: #555;
+    animation: bounce 1s infinite alternate; /* 矢印を上下に動かすアニメーション */
+}
+
+.scroll-indicator .arrow {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #555;
+    margin: 10px auto;
+}
+
+@keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+}
+

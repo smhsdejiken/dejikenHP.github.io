@@ -1,0 +1,126 @@
+body {
+    /* body自体のデフォルト背景色（JSで上書きされる可能性あり）*/
+    background: -webkit-linear-gradient(top, #ffffff 0%,#999999 100%);
+    /* body::afterのグラデーションの開始色と終了色をカスタムプロパティで定義 */
+    /* マウスオーバー前の色とサイズ */
+    --after-bg-start-color: rgba(255, 255, 255, 0); /* 開始色は完全に透明 */
+    --after-bg-end-color: rgba(255, 255, 255, 0);   /* 終了色も完全に透明 */
+    --after-bg-size: 0% 0%; /* サイズを0%にして見えないように */
+
+    transition: background-color 0.5s ease-in-out; /* body自体の背景色遷移（必要であれば） */
+}
+
+body:after { /* 擬似要素をつくる */
+    position: fixed; /* 固定配置 */
+    top: 0;
+    left: 0; /* 左上に固定 */
+    width: 100%;
+    height: 100%; /* 画面全体を覆う */
+    content: "";
+    /* radial-gradient を使用し、カスタムプロパティで色とサイズを制御 */
+    background: radial-gradient(
+        circle at center, /* 中心から円形に広がる */
+        var(--after-bg-start-color) 0%,
+        var(--after-bg-end-color) 70% /* 70%あたりで色が完全に変わるように調整 */
+    );
+    /* 背景サイズをカスタムプロパティで指定し、アニメーション対象にする */
+    background-size: var(--after-bg-size);
+    background-repeat: no-repeat;
+    background-position: center center; /* 背景の基準点を中央に */
+
+    z-index: -1;
+    /* transition を background-size に適用してアニメーションさせる */
+    transition: background-size 0.8s ease-out, background-color 0.8s ease-out; /* background-colorはフォールバック用 */
+}
+
+/* --- ボタンのスタイル（変更なし） --- */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+.animated-button {
+    width: 200px;
+    height: 60px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.animated-button:hover {
+    width: 250px;
+    height: 80px;
+    border-radius: 10px;
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+
+.button-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+    white-space: nowrap;
+}
+
+.animated-button:hover .button-text {
+    opacity: 0;
+}
+
+.button-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    max-width: 90%;
+    max-height: 90%;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.animated-button:hover .button-image {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* --- 外部に表示される画像のスタイル（変更なし） --- */
+.external-image-wrapper {
+    width: 300px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #ccc;
+    box-sizing: border-box;
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    z-index: 1;
+}
+
+.animated-button:hover + .external-image-wrapper {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.external-image {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    object-fit: contain;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+  <title>デジタル研究部</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="dejiroku.css" type="text/css" rel="stylesheet" media="all" />
+  <link href="ex-css/materialize.css" type="text/css" rel="stylesheet" media="all" />
+  <link href="ex-css/material-icons.css" type="text/css" rel="stylesheet" media="all" />
+  <link href="ex-css/prettify.css" type="text/css" rel="stylesheet" media="all" />
+  <link href="ex-css/style.css" type="text/css" rel="stylesheet" media="all" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+</head>
+
+<body>
+
+
+<div class="image-section">
+  <br>
+  <br>
+    <br>
+  <br>
+    <br>
+  <br>
+    <img src="https://lh3.googleusercontent.com/d/16C-6uoxinaRmGQUa6gZmJ4Rf5OW25dSd" alt="フェードアウトする画像" class="fade-image">
+</div>
+<div class="scroll-indicator">
+            <p>スクロールしてコンテンツを見る</p>
+            <div class="arrow"></div>
+</div>
+<div class="door-container">
+
+  <div class="door left-door1"></div>
+  <div class="door right-door1"></div>
+  <div class="door left-door2"></div>
+  <div class="door right-door2"></div>
+  <div class="door left-door3"></div>
+  <div class="door right-door3"></div>
+  <div class="content">
+
+  <section id="parallax" class="parallax-container valign-wrapper">
+    <div class="container">
+      <div class="row center">
+      </div>
+    </div>
+    <div class="parallax">
+      <img src="https://lh3.googleusercontent.com/d/16C-6uoxinaRmGQUa6gZmJ4Rf5OW25dSd" alt="tettou">
+    </div>
+  </section>
+
+  <nav>
+  <ul>
+    <li>
+      <a href="menu.html" class="scroll-and-go">
+        <img src="https://lh3.googleusercontent.com/d/16C-6uoxinaRmGQUa6gZmJ4Rf5OW25dSd" alt="メニューアイコン">
+        <span>ホーム</span>
+      </a>
+    </li>
+    <li>
+      <a href="menu.html" class="scroll-and-go">
+        <img src="https://lh3.googleusercontent.com/d/16C-6uoxinaRmGQUa6gZmJ4Rf5OW25dSd" alt="メニューアイコン">
+        <span>サービス</span>
+      </a>
+    </li>
+    </ul>
+</nav>
+
+</div>
+
+
+  <script src="ex-js/jquery-3.2.1.min.js"></script>
+  <script src="ex-js/materialize.min.js"></script>
+  <script src="ex-js/common.js"></script>
+  <script>
+    var Example = {};
+    (function ($) {
+      $(function () {
+        Example.sources = {};
+        $("section").each(function (inx, section) {
+          var id = $(section).prop('id');
+          if (!id) return;
+          var value = $(section).prop('outerHTML');
+          Example.sources['#' + id] = value;
+        });
+      });
+    })(jQuery);
+  </script>
+  <script src="dejiroku.js"></script>
+  <script src="ex-js/init.js"></script>
+  <script src="ex-js/prettify.js"></script>
+
+</body>
+
+</html>
