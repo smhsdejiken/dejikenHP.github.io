@@ -1,67 +1,225 @@
-/* 全体レイアウト */
-.main-container { display: flex; gap: 20px; margin: 10px 0; }
-.editor-side, .preview-side { flex: 1; min-width: 0; }
-.label { font-size: 12px; color: #666; margin-bottom: 5px; }
+const textarea = document.getElementById('FlexTextarea');
+const dummy = document.getElementById('dummy');
+const preview = document.getElementById('live-preview');
 
-/* 魔法の入力エリア（自動伸縮 ＋ ハイライト） */
-.FlexTextarea {
-    position: relative;
-    font-size: 1rem;
-    line-height: 1.8;
-    border: 1px solid #b6c3c6;
-    border-radius: 4px;
-    background: #fff;
-    min-height: 300px;
-}
-.FlexTextarea__dummy {
-    overflow: hidden;
-    box-sizing: border-box;
-    padding: 10px;
-    min-height: 300px;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    color: #333; /* 本文の色 */
-}
-.FlexTextarea__textarea {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    box-sizing: border-box; padding: 10px;
-    background-color: transparent; /* 背景を透明にしてダミーの文字を透かす */
-    color: transparent; /* 入力文字自体は透明にする */
-    caret-color: #333; /* カーソルだけは見せる */
-    border: none; font: inherit; resize: none; overflow: hidden;
-}
+// リアルタイム反映（伸縮・ハイライト・プレビュー）
+textarea.addEventListener('input', () => {
+    const text = textarea.value;
+    
+    // 1. エディタ内のハイライト更新
+    dummy.innerHTML = highlightTags(text) + '\u200b';
+    
+    // 2. プレビューの更新
+    preview.innerHTML = parseToHtml(text);
+    
+    // 3. 高さを同期
+    textarea.style.height = 'auto';
+    textarea.style.height = dummy.scrollHeight + 'px';
+});
 
-/* タグのハイライト色 */
-.hl-tag { color: #ff4500; font-weight: bold; background: #fff0f0; border-radius: 2px; }
+function highlightTags(text) {
+    if (!text) return "";
 
-/* プレビュー装飾 */
-.textContents { border: 1px solid #ddd; padding: 20px; background: #fff; min-height: 300px; }
-.title { font-size: 1.5rem; font-weight: bold; border-bottom: 2px solid #333; margin: 10px 0; }
-.subtitle { font-size: 1.2rem; border-left: 5px solid #ccc; padding-left: 10px; margin: 10px 0; }
-.code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 5px; font-family: monospace; overflow-x: auto; }
-.blog-image { max-width: 100%; height: auto; display: block; margin: 10px 0; }
-.toolbar {
-    background: #f0f4f5;
-    padding: 10px;
-    border-radius: 4px 4px 0 0;
-    border: 1px solid #b6c3c6;
-    border-bottom: none;
+    // HTMLの特殊文字をエスケープ（< > があると色付けのspanが壊れるため）
+    let escaped = text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+
+    // 色付け置換（上から順番に適用される）
+    return escaped
+        .replace(/a;/g, '<span class="hl-tag tag-title">$&</span>')
+        .replace(/b;/g, '<span class="hl-tag tag-subtitle">$&</span>')
+        .replace(/c;/g, '<span class="hl-tag tag-text">$&</span>')
+        .replace(/[dD];/g, '<span class="hl-tag tag-bold">$&</span>')
+        .replace(/[eE];/g, '<span class="hl-tag tag-line">$&</span>')
+        .replace(/[fF]/g, '<span class="hl-tag tag-code">$&</span>')
+        .replace(/#[rgb]|@[yrb]|%|\[#.*?\]/g, '<span class="hl-tag tag-color">$&</span>')
+        .replace(/img\(.*?\);/g, '<span class="hl-tag tag-img">$&</span>');
 }
 
-.toolbar button {
-    cursor: pointer;
-    padding: 5px 10px;
-    margin: 2px;
-    border: 1px solid #ccc;
-    background: #fff;
-    border-radius: 3px;
-    font-size: 0.8rem;
+let lastText = "";
+
+textarea.addEventListener('input', (e) => {
+    let currentText = textarea.value;
+
+    // --- 相方削除ロジック（Ctrl+Z対応版） ---
+    if (currentText.length < lastText.length) {
+        const deletedPart = findDeletedText(lastText, currentText);
+        
+        const pairTags = {
+            'd;': 'D;', 'D;': 'd;',
+            'e;': 'E;', 'E;': 'e;',
+            'f;': 'F;', 'F;': 'f;',
+            'code;': 'CODE;', 'CODE;': 'code;',
+            '#r': '%', '#g': '%', '#b': '%',
+            '@y': '%', '@r': '%', '@b': '%', '%': ''
+        };
+
+        if (pairTags[deletedPart]) {
+            const targetTag = pairTags[deletedPart];
+            const targetIndex = currentText.indexOf(targetTag);
+            if (targetTag !== "" && targetIndex !== -1) {
+                // 相方の位置にカーソルを移動させて、その1箇所を消去する
+                textarea.setSelectionRange(targetIndex, targetIndex + targetTag.length);
+                document.execCommand('delete'); // これで履歴に残る削除ができる
+                currentText = textarea.value;
+            }
+        }
+    }
+    lastText = currentText;
+
+    // ハイライト・プレビュー更新（ここは共通）
+    dummy.innerHTML = highlightTags(currentText) + '\u200b';
+    preview.innerHTML = parseToHtml(currentText);
+    textarea.style.height = 'auto';
+    textarea.style.height = dummy.scrollHeight + 'px';
+});
+
+// タグ挿入関数（Ctrl+Z対応版）
+function insertTag(startTag, endTag = "") {
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    
+    if (start === end) {
+        alert("変更したい文字を選択してください。");
+        return;
+    }
+    
+    const val = textarea.value;
+    const selectedText = val.substring(start, end);
+    const insertContent = startTag + selectedText + endTag;
+
+    // フォーカスを当ててから、選択範囲を新しい文字列で「置換」する
+    textarea.focus();
+    // execCommandを使うことで、Ctrl+Zの履歴に登録される
+    document.execCommand('insertText', false, insertContent);
+    
+    // inputイベントを強制発火させてプレビューを更新
+    textarea.dispatchEvent(new Event('input'));
 }
 
-.toolbar button:hover {
-    background: #e0eeb0;
+// 削除検知用（変更なし）
+function findDeletedText(oldText, newText) {
+    const tags = ['d;', 'D;', 'e;', 'E;', 'f;', 'F;', 'code;', 'CODE;', '#r', '#g', '#b', '@y', '@r', '@b', '%'];
+    for (let tag of tags) {
+        if (oldText.includes(tag) && !newText.includes(tag)) return tag;
+    }
+    return null;
 }
 
-.controls {
-    margin: 10px 0;
+function insertColorTag() {
+    const col = document.getElementById('colorPicker').value;
+    insertTag(`[${col}]`, '%');
 }
+
+function insertImageTag() {
+    const url = document.getElementById('imgUrl').value;
+    if(!url) return alert("URLを入力してください");
+    insertTag(`img(${url});`);
+}
+
+// プレビュー用HTML変換
+function parseToHtml(raw) {
+    let html = raw
+        .replace(/b;/g, '</div><div class="subtitle">')
+        .replace(/c;/g, '</div><div class="text">')
+        .replace(/d;/g, '<b>').replace(/D;/g, '</b>')
+        .replace(/e;/g, '<u>').replace(/E;/g, '</u>')
+        .replace(/#r/g, '<span style="color:red;">')
+        .replace(/%/g, '</span>')
+        .replace(/\[(#.*?)\]/g, '<span style="color:$1;">')
+        .replace(/img\((.*?)\);/g, '<img src="$1" class="blog-image">')
+        .replace(/f;([\s\S]*?)F;/g, '<pre class="code-block"><code>$1</code></pre>');
+
+    return html.split(/(<pre[\s\S]*?<\/pre>)/g).map(part => {
+        return part.match(/<pre/) ? part : part.replace(/\n/g, '<br>');
+    }).join('');
+}
+
+
+// 完成HTML生成
+function generateFinalHtml() {
+    const rawText = textarea.value;
+    const lines = rawText.split('\n');
+    
+    // 1行目を強制的にタイトルとして取得
+    let firstLine = lines[0] || "";
+    
+    // 1行目が「a;」で始まっていない場合、強制的にタイトル（a;）扱いにする処理
+    let titleLine = firstLine;
+    if (!titleLine.startsWith('a;')) {
+        titleLine = 'a;' + titleLine;
+    }
+    
+    // HTML各所に埋め込むための「記号なし」の純粋な文字列を作る
+    let cleanTitle = titleLine.replace(/a;|%|#r|#g|#b|@y|@r|@b|img\(.*?\);|\[#.*?\]/g, "").trim();
+    if (cleanTitle === "") cleanTitle = "無題の記事";
+
+    // 2行目以降と、強制タイトル化した1行目を合体させて本文を作る
+    let adjustedRawText = titleLine + '\n' + lines.slice(1).join('\n');
+    const content = parseToHtml(adjustedRawText);
+    document.getElementById('result').value = `<!DOCTYPE html>
+<html>
+<head>
+    <title>デジタル研究部ブログ</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="BLOG/BL-css/BLOG-contents.css" type="text/css">
+</head>
+<body>
+    <header>
+        <p1><img class="headerImg" src="https://lh3.googleusercontent.com/d/19q5HdAGS9HyTxRr9CdYvq6KFsjuMd_0X"></img></p1>
+        <ol class="breadlist">
+            <li><a href="HOME-home.html">ホーム</a></li>
+            <li><a href="BLOG-home.html">ブログ</a></li>
+            <li><a href="blog.html">${cleanTitle}</a></li>
+        </ol>
+        <nav>
+            <ul>
+                <li><a class="current" href="HOME-home.html">ホーム</a></li>
+                <li><a href="BLOG-home.html">ブログ</a></li>
+                <li><a href="MEMBERS2.html">部員紹介</a></li>
+                <li><a href="GAMES-home.html">ゲーム</a></li>
+                <li><a href="unity">unity紹介</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="textContentsBox">
+        <div class="textContents">
+            ${content}
+        </div>
+    </div>
+    <footer id="footer">
+        <script src="BLOG/BL-js/BLOG-home.js" defer></script>
+        <small><span>デジタル研究部 2024</span></small>
+    </footer>
+</body>
+</html>`;
+}
+
+// 保存（ファイル名指定）
+function downloadText() {
+    let name = window.prompt("保存するファイル名を入力", "blog-writing");
+    if (!name) return;
+    if (!name.endsWith(".html")) name += ".html";
+    
+    const blob = new Blob([document.getElementById('result').value], {type:"text/html"});
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = name;
+    link.click();
+}
+
+// コピー機能
+function copyToClipboard() {
+    const res = document.getElementById("result");
+    res.select();
+    document.execCommand("Copy");
+    alert("コピーしました");
+}
+
+// 時計
+setInterval(() => {
+    document.getElementById("clock").innerText = new Date().toLocaleString();
+}, 1000);
