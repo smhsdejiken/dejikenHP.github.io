@@ -248,7 +248,7 @@ body:after { /* 擬似要素をつくる */
     border-radius: 50%;
     position: fixed;
   }
-  
+   
   .content {
     width: 50%; 
     height: 50%;
@@ -257,7 +257,9 @@ body:after { /* 擬似要素をつくる */
     top: 25%;
     border: 1px solid #333;
   }
-  
+  .moji{
+    font-size: 250%;
+  }
   /* top */
   .top { 
     animation: rotate_top 60s linear infinite;
