@@ -28,7 +28,7 @@ function highlightTags(text) {
 
     // 色付け置換（上から順番に適用される）
     return escaped
-        .replace(/a;/g, '<span class="hl-tag tag-title">$&</span>')
+        .replace(/a;/g, '<span class="hl-tag tag-title">')
         .replace(/b;/g, '<span class="hl-tag tag-subtitle">$&</span>')
         .replace(/c;/g, '<span class="hl-tag tag-text">$&</span>')
         .replace(/[dD];/g, '<span class="hl-tag tag-bold">$&</span>')
@@ -119,65 +119,84 @@ function insertImageTag() {
     insertTag(`img(${url});`);
 }
 
-// プレビュー用HTML変換
+// プレビュー・書き出し用HTML変換
 function parseToHtml(raw) {
-    let html = raw
-        .replace(/b;/g, '</div><div class="subtitle">')
-        .replace(/c;/g, '</div><div class="text">')
-        .replace(/d;/g, '<b>').replace(/D;/g, '</b>')
-        .replace(/e;/g, '<u>').replace(/E;/g, '</u>')
-        .replace(/#r/g, '<span style="color:red;">')
-        .replace(/%/g, '</span>')
-        .replace(/\[(#.*?)\]/g, '<span style="color:$1;">')
-        .replace(/img\((.*?)\);/g, '<img src="$1" class="blog-image">')
-        .replace(/f;([\s\S]*?)F;/g, '<pre class="code-block"><code>$1</code></pre>');
+    if (!raw) return "";
 
-    return html.split(/(<pre[\s\S]*?<\/pre>)/g).map(part => {
-        return part.match(/<pre/) ? part : part.replace(/\n/g, '<br>');
-    }).join('');
+    // 1. ソースコード部分 (code; ~ CODE;) を保護しながら分割
+    let parts = raw.split(/(code;[\s\S]*?CODE;)/g);
+    
+    let processedParts = parts.map(part => {
+        if (part.startsWith('code;') && part.endsWith('CODE;')) {
+            let codeContent = part.replace(/^code;/, '').replace(/CODE;$/, '');
+            // HTMLエスケープ
+            codeContent = codeContent.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            return `<pre class="code-block"><code>${codeContent.trim()}</code></pre>`;
+        } else {
+            // 2. 通常テキストの処理（a; を確実に置換する）
+            return part
+                .replace(/a;/g, '</div><div class="title">') // ここでタイトルに置換
+                .replace(/b;/g, '</div><div class="subtitle">')
+                .replace(/c;/g, '</div><div class="text">')
+                .replace(/d;/g, '<b>').replace(/D;/g, '</b>')
+                .replace(/e;/g, '<u>').replace(/E;/g, '</u>')
+                .replace(/#r/g, '<span style="color:red;">')
+                .replace(/%/g, '</span>')
+                .replace(/\[(#.*?)\]/g, '<span style="color:$1;">')
+                .replace(/img\((.*?)\);/g, '<img src="$1" class="blog-image">')
+                .replace(/\n/g, '<br>');
+        }
+    });
+
+    return processedParts.join('');
 }
 
 
-// 完成HTML生成
+// 完成HTML生成（ソースコードの見た目を整える）
 function generateFinalHtml() {
     const rawText = textarea.value;
     const lines = rawText.split('\n');
-    
-    // 1行目を強制的にタイトルとして取得
     let firstLine = lines[0] || "";
-    
-    // 1行目が「a;」で始まっていない場合、強制的にタイトル（a;）扱いにする処理
-    let titleLine = firstLine;
-    if (!titleLine.startsWith('a;')) {
-        titleLine = 'a;' + titleLine;
-    }
-    
-    // HTML各所に埋め込むための「記号なし」の純粋な文字列を作る
-    let cleanTitle = titleLine.replace(/a;|%|#r|#g|#b|@y|@r|@b|img\(.*?\);|\[#.*?\]/g, "").trim();
-    if (cleanTitle === "") cleanTitle = "無題の記事";
 
-    // 2行目以降と、強制タイトル化した1行目を合体させて本文を作る
+    // 1行目にa;が含まれていなければ強制付与
+    let titleLine = firstLine.includes('a;') ? firstLine : 'a;' + firstLine;
+    
+    // 記号なしタイトル
+    let cleanTitle = titleLine.replace(/a;|%|#r|#g|#b|@y|@r|@b|img\(.*?\);|\[#.*?\]/g, "").trim();
+    if (!cleanTitle) cleanTitle = "無題の記事";
+
+    // 本文の構成
     let adjustedRawText = titleLine + '\n' + lines.slice(1).join('\n');
-    const content = parseToHtml(adjustedRawText);
+    let content = parseToHtml(adjustedRawText);
+
+    // 文頭の不要な</div>を削除し、インデントを整える
+    if (content.startsWith('</div>')) {
+        content = content.replace('</div>', '').trim();
+    }
+
+    // ★ソースコードを見やすくするための整形（インデントを追加）
+    const formattedContent = content.split('\n').map(line => '            ' + line).join('\n');
+
+    // result（下のテキストエリア）に出力
     document.getElementById('result').value = `<!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-    <title>デジタル研究部ブログ</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta charset="UTF-8">
+    <title>${cleanTitle}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="BLOG/BL-css/BLOG-contents.css" type="text/css">
 </head>
 <body>
     <header>
-        <p1><img class="headerImg" src="https://lh3.googleusercontent.com/d/19q5HdAGS9HyTxRr9CdYvq6KFsjuMd_0X"></img></p1>
+        <img class="headerImg" src="https://lh3.googleusercontent.com/d/19q5HdAGS9HyTxRr9CdYvq6KFsjuMd_0X"></img>
         <ol class="breadlist">
             <li><a href="HOME-home.html">ホーム</a></li>
             <li><a href="BLOG-home.html">ブログ</a></li>
-            <li><a href="blog.html">${cleanTitle}</a></li>
+            <li><a href="">${cleanTitle}</a></li>
         </ol>
         <nav>
             <ul>
-                <li><a class="current" href="HOME-home.html">ホーム</a></li>
+                <li><a href="HOME-home.html">ホーム</a></li>
                 <li><a href="BLOG-home.html">ブログ</a></li>
                 <li><a href="MEMBERS2.html">部員紹介</a></li>
                 <li><a href="GAMES-home.html">ゲーム</a></li>
@@ -185,14 +204,17 @@ function generateFinalHtml() {
             </ul>
         </nav>
     </header>
+
     <div class="textContentsBox">
         <div class="textContents">
-            ${content}
+${formattedContent}
         </div>
     </div>
+
     <footer id="footer">
         <script src="BLOG/BL-js/BLOG-home.js" defer></script>
         <small><span>デジタル研究部 2024</span></small>
+                <div id="d2">&nbsp;</div></small>
     </footer>
 </body>
 </html>`;
