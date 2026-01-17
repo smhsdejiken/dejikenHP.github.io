@@ -27,7 +27,7 @@
               <ol class="breadlist">
                   <li><a href="HOME-home.html">ホーム</a></li>
                   <li><a href="BLOG-home.html">ブログ</a></li>
-                  <li><a href="blog.html">タイトルとＵＲＬを入れる</a></li>
+                  <li><a href="">タイトルとＵＲＬを入れる</a></li>
                   </ol>
               <nav>
                   <ul>
@@ -44,18 +44,18 @@
           <div class="textContents">
           <br>
 <br>
-</span><div class="title">
+<div class="title">
 <br>
 <b><br>
 ぬり絵アプリをつくろう！</b><br>
 〜画像処理とアルゴリズムの実装〜<br>
-</div><br>
+<br>
 <br>
 <br>
 <img class="B-img" src="https://lh3.googleusercontent.com/d/1-INO6Bnw7tniw0wqQnHH_1LQYlS2-VV-"></img>
 <br>
 <br>
-</span><span class="text">
+</div><div class="text">
 <br>
 <br>
 ｜制作期間：2023年 10月 ~ 2024年 5月（筆者１〜２年生）<br>
@@ -79,13 +79,13 @@
 <br>
 絵を描くならともかく、ワンクリックで色を塗るだけなら簡単〜♫<br>
 たぶん、お客さんも体験しやすいでしょう！<br>
-</span><br>
+<br>
 <img class="B-img" src="https://lh3.googleusercontent.com/d/1-cyaXAwRcUTpAJkyyd-S3BsJwCGEPCLp"></img><br>
 <br>
 <br>
-</span><span class="subtitle">
-意外と複雑なしくみ、、、(泣) </span><br>
-</span><span class="text">
+</div><div class="subtitle">
+意外と複雑なしくみ、、、(泣)
+</div><div class="text">
 <br>
 <br>
 さて、どうやって黒い線で囲まれた部分を塗りましょうか、、、<br>
@@ -94,12 +94,12 @@
 それが縦と横にたくさん並ぶことで画像となります。<br>
 <br>
 一つのピクセルも赤(Red)、青(Blue)、緑(Green)と透明度(Transparency)で構成されています。それぞれ 0~255の値です。<br>
-</span><br>
+<br>
 <br>
 <img class="B-img" src="https://lh3.googleusercontent.com/d/1ya7y5XvsvtACuw38yPK2NNdERw2_NENI"></img>
 <br>
 引用：https://www.sokupuri.jp/archives/3948
-</span><span class="text">
+</div><div class="text">
 <br>
 <br>
 ピクセルの並び方は、画像の左下を０として、縦にY軸、横にX軸をとり、座標で表します。例：(3,10)←X軸３番目、Y軸１０番目のピクセル。<br>
@@ -117,9 +117,9 @@
 ➋黒い線（黒いピクセル）に当たった時点で、別の逃げ道を探して、<br>
 <br>
 ❸また進んでいく、、、</b><br>
-</span><br>
+<br>
 <img class="B-img" src="https://lh3.googleusercontent.com/d/"></img><br><br>
-</span><span class="text">
+</div><div class="text">
 <br>
 <br>
 という感じです。<br>
@@ -128,9 +128,9 @@
 そこで、<b>選択しななかった別ルートの座標を記録しながら進み、<br>
 もう進めなくなるまで塗ったときに、記録した座標にジャンプします。</b><br>
 そしてそこからまた色を塗ります。<br>
-</span><br>
+<br>
 <img class="B-img" src="https://lh3.googleusercontent.com/d/"></img><br><br>
-</span><span class="text">
+</div><div class="text">
 <br>
 <br>
 よって、<br>
@@ -139,12 +139,12 @@
 <br>
 ※事前に、塗り終わったピクセルたちの座標も記録しておきます。<br>
 これがないと、塗り終わったピクセルを何度も塗り直して無限ループになります。<br>
-</span><br>
 <br>
 <br>
-</span><span class="subtitle">
-デバッグ作業の流れ </span><br>
-</span><span class="text">
+<br>
+</div><div class="subtitle">
+デバッグ作業の流れ 
+</div><div class="text">
 <br>
 <br>
 プログラムの実装は、一気にできません。<br>
@@ -165,56 +165,56 @@
 <br>
 <b>✅️どの関数が動いてないか確認</b><br>
 全く動かないときは、関数や命令の前後で、「関数〇〇実行」のような文字を表示するコードを書くことで、<br>どの関数が実行されていないか確認できます。これを「ログ」と言ったりします。<br>
-</span><br>
+<br>
 <img class="B-img" src="https://lh3.googleusercontent.com/d/1-4FtgqHNJs8a6UJKYm6tv1bAzbITerGV"></img><br><br>
-</span><span class="text">
+</div><div class="text">
 <br>
 ↑↑こんなふうに、どの行のプログラムを実行しているかリアルタイムで見ることも可能です✨️<br>
 <br>
 <b>✅️関数の入力・出力データが適切かどうか確認</b><br>
 怪しい箇所が見つかったら、そこで扱っているデータを「ログ」として表示させ、設計通りのデータか確認しましょう！<br>
 画像データを扱うので、情報は膨大です。<br>
-</span><br>
+<br>
 <img class="B-img" src="https://lh3.googleusercontent.com/d/10cLxgQtzJ8jjy38KGeyxERsnUdjsfb8-"></img><br><br>
-</span><span class="text">
+</div><div class="text">
 <br>
 <br>
 ↑「Undefined＝数値が見つからない」「null＝数値なし」が表示されるとわかりやすい<br>
 <br>
-</span><br>
+<br>
 
-</span><span class="text">
+</div><div class="text">
 <br>
 <br>
 <br>
 <br>
 いままで作ってきたアルゴリズムの中では、一番複雑なもので、はじめはほとんど動きません💧<br>
-</span><br>
+<br>
 <img class="B-img" src="https://lh3.googleusercontent.com/d/"></img><br><br>
 <br>
 <img class="B-img" src="https://lh3.googleusercontent.com/d/"></img><br><br>
-</span><span class="text">
+</div><div class="text">
 <br>
 <br>
 やっと動きました✨️<br>
-</span><br>
+<br>
 <img class="B-img" src="https://lh3.googleusercontent.com/d/1-dSD_NAUORfQ5A8OGlgbcaZaNeoGZJT4"></img><br><br>
 <iframe width="400" height="250" src="https://www.youtube.com/embed/I09FaL2IrR0?si=vSy3WgkJ8QuFhtOM?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</span><span class="text">
+</div><div class="text">
  
 <br>
 <br>
 全く動かないプログラムが、生き物のように動き出す瞬間が、プログラミングの醍醐味です🔥<br>
-この時、昼休みに一人で発狂していました、、、</span><br>
+この時、昼休みに一人で発狂していました、、、<br>
 <img class="B-img" src="https://lh3.googleusercontent.com/d/1-INO6Bnw7tniw0wqQnHH_1LQYlS2-VV-"></img><br>
 <img class="B-img" src="https://lh3.googleusercontent.com/d/1-9x3BFliT6NAhpcRk_ub4yDJ6VDMYgd4"></img><br>
 ↑完成当初、こんな写真をLINEで 友達に送りまくりました、、、
 <br>
 <br>
 <br>
-<span class="subtitle">
-まだ作業は終わらない、、、</span><br>
-</span><span class="text">
+<div class="subtitle">
+まだ作業は終わらない、、、
+</div><div class="text">
 <br>
 <br>
 塗れるようになっても、まだ完成ではありません。<br>
@@ -224,9 +224,9 @@
 自分が作った色がどんな色か確認できるようにしたいです。<br>
 <br>
 ということでこんな感じ〜♪<br>
-</span><br>
+<br>
 <img class="B-img" src="https://lh3.googleusercontent.com/d/1-h5pkV44LVUekj0ndu_ErEihgqsmhIt0"></img><br><br>
-</span><span class="text">
+</div><div class="text">
 <br>
 <br>
 色を表示する窓に、値指定バーからの数値の色を塗って表示してます。<br>
@@ -235,31 +235,31 @@
 <br>
 <br>
 また、今回は、線のみの画像をいくつか用意しますが、持ち合わせていないユーザーのために、サンプル画像として、「初音ミク」も用意しました。<br>
-</span><br>
+<br>
 <img class="B-img" src="https://lh3.googleusercontent.com/d/1qEkw3FezHaiXkui0p7TrOZExQ1eVE6vg"></img><br><br>
-</span><span class="text">
+</div><div class="text">
 <br>
 <br>
 文化祭本番では、お客さんが塗った絵を印刷します！<br>
 ですから、印刷のために、画像をダウンロードする機能もつけます。<br>
-</span><br>
+<br>
 <img class="B-img" src="https://lh3.googleusercontent.com/d/10KICVNnMimJES5oE2LkfykgOXu6t0z5f"></img><br><br>
 <br>
 <br>
 <br>
-</span><span class="subtitle">
-そして、文化祭当日 </span><br>
-</span><span class="text">
+</div><div class="subtitle">
+そして、文化祭当日 
+</div><div class="text">
 <br>
 <br>
 私が用意した画像は以下の６枚。<br>
-</span><br>
+</div><br>
 <img class="B-img" src="https://lh3.googleusercontent.com/d/1-V3GTIkwy0oYL9QMOHDkeybPkWDxvS9O"></img><br>
 <img class="B-img" src="https://lh3.googleusercontent.com/d/1-Y7c98_UFrryN4LdQrMOx2PENcyoQXC4"></img><br>
 <img class="B-img" src="https://lh3.googleusercontent.com/d/1-Stp0gCXXQB80xilnVf-eERBKth3P3Ux"></img><br>
 <img class="B-img" src="https://lh3.googleusercontent.com/d/1-O4OcshNhUfJHBvAot4LomGHEVJUQJ0L"></img><br>
 <img class="B-img" src="https://lh3.googleusercontent.com/d/1-KEr8mLy6pJteuFNsEEBMBd3i2Zxoc3p"></img><br>
-</span><span class="text">
+</div><div class="text">
 絵の線に、１ピクセルでも隙間があると、意図していない部分に色が広がるので注意⚡️
 今回は、調節したものを用意して塗ってもらいました！
 <br>
@@ -269,10 +269,10 @@
 <br>
 なんと、二人とも「Lain」をご存知で、クオリティーが高いです！<br>
 ここで、コピー機の不具合で、印刷が真っ黒に、、、💦<br>
-</span><br>
+<br>
 <img class="B-img" src="https://lh3.googleusercontent.com/d/1-YyCwnRbEaw_3Hdr_OKL0mKHU9MDup7Q"></img><br><br>
 <img class="B-img" src="https://lh3.googleusercontent.com/d/1-ioCZhf86COaEaSlLEMt3LwIi1VNEWT9"></img><br><br>
-</span><span class="text">
+</div><div class="text">
 <br>
 <br>
 事前に準備が足りないデジ研の恒例行事です。<br>
@@ -282,12 +282,12 @@
 これは、実際に体験してみないとわからない感情です。<br>
 <br>
 自己満足で終わらず、人の役に立つ（？）というのがデジタル研究部の活動の大きな特徴でしょう。<br>
-</span><br>
 <br>
 <br>
-</span><span class="subtitle">
-なぜ、色塗りソフトなんて作ったのか </span><br>
-</span><span class="text">
+<br>
+</div><div class="subtitle">
+なぜ、色塗りソフトなんて作ったのか
+</div><div class="text">
 <br>
 <br>
 もともと中学の頃、コピー用紙でアニメを制作していました。<br>
@@ -321,12 +321,12 @@
 <br>
 そんな感じで、当時はかなり帰宅部の雰囲気が強いデジ研で、プログラミングを独学し、簡単な画像処理を見様見真似で作ってきました。<br>
 「画像のコピー」からはじめ、「画像の白黒化」「ビネガー」「エッジ検出」とかとか、、、<br>
-</span><br>
+<br>
 <img class="B-img" src="https://lh3.googleusercontent.com/d/1-8-NS6TG5VjGwE_a_2e1jnCqKU1cUQjd"></img><br>
 私のプログラムでエッジ検出した写真。<br>物の境界を線で表してくれる面白い処理です！
 <br>
 <br>
-</span><span class="text">
+</div><div class="text">
 でも、アニメ制作用アプリとか、そんな高度なもの作れません、、、💧<br>
 <br>
 そこで、単純に実線（黒い線）で囲まれた部分に色を付けるアプリを制作しようと思い立ちました。<br>
@@ -348,7 +348,7 @@
 ↑『よるにはやむよ』の教室シーンの背景。Googleスライドで作成。
 <br>
 ではまた。<br>
-</span><br>
+<br>
 <br>
 <br>
 <br>
@@ -357,13 +357,14 @@
 <br>
 <br>
 <br>
-<br>
+<br></div>
 
       </div>
 </div></body>
       <footer id="footer">
           <script src="BLOG/BL-js/BLOG-home.js" defer></script>
               <small><span>デジタル研究部 2024</span></small>
+                <div id="d2">&nbsp;</div></small>
   </footer>
 
 </html>
