@@ -108,7 +108,7 @@ iframe{
     width: clamp(16px, 80vw, 700px);
 }
 
-.header-img{
+.headerImg{
     padding-top: clamp(16px,1.042vw,20px) ;
     width:35%;
     margin-left:auto;
