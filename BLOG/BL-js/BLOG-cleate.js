@@ -124,18 +124,18 @@ function parseToHtml(raw) {
     if (!raw) return "";
 
     // 1. ソースコード部分 (code; ~ CODE;) を保護しながら分割
-    let parts = raw.split(/(code;[\s\S]*?CODE;)/g);
+    let parts = raw.split(/(f;[\s\S]*?F;)/g);
     
     let processedParts = parts.map(part => {
-        if (part.startsWith('code;') && part.endsWith('CODE;')) {
-            let codeContent = part.replace(/^code;/, '').replace(/CODE;$/, '');
+        if (part.startsWith('f;') && part.endsWith('F;')) {
+            let codeContent = part.replace(/^f;/, '').replace(/F;$/, '');
             // HTMLエスケープ
             codeContent = codeContent.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
             return `<pre class="code-block"><code>${codeContent.trim()}</code></pre>`;
         } else {
             // 2. 通常テキストの処理（a; を確実に置換する）
             return part
-                .replace(/a;/g, '</div><div class="title">') // ここでタイトルに置換
+                .replace(/a;/g, '</div><br><br><br><div class="title">') // ここでタイトルに置換
                 .replace(/b;/g, '</div><div class="subtitle">')
                 .replace(/c;/g, '</div><div class="text">')
                 .replace(/d;/g, '<b>').replace(/D;/g, '</b>')
@@ -156,28 +156,28 @@ function parseToHtml(raw) {
 function generateFinalHtml() {
     const rawText = textarea.value;
     const lines = rawText.split('\n');
-    let firstLine = lines[0] || "";
-
-    // 1行目にa;が含まれていなければ強制付与
-    let titleLine = firstLine.includes('a;') ? firstLine : 'a;' + firstLine;
     
-    // 記号なしタイトル
-    let cleanTitle = titleLine.replace(/a;|%|#r|#g|#b|@y|@r|@b|img\(.*?\);|\[#.*?\]/g, "").trim();
+    // 1. 【抽出】1行目をタイトルとして取得
+    let firstLine = lines[0] || "";
+    
+    // 記号なしタイトル（HTMLのtitleタグやパンくずリストに使用）
+    let cleanTitle = firstLine.replace(/a;|b;|c;|%|#r|#g|#b|@y|@r|@b|img\(.*?\);|\[#.*?\]/g, "").trim();
     if (!cleanTitle) cleanTitle = "無題の記事";
 
-    // 本文の構成
-    let adjustedRawText = titleLine + '\n' + lines.slice(1).join('\n');
-    let content = parseToHtml(adjustedRawText);
+    // 2. 【本文の構成】1行目を完全に省き、2行目以降のみを変換対象にする
+    let bodyLines = lines.slice(1); // 配列の2要素目から最後まで取得
+    let bodyRawText = bodyLines.join('\n');
+    let content = parseToHtml(bodyRawText);
 
-    // 文頭の不要な</div>を削除し、インデントを整える
+    // 文頭の不要な閉じタグが出てしまった場合の除去
     if (content.startsWith('</div>')) {
         content = content.replace('</div>', '').trim();
     }
 
-    // ★ソースコードを見やすくするための整形（インデントを追加）
-    const formattedContent = content.split('\n').map(line => '            ' + line).join('\n');
+    // 3. 【整形】本文の各行にインデント（スペース8個分）を追加して見やすくする
+    const formattedContent = content.split('\n').map(line => '        ' + line).join('\n');
 
-    // result（下のテキストエリア）に出力
+    // 4. HTML組み立て（テンプレート）
     document.getElementById('result').value = `<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -188,7 +188,7 @@ function generateFinalHtml() {
 </head>
 <body>
     <header>
-        <img class="headerImg" src="https://lh3.googleusercontent.com/d/19q5HdAGS9HyTxRr9CdYvq6KFsjuMd_0X"></img>
+        <img class="headerImg" src="https://lh3.googleusercontent.com/d/19q5HdAGS9HyTxRr9CdYvq6KFsjuMd_0X" alt="icon">
         <ol class="breadlist">
             <li><a href="HOME-home.html">ホーム</a></li>
             <li><a href="BLOG-home.html">ブログ</a></li>
@@ -206,6 +206,9 @@ function generateFinalHtml() {
     </header>
 
     <div class="textContentsBox">
+        <br><br><br>
+        <div class="title"><b>${cleanTitle}</b></div>
+        <br>
         <div class="textContents">
 ${formattedContent}
         </div>
@@ -214,7 +217,7 @@ ${formattedContent}
     <footer id="footer">
         <script src="BLOG/BL-js/BLOG-home.js" defer></script>
         <small><span>デジタル研究部 2024</span></small>
-                <div id="d2">&nbsp;</div></small>
+        <div id="d2"> </div>
     </footer>
 </body>
 </html>`;
