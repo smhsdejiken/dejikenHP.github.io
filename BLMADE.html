@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>簡易ブログ作成ツール</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="BLOG/BL-css/BLOG-made.css">
+</head>
+<body>
+    <div class="toolbar">
+        <button type="button" onclick="insertTag('b;')">サブタイ</button>
+        <button type="button" onclick="insertTag('c;')">本文</button>
+        |
+        <button type="button" onclick="insertTag('d;', 'D;')">太字</button>
+        <button type="button" onclick="insertTag('e;', 'E;')">下線</button>
+        <button type="button" onclick="insertTag('f;', 'F;')">コード枠</button>
+        <button type="button" onclick="insertTag('@r', '%')" style="background:#ff6969;">赤背景</button>
+        <button type="button" onclick="insertTag('@y', '%')" style="background:#ffff5e;">黄背景</button>
+        <button type="button" onclick="insertTag('@b', '%')" style="background:#6fb4ff;">青背景</button>
+        |
+        <input type="color" id="colorPicker" value="#ff0000">
+        <button type="button" onclick="insertColorTag()">選択色を適用</button>
+        |
+        <input type="text" id="imgUrl" placeholder="画像のURL">
+        <button type="button" onclick="insertImageTag()">画像挿入</button>
+        |
+        <a href="blog5.html">使い方</a>
+    </div>
+
+    <div class="main-container">
+        <div class="editor-side">
+            <p class="label">エディタ（一行目がタイトルになります）</p>
+            <div class="FlexTextarea">
+                <div id="dummy" class="FlexTextarea__dummy" aria-hidden="true"></div>
+                <textarea id="FlexTextarea" class="FlexTextarea__textarea" placeholder="文章を選択してからボタンを押してください..."></textarea>
+            </div>
+        </div>
+
+        <div class="preview-side">
+            <p class="label">リアルタイムプレビュー</p>
+            <div id="live-preview" class="textContents"></div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="btn-generate" onclick="generateFinalHtml()">完成HTMLを生成</button>
+        <button onclick="copyToClipboard()">コピー</button>
+        <button onclick="downloadText()">ダウンロード</button>
+    </div>
+
+    <textarea id="result" rows="8" placeholder="ここに書き出し用のソースコードが出力されます"></textarea>
+
+    <footer id="footer">
+        <small>デジタル研究部 <span id="clock"></span></small>
+    </footer>
+
+    <script src="BLOG/BL-js/BLOG-made.js" defer></script>
+</body>
+</html>
