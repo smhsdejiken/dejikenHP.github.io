@@ -1,250 +1,107 @@
-const textarea = document.getElementById('FlexTextarea');
-const dummy = document.getElementById('dummy');
-const preview = document.getElementById('live-preview');
+/* 全体レイアウト */
+.main-container { display: flex; gap: 20px; margin: 10px 0; }
+.editor-side, .preview-side { flex: 1; min-width: 0; }
+.label { font-size: 12px; color: #666; margin-bottom: 5px; }
 
-// リアルタイム反映（伸縮・ハイライト・プレビュー）
-textarea.addEventListener('input', () => {
-    const text = textarea.value;
-    
-    // 1. エディタ内のハイライト更新
-    dummy.innerHTML = highlightTags(text) + '\u200b';
-    
-    // 2. プレビューの更新
-    preview.innerHTML = parseToHtml(text);
-    
-    // 3. 高さを同期
-    textarea.style.height = 'auto';
-    textarea.style.height = dummy.scrollHeight + 'px';
-});
-
-function highlightTags(text) {
-    if (!text) return "";
-
-    // HTMLの特殊文字をエスケープ（< > があると色付けのspanが壊れるため）
-    let escaped = text
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;");
-
-    // 色付け置換（上から順番に適用される）
-    return escaped
-        .replace(/a;/g, '<span class="hl-tag tag-title">')
-        .replace(/b;/g, '<span class="hl-tag tag-subtitle">$&</span>')
-        .replace(/c;/g, '<span class="hl-tag tag-text">$&</span>')
-        .replace(/[dD];/g, '<span class="hl-tag tag-bold">$&</span>')
-        .replace(/[eE];/g, '<span class="hl-tag tag-line">$&</span>')
-        .replace(/[fF]/g, '<span class="hl-tag tag-code">$&</span>')
-        .replace(/#[rgb]|@[yrb]|%|\[#.*?\]/g, '<span class="hl-tag tag-color">$&</span>')
-        .replace(/img\(.*?\);/g, '<span class="hl-tag tag-img">$&</span>');
+/* --- エディタの枠組み --- */
+.FlexTextarea {
+    position: relative;
+    border: 1px solid #b6c3c6;
+    border-radius: 4px;
+    background: #fff;
+    min-height: 300px;
+    width: 100%;
+    overflow: hidden; /* はみ出し防止 */
 }
 
-let lastText = "";
-
-textarea.addEventListener('input', (e) => {
-    let currentText = textarea.value;
-
-    // --- 相方削除ロジック（Ctrl+Z対応版） ---
-    if (currentText.length < lastText.length) {
-        const deletedPart = findDeletedText(lastText, currentText);
-        
-        const pairTags = {
-            'd;': 'D;', 'D;': 'd;',
-            'e;': 'E;', 'E;': 'e;',
-            'f;': 'F;', 'F;': 'f;',
-            'code;': 'CODE;', 'CODE;': 'code;',
-            '#r': '%', '#g': '%', '#b': '%',
-            '@y': '%', '@r': '%', '@b': '%', '%': ''
-        };
-
-        if (pairTags[deletedPart]) {
-            const targetTag = pairTags[deletedPart];
-            const targetIndex = currentText.indexOf(targetTag);
-            if (targetTag !== "" && targetIndex !== -1) {
-                // 相方の位置にカーソルを移動させて、その1箇所を消去する
-                textarea.setSelectionRange(targetIndex, targetIndex + targetTag.length);
-                document.execCommand('delete'); // これで履歴に残る削除ができる
-                currentText = textarea.value;
-            }
-        }
-    }
-    lastText = currentText;
-
-    // ハイライト・プレビュー更新（ここは共通）
-    dummy.innerHTML = highlightTags(currentText) + '\u200b';
-    preview.innerHTML = parseToHtml(currentText);
-    textarea.style.height = 'auto';
-    textarea.style.height = dummy.scrollHeight + 'px';
-});
-
-// タグ挿入関数（Ctrl+Z対応版）
-function insertTag(startTag, endTag = "") {
-    const start = textarea.selectionStart;
-    const end = textarea.selectionEnd;
+/* 重要：ダミーとテキストエリアの共通設定 
+   すべてにおいて !important を使い、ブラウザの邪魔をさせない
+*/
+.FlexTextarea__dummy,
+.FlexTextarea__textarea {
+    box-sizing: border-box !important;
+    padding: 20px !important; /* 余白を多めにとって安定させる */
+    margin: 0 !important;
     
-    if (start === end) {
-        alert("変更したい文字を選択してください。");
-        return;
-    }
+    /* フォント設定を完全に固定 */
+    font-family: "Consolas", "Monaco", "Courier New", monospace !important; /* 等幅フォントが最もズレにくい */
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    letter-spacing: 0px !important; /* 文字間隔のズレを防止 */
     
-    const val = textarea.value;
-    const selectedText = val.substring(start, end);
-    const insertContent = startTag + selectedText + endTag;
-
-    // フォーカスを当ててから、選択範囲を新しい文字列で「置換」する
-    textarea.focus();
-    // execCommandを使うことで、Ctrl+Zの履歴に登録される
-    document.execCommand('insertText', false, insertContent);
-    
-    // inputイベントを強制発火させてプレビューを更新
-    textarea.dispatchEvent(new Event('input'));
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+    word-break: break-all !important;
+    border: none !important;
 }
 
-// 削除検知用（変更なし）
-function findDeletedText(oldText, newText) {
-    const tags = ['d;', 'D;', 'e;', 'E;', 'f;', 'F;', 'code;', 'CODE;', '#r', '#g', '#b', '@y', '@r', '@b', '%'];
-    for (let tag of tags) {
-        if (oldText.includes(tag) && !newText.includes(tag)) return tag;
-    }
-    return null;
+/* 背後の色付き文字 */
+.FlexTextarea__dummy {
+    color: #333;
+    min-height: 300px;
+    visibility: visible;
 }
 
-function insertColorTag() {
-    const col = document.getElementById('colorPicker').value;
-    insertTag(`[${col}]`, '%');
+/* 前面の入力エリア（透明） */
+.FlexTextarea__textarea {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: transparent !important;
+    color: transparent !important;
+    caret-color: #333; /* カーソルだけは見せる */
+    outline: none !important;
+    resize: none !important;
+    overflow: hidden !important;
 }
 
-function insertImageTag() {
-    const url = document.getElementById('imgUrl').value;
-    if(!url) return alert("URLを入力してください");
-    insertTag(`img(${url});`);
+/* --- ハイライトの装飾（paddingなどは入れない） --- */
+.hl-tag {
+    font-weight: bold;
+    border-radius: 2px;
+    /* 背景色だけをつける（paddingを入れると文字がズレる原因になる） */
 }
 
-// プレビュー・書き出し用HTML変換
-function parseToHtml(raw) {
-    if (!raw) return "";
+/* クラス名のスペルと色を再確認 */
+.tag-title    { color: #ffffff !important; background-color: #8a2be2 !important; } /* a; */
+.tag-subtitle { color: #8a2be2 !important; background-color: #f3e5f5 !important; } /* b; */
+.tag-text     { color: #007bff !important; background-color: #e7f3ff !important; } /* c; */
+.tag-bold     { color: #d97300 !important; background-color: #fff4e5 !important; } /* d;D; */
+.tag-line     { color: #008080 !important; background-color: #e0f2f1 !important; } /* e;E; */
+.tag-code     { color: #33ff00 !important; background-color: #000000 !important; } /* code;CODE; */
+.tag-color    { color: #c2185b !important; background-color: #fce4ec !important; } /* # @ % */
+.tag-img      { color: #0056b3 !important; background-color: #e3f2fd !important; } /* img */
 
-    // 1. ソースコード部分 (code; ~ CODE;) を保護しながら分割
-    let parts = raw.split(/(f;[\s\S]*?F;)/g);
-    
-    let processedParts = parts.map(part => {
-        if (part.startsWith('f;') && part.endsWith('F;')) {
-            let codeContent = part.replace(/^f;/, '').replace(/F;$/, '');
-            // HTMLエスケープ
-            codeContent = codeContent.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-            return `<pre class="code-block"><code>${codeContent.trim()}</code></pre>`;
-        } else {
-            // 2. 通常テキストの処理（a; を確実に置換する）
-            return part
-                .replace(/a;/g, '</div><br><br><br><div class="title">') // ここでタイトルに置換
-                .replace(/b;/g, '</div><div class="subtitle">')
-                .replace(/c;/g, '</div><div class="text">')
-                .replace(/d;/g, '<b>').replace(/D;/g, '</b>')
-                .replace(/e;/g, '<u>').replace(/E;/g, '</u>')
-                .replace(/#r/g, '<span style="color:red;">')
-                .replace(/%/g, '</span>')
-                .replace(/\[(#.*?)\]/g, '<span style="color:$1;">')
-                .replace(/img\((.*?)\);/g, '<img src="$1" class="blog-image">')
-                .replace(/\n/g, '<br>');
-        }
-    });
-
-    return processedParts.join('');
+/* プレビュー装飾 */
+.textContents { border: 1px solid #ddd; padding: 20px; background: #fff; min-height: 300px; }
+.title { font-size: 1.5rem; font-weight: bold; border-bottom: 2px solid #333; margin: 10px 0; }
+.subtitle { font-size: 1.2rem; border-left: 5px solid #ccc; padding-left: 10px; margin: 10px 0; }
+.code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 5px; font-family: monospace; overflow-x: auto; }
+.blog-image { max-width: 100%; height: auto; display: block; margin: 10px 0; }
+.toolbar {
+    background: #f0f4f5;
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+    border: 1px solid #b6c3c6;
+    border-bottom: none;
 }
 
-
-// 完成HTML生成（ソースコードの見た目を整える）
-function generateFinalHtml() {
-    const rawText = textarea.value;
-    const lines = rawText.split('\n');
-    
-    // 1. 【抽出】1行目をタイトルとして取得
-    let firstLine = lines[0] || "";
-    
-    // 記号なしタイトル（HTMLのtitleタグやパンくずリストに使用）
-    let cleanTitle = firstLine.replace(/a;|b;|c;|%|#r|#g|#b|@y|@r|@b|img\(.*?\);|\[#.*?\]/g, "").trim();
-    if (!cleanTitle) cleanTitle = "無題の記事";
-
-    // 2. 【本文の構成】1行目を完全に省き、2行目以降のみを変換対象にする
-    let bodyLines = lines.slice(1); // 配列の2要素目から最後まで取得
-    let bodyRawText = bodyLines.join('\n');
-    let content = parseToHtml(bodyRawText);
-
-    // 文頭の不要な閉じタグが出てしまった場合の除去
-    if (content.startsWith('</div>')) {
-        content = content.replace('</div>', '').trim();
-    }
-
-    // 3. 【整形】本文の各行にインデント（スペース8個分）を追加して見やすくする
-    const formattedContent = content.split('\n').map(line => '        ' + line).join('\n');
-
-    // 4. HTML組み立て（テンプレート）
-    document.getElementById('result').value = `<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>${cleanTitle}</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="BLOG/BL-css/BLOG-contents.css" type="text/css">
-</head>
-<body>
-    <header>
-        <img class="headerImg" src="https://lh3.googleusercontent.com/d/19q5HdAGS9HyTxRr9CdYvq6KFsjuMd_0X" alt="icon">
-        <ol class="breadlist">
-            <li><a href="HOME-home.html">ホーム</a></li>
-            <li><a href="BLOG-home.html">ブログ</a></li>
-            <li><a href="">${cleanTitle}</a></li>
-        </ol>
-        <nav>
-            <ul>
-                <li><a href="HOME-home.html">ホーム</a></li>
-                <li><a href="BLOG-home.html">ブログ</a></li>
-                <li><a href="MEMBERS2.html">部員紹介</a></li>
-                <li><a href="GAMES-home.html">ゲーム</a></li>
-                <li><a href="unity">unity紹介</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <div class="textContentsBox">
-        <br><br><br>
-        <div class="title"><b>${cleanTitle}</b></div>
-        <br>
-        <div class="textContents">
-${formattedContent}
-        </div>
-    </div>
-
-    <footer id="footer">
-        <script src="BLOG/BL-js/BLOG-home.js" defer></script>
-        <small><span>デジタル研究部 2024</span></small>
-        <div id="d2"> </div>
-    </footer>
-</body>
-</html>`;
+.toolbar button {
+    cursor: pointer;
+    padding: 5px 10px;
+    margin: 2px;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 3px;
+    font-size: 0.8rem;
 }
 
-// 保存（ファイル名指定）
-function downloadText() {
-    let name = window.prompt("保存するファイル名を入力", "blog-writing");
-    if (!name) return;
-    if (!name.endsWith(".html")) name += ".html";
-    
-    const blob = new Blob([document.getElementById('result').value], {type:"text/html"});
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = name;
-    link.click();
+.toolbar button:hover {
+    background: #e0eeb0;
 }
 
-// コピー機能
-function copyToClipboard() {
-    const res = document.getElementById("result");
-    res.select();
-    document.execCommand("Copy");
-    alert("コピーしました");
+.controls {
+    margin: 10px 0;
 }
-
-// 時計
-setInterval(() => {
-    document.getElementById("clock").innerText = new Date().toLocaleString();
-}, 1000);
