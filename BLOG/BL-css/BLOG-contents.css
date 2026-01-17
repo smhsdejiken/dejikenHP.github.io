@@ -1,9 +1,9 @@
 header{
     text-align: center;
 }
-img.headerImg{
-    width: 35%;
-  }
+p1{
+    font-size: xx-large;
+}
 .breadlist {
     display: flex;
     list-style: none;
@@ -56,19 +56,30 @@ h1{
     text-align: center;
 }
 
-.text { border: 1px solid #ddd; padding: 20px; background: #fff; min-height: 300px; }
-.title { font-size: 1.5rem; font-weight: bold; border-bottom: 2px solid #333; margin: 10px 0; }
-.subtitle { font-size: 1.2rem; border-left: 5px solid #ccc; padding-left: 10px; margin: 10px 0; }
 .code-block { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 5px; font-family: monospace; overflow-x: auto; }
-.blog-image { max-width: 100%; height: auto; display: block; margin: 10px 0; }
+.blog-image {    width: clamp(30px, 80vw, 700px);}
+
+.title{
+    font-size: clamp(24px,2.08vw,30px);
+    word-break: break-word;
+}
+
+.subtitle { font-size: 1.2rem; border-left: 5px solid #ccc; padding-left: 10px; margin: 10px 0; text-align: left;}
 
 
+.text{
+    line-height: 2;
+    font-size: clamp(16px,1.042vw,20px);
+    word-break: break-word;
+    text-align: left;
+}
 .textContentsBox{
     text-align: center;
 }
 .textContents{
     display: inline-block;
-    text-align: left;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 footer{
@@ -99,7 +110,7 @@ iframe{
 
 .header-img{
     padding-top: clamp(16px,1.042vw,20px) ;
-    width: clamp(16px, 80vw, 300px);
+    width:35%;
     margin-left:auto;
     margin-right:auto;
 }
