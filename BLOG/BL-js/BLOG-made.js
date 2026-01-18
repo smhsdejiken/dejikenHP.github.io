@@ -170,13 +170,40 @@ function copyToClipboard() {
     document.execCommand("Copy");
     alert("コピーしました");
 }
-function downloadText() {
-    let name = window.prompt("ファイル名", "blog-writing");
+// 保存（保存先とファイル名を選択）
+async function downloadText() {
+    const content = document.getElementById('result').value;
+    const defaultName = "blog-writing.html";
+
+    // 1. File System Access API が使える場合（Chrome, Edgeなど）
+    if ('showSaveFilePicker' in window) {
+        try {
+            const handle = await window.showSaveFilePicker({
+                suggestedName: defaultName,
+                types: [{
+                    description: 'HTMLファイル',
+                    accept: {'text/html': ['.html']},
+                }],
+            });
+            const writable = await handle.createWritable();
+            await writable.write(content);
+            await writable.close();
+            return; // 完了
+        } catch (err) {
+            if (err.name === 'AbortError') return; // キャンセル時は何もしない
+            console.error(err);
+        }
+    }
+
+    // 2. APIが使えない、またはエラー時のフォールバック（従来の方法）
+    let name = window.prompt("保存先を選べないブラウザです。ファイル名を入力してください", defaultName);
     if (!name) return;
-    const blob = new Blob([document.getElementById('result').value], {type:"text/html"});
+    if (!name.endsWith(".html")) name += ".html";
+    
+    const blob = new Blob([content], {type: "text/html"});
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = name.endsWith(".html") ? name : name + ".html";
+    link.download = name;
     link.click();
 }
 setInterval(() => { 
