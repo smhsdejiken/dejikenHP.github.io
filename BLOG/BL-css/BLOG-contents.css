@@ -78,7 +78,7 @@ h1{
 }
 .textContents{
     display: inline-block;
-    margin-right: auto;
+    margin-right: 15%;
     margin-left: auto;
 }
 
@@ -121,3 +121,4 @@ textarea {
   .bg-red    { background-color: #ffcccc; border-radius: 3px; padding: 0 2px; }
 .bg-yellow { background-color: #ffff99; border-radius: 3px; padding: 0 2px; }
 .bg-blue   { background-color: #cce5ff; border-radius: 3px; padding: 0 2px; }
+
