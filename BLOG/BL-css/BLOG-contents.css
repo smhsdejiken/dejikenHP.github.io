@@ -76,7 +76,7 @@ h1{
 .textContentsBox{
     text-align: center;
         margin-right: auto;
-    padding-left: 20%;
+    padding-left: 10%;
 }
 .textContents{
     display: inline-block;
@@ -123,6 +123,7 @@ textarea {
   .bg-red    { background-color: #ffcccc; border-radius: 3px; padding: 0 2px; }
 .bg-yellow { background-color: #ffff99; border-radius: 3px; padding: 0 2px; }
 .bg-blue   { background-color: #cce5ff; border-radius: 3px; padding: 0 2px; }
+
 
 
 
