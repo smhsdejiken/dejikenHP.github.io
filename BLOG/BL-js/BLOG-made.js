@@ -111,7 +111,15 @@ function parseToHtml(raw) {
                 .replace(/#r/g, '<span style="color:red;">')
                 .replace(/%/g, '</span>')
                 .replace(/\[(#.*?)\]/g, '<span style="color:$1;">')
-                .replace(/img\((.*?)\);/g, '<img src="$1" class="blog-image">')
+                // parseToHtml 内の該当箇所を以下のように書き換え
+                .replace(/img\((.*?)\);/g, (match, url) => {
+                    let src = url;
+                    // GoogleドライブのリンクならIDを抽出して直接URLに変換
+                    if (url.includes('drive.google.com/file/d/')) {
+                    const id = url.split('/d/')[1].split('/')[0];
+                    src = `https://lh3.googleusercontent.com/d/${id}`;
+                }
+                return `<img src="${src}" class="blog-image">`;})
                 .replace(/\n/g, '<br>');
         }
     });
@@ -121,12 +129,18 @@ function parseToHtml(raw) {
 function generateFinalHtml() {
     const lines = textarea.value.split('\n');
     let firstLine = lines[0] || "";
+    
+    // タイトルからタグを除去する際、imgタグの中身ではなく「img(...);」という文字列自体を消す
     let cleanTitle = firstLine.replace(/a;|b;|c;|%|#r|#g|#b|@y|@r|@b|img\(.*?\);|\[#.*?\]/g, "").trim();
     if (!cleanTitle) cleanTitle = "無題の記事";
 
-    // 1行目を省いた本文
+    // 本文の変換（ここで parseToHtml を通すことで <img> が生成される）
     let content = parseToHtml(lines.slice(1).join('\n'));
-    if (content.startsWith('</div>')) content = content.replace('</div>', '').trim();
+    
+    // 最初の不要な閉じタグを削除
+    if (content.trim().startsWith('</div>')) {
+        content = content.replace('</div>', '').trim();
+    }
 
     const formattedContent = content.split('\n').map(line => '        ' + line).join('\n');
 
@@ -139,7 +153,6 @@ function generateFinalHtml() {
     <link rel="stylesheet" href="BLMD/BLMD-contents.css" type="text/css">
 </head>
 <body>
-
     <div class="textContentsBox">
         <br><br><br>
         <div class="title"><b>${cleanTitle}</b></div>
@@ -148,7 +161,6 @@ function generateFinalHtml() {
 ${formattedContent}
         </div>
     </div>
-
     <footer id="footer">
         <script src="BLMD/BLMD-contents.js" defer></script>
         <small><span>デジタル研究部 2026</span></small>

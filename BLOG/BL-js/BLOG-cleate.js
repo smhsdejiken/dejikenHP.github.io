@@ -111,7 +111,15 @@ function parseToHtml(raw) {
                 .replace(/#r/g, '<span style="color:red;">')
                 .replace(/%/g, '</span>')
                 .replace(/\[(#.*?)\]/g, '<span style="color:$1;">')
-                .replace(/img\((.*?)\);/g, '<img src="$1" class="blog-image">')
+                // parseToHtml 内の該当箇所を以下のように書き換え
+                .replace(/img\((.*?)\);/g, (match, url) => {
+                    let src = url;
+                    // GoogleドライブのリンクならIDを抽出して直接URLに変換
+                    if (url.includes('drive.google.com/file/d/')) {
+                    const id = url.split('/d/')[1].split('/')[0];
+                    src = `https://lh3.googleusercontent.com/d/${id}`;
+                }
+                return `<img src="${src}" class="blog-image">`;})
                 .replace(/\n/g, '<br>');
         }
     });
