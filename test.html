@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
+
 </head>
 <html>
 <link rel="stylesheet"href="test.css" >
@@ -11,21 +12,22 @@
 <!DOCTYPE html>
 <html lang="ja">
 
+
 <body>
-    <div class="container">
-        <button class="animated-button">
-            <span class="button-text">ここにマウスを乗せてください</span>
-            <img src="button-image.jpg" alt="ボタン内の画像" class="button-image">
-        </button>
+<form id="commentForm">
+  <input type="text" id="name" placeholder="名前" required style="width: 200px;"><br>
+  <textarea id="comment" placeholder="コメント内容" required style="width: 300px; height: 100px; margin-top: 10px;"></textarea><br>
+  <button type="submit" style="margin-top: 10px;">投稿する</button>
+</form>
 
-        <div class="external-image-wrapper">
-            <img src="external-image.jpg" alt="外部の画像" class="external-image">
-        </div>
-    </div>
 
+<h3 style="margin-top: 40px;">コメント</h3>
+<div id="commentList"></div>
 </body>
+
 
 </html>
 <br><br><br><br><br><br><br><br>
-    <script src="test.js"></script>
+    <script src="cm_test.js"></script>
 </html>
+
