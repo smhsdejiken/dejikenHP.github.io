@@ -7,8 +7,10 @@ body {
     --after-bg-end-color: rgba(255, 255, 255, 0);   /* 終了色も完全に透明 */
     --after-bg-size: 0% 0%; /* サイズを0%にして見えないように */
 
+
     transition: background-color 0.5s ease-in-out; /* body自体の背景色遷移（必要であれば） */
 }
+
 
 body:after { /* 擬似要素をつくる */
     position: fixed; /* 固定配置 */
@@ -28,10 +30,12 @@ body:after { /* 擬似要素をつくる */
     background-repeat: no-repeat;
     background-position: center center; /* 背景の基準点を中央に */
 
+
     z-index: -1;
     /* transition を background-size に適用してアニメーションさせる */
     transition: background-size 0.8s ease-out, background-color 0.8s ease-out; /* background-colorはフォールバック用 */
 }
+
 
 /* --- ボタンのスタイル（変更なし） --- */
 .container {
@@ -40,6 +44,7 @@ body:after { /* 擬似要素をつくる */
     align-items: center;
     gap: 50px;
 }
+
 
 .animated-button {
     width: 200px;
@@ -59,6 +64,7 @@ body:after { /* 擬似要素をつくる */
     z-index: 2;
 }
 
+
 .animated-button:hover {
     width: 250px;
     height: 80px;
@@ -66,6 +72,7 @@ body:after { /* 擬似要素をつくる */
     background-color: #0056b3;
     transform: scale(1.1);
 }
+
 
 .button-text {
     position: absolute;
@@ -77,9 +84,11 @@ body:after { /* 擬似要素をつくる */
     white-space: nowrap;
 }
 
+
 .animated-button:hover .button-text {
     opacity: 0;
 }
+
 
 .button-image {
     position: absolute;
@@ -92,10 +101,12 @@ body:after { /* 擬似要素をつくる */
     transition: all 0.3s ease-in-out;
 }
 
+
 .animated-button:hover .button-image {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
 }
+
 
 /* --- 外部に表示される画像のスタイル（変更なし） --- */
 .external-image-wrapper {
@@ -107,16 +118,19 @@ body:after { /* 擬似要素をつくる */
     border: 2px dashed #ccc;
     box-sizing: border-box;
 
+
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.4s ease-out, transform 0.4s ease-out;
     z-index: 1;
 }
 
+
 .animated-button:hover + .external-image-wrapper {
     opacity: 1;
     transform: translateY(0);
 }
+
 
 .external-image {
     max-width: 100%;
@@ -124,3 +138,6 @@ body:after { /* 擬似要素をつくる */
     display: block;
     object-fit: contain;
 }
+
+
+
